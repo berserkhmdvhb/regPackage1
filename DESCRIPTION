@@ -1,11 +1,27 @@
 Package: regPackage1
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Insurance Data GLM
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Authors@R: person("Hamed", "Vaheb", email = "hamed.vaheb@gmail.com",
+  role = c("aut", "cre"))Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.2.1
+RemoteType: github
+Depends:
+    R (>= 4.2.2)
+Imports:
+    dplyr,
+    janitor,
+    car,
+    ggplot2,
+    plotly
+Suggests: 
+    knitr,
+    reader,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    tibble
+Config/testthat/edition: 3

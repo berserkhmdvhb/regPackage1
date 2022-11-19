@@ -1,1 +1,5 @@
 exportPattern("^[[:alpha:]]+")
+export(insurance_data)
+importFrom(janitor,clean_names)
+importFrom(rlang,`!!`)
+importFrom(rlang,quo)

@@ -12,8 +12,8 @@
 #' @export
 #' @return Returns fit object of lm function
 #' @details
-#' This functions allows the user to perform regression of a given
-#' dataframe, using
+#' This functions allows the user to perform generalized linear model on a given
+#' dataframe, in my case, Medical Cost Personal Datasets
 regressor <- function(insurance_data,
                       features_names,
                       target,
@@ -60,6 +60,9 @@ regressor <- function(insurance_data,
   return(fit)
 }
 
+
+
+
 plot_reg <- function(fit){
   #fit <- regressor({{data}},{{target}})
   return(avPlots({{fit}}))
@@ -68,6 +71,8 @@ plot_reg <- function(fit){
 
 #dataset:
 # https://www.kaggle.com/datasets/mirichoi0218/insurance?resource=download
+##reading it:
+#readr::read_csv("https://raw.githubusercontent.com/berserkhmdvhb/regPackage1/main/data/insurance.csv")
 # execute example
 # fit <- regressor(data=datasets::ToothGrowth, target="len")
 # data <- plot_reg(fit)

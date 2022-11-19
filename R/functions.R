@@ -1,6 +1,6 @@
 #' Fitting a generalized linear model by specifying feature names (response variables),
 #' target variable, family of distribution
-#' @param data An arbitrary dataframe
+#' @param insurance_data An arbitrary dataframe
 #' @param feature_names Name of features. If not specified, takes all columns
 #' except the target
 #' @param target The target variable aimed for prediction
@@ -72,7 +72,8 @@ plot_reg <- function(fit){
 #dataset:
 # https://www.kaggle.com/datasets/mirichoi0218/insurance?resource=download
 ##reading it:
-#readr::read_csv("https://raw.githubusercontent.com/berserkhmdvhb/regPackage1/main/data/insurance.csv")
+#readr::read_csv("https://raw.githubusercontent.com/berserkhmdvhb/regPackage1/main/data/insurance.csv",show_col_types=FALSE)
+# readr::read_csv("/home/hamed/Documents/R/regPackage1/data/insurance.csv",show_col_types=FALSE)
 # execute example
 # fit <- regressor(data=datasets::ToothGrowth, target="len")
 # data <- plot_reg(fit)

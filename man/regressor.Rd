@@ -17,6 +17,9 @@ regressor(
 \arguments{
 \item{insurance_data}{An arbitrary dataframe}
 
+\item{features_names}{Name of features. If not specified, takes all columns
+except the target}
+
 \item{target}{The target variable aimed for prediction}
 
 \item{normalize}{If set to TRUE, then the features are normalized either by
@@ -26,9 +29,6 @@ minmax or std, which is determined by the parameter "normalized_method"}
 normalization of features, and if set to "minmax", then minmax scaler is used. Default is "std".}
 
 \item{family}{specify family of distribution.}
-
-\item{feature_names}{Name of features. If not specified, takes all columns
-except the target}
 }
 \value{
 Returns fit object of lm function

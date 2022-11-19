@@ -1,6 +1,6 @@
 #' Fitting a generalized linear model by specifying feature names (response variables),
 #' target variable, family of distribution
-#' @param insurance_data An arbitrary dataframe
+#' @param data An arbitrary dataframe
 #' @param features_names Name of features. If not specified, takes all columns
 #' except the target
 #' @param target The target variable aimed for prediction
@@ -14,18 +14,18 @@
 #' @details
 #' This functions allows the user to perform generalized linear model on a given
 #' dataframe, in my case, Medical Cost Personal Datasets
-regressor <- function(insurance_data,
+regressor <- function(data=insurance_data,
                       features_names,
-                      target,
+                      target="charges",
                       normalize=FALSE,
                       normalize_method="std",
                       family="gaussian"){
   # ensure dataframe is not empy
-  if(nrow(insurance_data) == 0) {
+  if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
   }
   # make a copy of data with different pointer in memory
-  df <- data.frame({{insurance_data}})
+  df <- data.frame({{data}})
   # clean names of columns of dataframe
   df <- janitor::clean_names(df)
   # extract feature names
@@ -63,20 +63,8 @@ regressor <- function(insurance_data,
 
 
 
+
 plot_reg <- function(fit){
   #fit <- regressor({{data}},{{target}})
   return(car::avPlots({{fit}}))
 }
-
-
-#dataset:
-# https://www.kaggle.com/datasets/mirichoi0218/insurance?resource=download
-##reading it:
-#readr::read_csv("https://raw.githubusercontent.com/berserkhmdvhb/regPackage1/main/data/insurance.csv",show_col_types=FALSE)
-# readr::read_csv("/home/hamed/Documents/R/regPackage1/data/insurance.csv",show_col_types=FALSE)
-# execute example
-# fit <- regressor(data=datasets::ToothGrowth, target="len")
-# data <- plot_reg(fit)
-
-# clear all variables
-# rm(list=ls())

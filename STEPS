@@ -17,3 +17,8 @@ save(insurance_data, file="data/insurance_data.RData")
 specify data and documentation  in in data.R
 
 run devtools::document()
+
+add all required functions from libraries in namespace
+
+
+remove hello.R and hello.Rd

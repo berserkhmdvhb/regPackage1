@@ -1,7 +1,7 @@
 #' Fitting a generalized linear model by specifying feature names (response variables),
 #' target variable, family of distribution
 #' @param insurance_data An arbitrary dataframe
-#' @param feature_names Name of features. If not specified, takes all columns
+#' @param features_names Name of features. If not specified, takes all columns
 #' except the target
 #' @param target The target variable aimed for prediction
 #' @param normalize If set to TRUE, then the features are normalized either by
@@ -35,26 +35,26 @@ regressor <- function(insurance_data,
 
   # normalize data based on user preference
   if (normalize == TRUE){
-    numeric_features <- select_if(features, is.numeric)
+    numeric_features <- dplyr::select_if(features, is.numeric)
     # standard normalizer
     if (tolower(normalize_method) == tolower("std")){
-    df <- df |> mutate_at(names(numeric_features), ~(scale(.) %>% as.vector))
+    df <- df |> dplyr::mutate_at(names(numeric_features), ~(scale(.) %>% as.vector))
     }
     # minmax normalizer
     else if (tolower(normalize_method) == tolower("minmax")){
-      process <- preProcess(numeric_features, method=c("range"))
-      scaled_df <- predict(process, numeric_features)
+      process <- caret::preProcess(numeric_features, method=c("range"))
+      scaled_df <- stats::predict(process, numeric_features)
       for (col in names(numeric_features)){
         df[col] <- scaled_df[col]
       }
     }
   }
 
-  glm_format <- as.formula(paste({{target}}, "~",
+  glm_format <- stats::as.formula(paste({{target}}, "~",
                    paste({{features_names}}, collapse = "+"),
                    sep = ""
                   ))
-  fit <- glm(glm_format,
+  fit <- stats::glm(glm_format,
              data=df,
              family={{family}})
   return(fit)
@@ -65,7 +65,7 @@ regressor <- function(insurance_data,
 
 plot_reg <- function(fit){
   #fit <- regressor({{data}},{{target}})
-  return(avPlots({{fit}}))
+  return(car::avPlots({{fit}}))
 }
 
 

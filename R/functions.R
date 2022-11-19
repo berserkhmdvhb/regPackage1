@@ -21,17 +21,17 @@ regressor <- function(insurance_data,
                       normalize_method="std",
                       family="gaussian"){
   # ensure dataframe is not empy
-  if(nrow(result) == 0) {
+  if(nrow(insurance_data) == 0) {
     warning("The returned data frame is empty.")
   }
-
-  df <- data.table::copy({{insurance_data}})
+  # make a copy of data with different pointer in memory
+  df <- data.frame({{insurance_data}})
   # clean names of columns of dataframe
   df <- janitor::clean_names(df)
   # extract feature names
   features_names <- names(df)[names(df) != {{target}}]
   # extract features subset of dadtaframe
-  features <- data[,names(df) != {{target}}]
+  features <- df[,names(df) != {{target}}]
 
   # normalize data based on user preference
   if (normalize == TRUE){

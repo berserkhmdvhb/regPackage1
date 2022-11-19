@@ -59,12 +59,3 @@ regressor <- function(data=insurance_data,
              family={{family}})
   return(fit)
 }
-
-
-
-
-
-plot_reg <- function(fit){
-  #fit <- regressor({{data}},{{target}})
-  return(car::avPlots({{fit}}))
-}

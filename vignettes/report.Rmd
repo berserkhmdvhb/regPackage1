@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(regPackage1)
 ```
+# Introduction
 As a project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
 You can install this package by first installing the [devtools](https://www.r-project.org/nosvn/pandoc/devtools.html) package and then using the following syntax:
 
@@ -43,7 +44,37 @@ data(insurance_data)
 head(insurance_data)
 summary(insurance_data)
 ```
+Note that all functions of the package are suffixed with `hmd`.
+# Generalized Linear Model (GLM)
+Let us see the result of applying GLM on the target variable, which is `chargres`. 
+For this, I wrote the function [glm_hmd](https://github.com/berserkhmdvhb/regPackage1/blob/main/R/glm_hmd.R).
+We try to use different distributions, and also check if normalization of response variables would have any significant effect:
+
+## Gaussian
+
+
+### Without Normalize
+
+```{r message = FALSE, warning = FALSE}
+glm_hmd(insurance_data, target="charges", family=gaussian)
+```
+
+### With Normalize
+
+```{r message = FALSE, warning = FALSE}
+#glm_hmd(insurance_data, target="charges", #family=gaussian, normalize=TRUE)
+```
+
+## Gamma
 
 
 
+### Without Normalize
+```{r message = FALSE, warning = FALSE}
+glm_hmd(insurance_data, target="charges", family=Gamma)
+```
 
+### With Normalize
+```{r message = FALSE, warning = FALSE}
+glm_hmd(insurance_data, target="charges", family=Gamma, normalize=TRUE)
+```          

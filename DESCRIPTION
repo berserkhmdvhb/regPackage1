@@ -15,8 +15,7 @@ Imports:
     dplyr,
     janitor,
     car,
-    ggplot2,
-    plotly,
+    caret,
     insuranceData
 Suggests: 
     knitr,

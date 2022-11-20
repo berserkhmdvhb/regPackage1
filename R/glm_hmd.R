@@ -51,12 +51,12 @@ glm_hmd <- function(data=insurance_data,
       }
     }
   }
-  #features_names <- names(df)[names(df) != {{target}}]
-  # extract features subset of dadtaframe
-  #features <- df[,names(df) != {{target}}]
 
   # normalize data based on user preference
   if (normalize == TRUE){
+
+    # extract features subset of dadtaframe
+    features <- df[,names(df) != {{target}}]
     numeric_features <- dplyr::select_if(features, is.numeric)
     # standard normalizer
     if (tolower(normalize_method) == tolower("std")){

@@ -1,7 +1,5 @@
 #' Plot avPlots of GLM model
 #' @param fit fit object from GLM
-#' @param cat_cols List of categorical columns need to be factored and result in
-#'  levels
 #' @export
 #' @return Returns avPlot object from the car package
 #' @details

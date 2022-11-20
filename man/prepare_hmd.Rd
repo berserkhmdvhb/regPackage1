@@ -9,8 +9,6 @@ prepare_hmd(data = insurance_data, cat_cols = list())
 }
 \arguments{
 \item{data}{An arbitrary dataframe}
-
-\item{cat_cols}{List of cateogrical columns need to be factored and result in levels}
 }
 \value{
 Returns cleaned dataframe ready to be fed into models

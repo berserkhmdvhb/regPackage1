@@ -8,9 +8,6 @@ plot_hmd(fit)
 }
 \arguments{
 \item{fit}{fit object from GLM}
-
-\item{cat_cols}{List of categorical columns need to be factored and result in
-levels}
 }
 \value{
 Returns avPlot object from the car package

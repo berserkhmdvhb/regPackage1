@@ -17,3 +17,7 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(regPackage1)
 ```
+
+You can install the `regPackage1` I built, by first installing the [devtools](https://www.r-project.org/nosvn/pandoc/devtools.html) package and then using the following syntax:
+
+`devtools::install_github("https://github.com/berserkhmdvhb/regPackage1")`

@@ -1,5 +1,4 @@
-#' Fitting a generalized linear model by specifying feature names (response variables),
-#' target variable, family of distribution
+#' GLM Model
 #' @param data An arbitrary dataframe
 #' @param features_names Name of features. If not specified, takes all columns
 #' except the target
@@ -13,7 +12,8 @@
 #' @return Returns fit object of lm function
 #' @details
 #' This functions allows the user to perform generalized linear model on a given
-#' dataframe, in my case, Medical Cost Personal Datasets
+#' dataframe by specifying feature names (response variables),
+#' target variable, family of distribution, and the dataset (in my case, Medical Cost Personal Datasets)
 
 glm_hmd <- function(data=insurance_data,
                       features_names=names({{data}})[names({{data}}) != {{target}}],

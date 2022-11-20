@@ -2,8 +2,7 @@
 % Please edit documentation in R/glm_hmd.R
 \name{glm_hmd}
 \alias{glm_hmd}
-\title{Fitting a generalized linear model by specifying feature names (response variables),
-target variable, family of distribution}
+\title{GLM Model}
 \usage{
 glm_hmd(
   data = insurance_data,
@@ -47,10 +46,10 @@ normalization of features, and if set to "minmax", then minmax scaler is used. D
 Returns fit object of lm function
 }
 \description{
-Fitting a generalized linear model by specifying feature names (response variables),
-target variable, family of distribution
+GLM Model
 }
 \details{
 This functions allows the user to perform generalized linear model on a given
-dataframe, in my case, Medical Cost Personal Datasets
+dataframe by specifying feature names (response variables),
+target variable, family of distribution, and the dataset (in my case, Medical Cost Personal Datasets)
 }

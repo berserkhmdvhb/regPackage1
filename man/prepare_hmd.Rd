@@ -2,7 +2,7 @@
 % Please edit documentation in R/prepare_hmd.R
 \name{prepare_hmd}
 \alias{prepare_hmd}
-\title{Preparing dataframe to be fed into regression models
+\title{Prepare dataframe to bed fed into models
 target variable, family of distribution}
 \usage{
 prepare_hmd(data = insurance_data, cat_cols = list())
@@ -16,10 +16,11 @@ prepare_hmd(data = insurance_data, cat_cols = list())
 Returns cleaned dataframe ready to be fed into models
 }
 \description{
-Preparing dataframe to be fed into regression models
+Prepare dataframe to bed fed into models
 target variable, family of distribution
 }
 \details{
-This functions allows the user to perform generalized linear model on a given
-dataframe, in my case, Medical Cost Personal Datasets
+This functions allows to clean and prepare dataframe by factorizing the
+specified cateogrical columns, cleaning column names, replace "na" and "Inf"
+values with NA
 }

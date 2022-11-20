@@ -2,4 +2,5 @@
 
 export(anova_hmd)
 export(glm_hmd)
+export(plot_hmd)
 export(prepare_hmd)

@@ -1,12 +1,13 @@
-#' Preparing dataframe to be fed into regression models
+#' Prepare dataframe to bed fed into models
 #' target variable, family of distribution
 #' @param data An arbitrary dataframe
 #' @param cat_cols List of cateogrical columns need to be factored and result in levels
 #' @export
 #' @return Returns cleaned dataframe ready to be fed into models
 #' @details
-#' This functions allows the user to perform generalized linear model on a given
-#' dataframe, in my case, Medical Cost Personal Datasets
+#' This functions allows to clean and prepare dataframe by factorizing the
+#' specified cateogrical columns, cleaning column names, replace "na" and "Inf"
+#' values with NA
 
 
 

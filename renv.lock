@@ -1303,10 +1303,10 @@
     },
     "sass": {
       "Package": "sass",
-      "Version": "0.4.2",
+      "Version": "0.4.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "1b191143d7d3444d504277843f3a95fe",
+      "Hash": "6cd2448458fdb03e21e69aa2d5ba25b2",
       "Requirements": [
         "R6",
         "fs",

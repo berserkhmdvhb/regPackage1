@@ -15,7 +15,8 @@ Imports:
     dplyr,
     janitor,
     car,
-    caret
+    caret,
+    glmnet
 Suggests: 
     knitr,
     rmarkdown,

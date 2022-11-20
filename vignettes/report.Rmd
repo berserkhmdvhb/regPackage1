@@ -37,60 +37,7 @@ Also, this report is accessible as vignette of the package, which can be accesse
 
 (Note: I just made a meta-reference)
 
-# Load Dataset
-
-## Medical Cost Personal Datasets
-As main focus on a dataset with continous target, the dataset used for this package is [Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance).
-In order to be familiarized with the dataset, after loading the `regPackage1` package, run `?insurance_data`.
-
-The dataset is embedded in the package, therefore by simply running the following commands one can load and display the dataset.
-
-```{r message = FALSE, warning = FALSE}
-data(insurance_data)
-head(insurance_data)
-summary(insurance_data)
-```
-Note that all functions of the package are suffixed with `hmd`.
-
-# Prepare the Dataset
-```{r message = FALSE, warning = FALSE}
-insurance_data_cleaned <- prepare_hmd(insurance_data)
-head(insurance_data_cleaned)
-```
-
-# Generalized Linear Model (GLM)
-Let us see the result of applying GLM on the target variable, which is `chargres`. 
-For this, I wrote the function [glm_hmd](https://github.com/berserkhmdvhb/regPackage1/blob/main/R/glm_hmd.R).
-We try to use different distributions, and also check if normalization of response variables would have any significant effect:
-
-## Gaussian
-
-
-### Without Normalize
-
-```{r message = FALSE, warning = FALSE}
-glm_hmd(insurance_data_cleaned, target="charges", family=gaussian)
-```
-
-### With Normalize
-
-```{r message = FALSE, warning = FALSE}
-glm_hmd(insurance_data_cleaned, target="charges", family=gaussian, normalize=TRUE)
-```
-
-## Gamma
-
-
-
-### Without Normalize
-```{r message = FALSE, warning = FALSE}
-glm_hmd(insurance_data_cleaned, target="charges", family=Gamma)
-```
-
-### With Normalize
-```{r message = FALSE, warning = FALSE}
-glm_hmd(insurance_data_cleaned, target="charges", family=Gamma, normalize=TRUE)
-```          
+# Test Case 
 
 ## British Car Insurance Claims for 1975
 To provide a test case on a dataset with discrete target variable, I used the the [claims dataset](http://www.statsci.org/data/general/carinsuk.html). It concerns the average claims for damage to the owner's car for privately owned and comprehensively insured vehicles in Britain in 1975. Averages are given in pounds sterling adjusted for inflation. It contains 128 policyholders and three covariates: 
@@ -117,5 +64,63 @@ head(UKAuto)
 
 
 ```{r message = FALSE, warning = FALSE}
-glm_hmd(data=UKAuto, target="n_claims", family=poisson())
+#glm_hmd(data=UKAuto, target="n_claims", family=poisson())
 ```
+
+
+# Medical Cost Personal Datasets Regression
+## Load Dataset
+
+As main focus on a dataset with continous target, the dataset used for this package is [Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance).
+In order to be familiarized with the dataset, after loading the `regPackage1` package, run `?insurance_data`.
+
+The dataset is embedded in the package, therefore by simply running the following commands one can load and display the dataset.
+
+```{r message = FALSE, warning = FALSE}
+data(insurance_data)
+head(insurance_data)
+summary(insurance_data)
+```
+Note that all functions of the package are suffixed with `hmd`.
+
+## Prepare the Dataset
+```{r message = FALSE, warning = FALSE}
+insurance_data_cleaned <- prepare_hmd(insurance_data)
+head(insurance_data_cleaned)
+```
+
+## Regression Models
+#### Generalized Linear Model (GLM)
+Let us see the result of applying GLM on the target variable, which is `chargres`. 
+For this, I wrote the function [glm_hmd](https://github.com/berserkhmdvhb/regPackage1/blob/main/R/glm_hmd.R).
+We try to use different distributions, and also check if normalization of response variables would have any significant effect:
+
+**Gaussian**
+
+
+1. Without Normalize
+
+```{r message = FALSE, warning = FALSE}
+glm_hmd(insurance_data_cleaned, target="charges", family=gaussian)
+```
+
+2. With Normalize
+
+```{r message = FALSE, warning = FALSE}
+#glm_hmd(insurance_data_cleaned, target="charges", family=gaussian, normalize=TRUE)
+```
+
+**Gamma**
+
+
+
+1. Without Normalize
+```{r message = FALSE, warning = FALSE}
+#glm_hmd(insurance_data_cleaned, target="charges", family=Gamma)
+```
+
+### With Normalize
+```{r message = FALSE, warning = FALSE}
+#glm_hmd(insurance_data_cleaned, target="charges", family=Gamma, normalize=TRUE)
+```          
+

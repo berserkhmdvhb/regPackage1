@@ -36,6 +36,7 @@ prepare_hmd <- function(data=insurance_data,
     #ensure use doesn't input an empty list for cat_cols
     if (length({{cat_cols}}) == 0)
     {
+      warning("No column is selected. No columns will be modified.")
       return(df)
     }
     else

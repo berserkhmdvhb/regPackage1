@@ -1,12 +1,18 @@
+#' Fitting a generalized linear model by specifying feature names (response variables),
+#' target variable, family of distribution
+#' @param data An arbitrary dataframe
+#' @param cat_cols List of cateogrical columns need to be factored and result in levels
+#' @export
+#' @return Returns fit object of lm function
+#' @details
+#' This functions allows the user to perform generalized linear model on a given
+#' dataframe, in my case, Medical Cost Personal Datasets
+
 
 
 prepare_hmd <- function(data=insurance_data,
-                    features_names,
-                    target,
-                    cat_cols,
-                    normalize=FALSE,
-                    normalize_method="std",
-                    family="gaussian"){
+                    cat_cols=list()
+                    ){
   # ensure dataframe is not empy
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
@@ -15,35 +21,26 @@ prepare_hmd <- function(data=insurance_data,
   df <- data.frame({{data}})
   # clean names of columns of dataframe
   df <- janitor::clean_names(df)
-  # extract feature names
-  features_names <- names(df)[names(df) != {{target}}]
-  # extract features subset of dadtaframe
-  features <- df[,names(df) != {{target}}]
 
-  # normalize data based on user preference
-  if (normalize == TRUE){
-    numeric_features <- dplyr::select_if(features, is.numeric)
-    # standard normalizer
-    if (tolower(normalize_method) == tolower("std")){
-      df <- df |> dplyr::mutate_at(names(numeric_features), ~(scale(.) %>% as.vector))
-    }
-    # minmax normalizer
-    else if (tolower(normalize_method) == tolower("minmax")){
-      process <- caret::preProcess(numeric_features, method=c("range"))
-      scaled_df <- stats::predict(process, numeric_features)
-      for (col in names(numeric_features)){
-        df[col] <- scaled_df[col]
-      }
-    }
+  # replace "Inf" and na values with NA
+  df[is.na(df) | df=="Inf"] = NA
+
+  if (!(typeof(cat_cols) == "character")){
+    warning("Please input character type, e.g. c(col1,col2,...)")
   }
-
-  glm_format <- stats::as.formula(paste({{target}}, "~",
-                                        paste({{features_names}}, collapse = "+"),
-                                        sep = ""
-  ))
-  fit <- stats::glm(glm_format,
-                    data=df,
-                    family={{family}})
-  return(fit)
+  if (length(cat_cols) == 0)
+  {
+    return(df)
+  }
+  else{
+    for (col in cat_cols){
+      if (!(col %in% names)){
+        warning("A categorical column inputted is not among dataframe's columns.")
+        break
+      }
+      df[col] = as.factor(df[col])
+    }
+    return(df)
+  }
 }
 

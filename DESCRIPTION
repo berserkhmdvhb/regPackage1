@@ -16,10 +16,10 @@ Imports:
     janitor,
     car,
     ggplot2,
-    plotly
+    plotly,
+    insuranceData
 Suggests: 
     knitr,
-    reader,
     rmarkdown,
     testthat (>= 3.0.0),
     tibble

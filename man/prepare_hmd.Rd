@@ -2,7 +2,7 @@
 % Please edit documentation in R/prepare_hmd.R
 \name{prepare_hmd}
 \alias{prepare_hmd}
-\title{Fitting a generalized linear model by specifying feature names (response variables),
+\title{Preparing dataframe to be fed into regression models
 target variable, family of distribution}
 \usage{
 prepare_hmd(data = insurance_data, cat_cols = list())
@@ -13,10 +13,10 @@ prepare_hmd(data = insurance_data, cat_cols = list())
 \item{cat_cols}{List of cateogrical columns need to be factored and result in levels}
 }
 \value{
-Returns fit object of lm function
+Returns cleaned dataframe ready to be fed into models
 }
 \description{
-Fitting a generalized linear model by specifying feature names (response variables),
+Preparing dataframe to be fed into regression models
 target variable, family of distribution
 }
 \details{

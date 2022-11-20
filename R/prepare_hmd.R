@@ -1,9 +1,9 @@
-#' Fitting a generalized linear model by specifying feature names (response variables),
+#' Preparing dataframe to be fed into regression models
 #' target variable, family of distribution
 #' @param data An arbitrary dataframe
 #' @param cat_cols List of cateogrical columns need to be factored and result in levels
 #' @export
-#' @return Returns fit object of lm function
+#' @return Returns cleaned dataframe ready to be fed into models
 #' @details
 #' This functions allows the user to perform generalized linear model on a given
 #' dataframe, in my case, Medical Cost Personal Datasets

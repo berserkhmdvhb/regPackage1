@@ -25,22 +25,30 @@ prepare_hmd <- function(data=insurance_data,
   # replace "Inf" and na values with NA
   df[is.na(df) | df=="Inf"] = NA
 
-  if (!(typeof(cat_cols) == "character")){
+  if (!(typeof(cat_cols) == "character"))
+  {
     warning("Please input character type, e.g. c(col1,col2,...)")
   }
-  if (length(cat_cols) == 0)
+  else
   {
-    return(df)
-  }
-  else{
-    for (col in cat_cols){
-      if (!(col %in% names)){
-        warning("A categorical column inputted is not among dataframe's columns.")
-        break
-      }
-      df[col] = as.factor(df[col])
+    if (length(cat_cols) == 0)
+    {
+      warning("Please put at least one column in your categorical columns")
     }
-    return(df)
+    else
+    {
+
+      for (col in cat_cols)
+      {
+          if (!(col %in% names))
+          {
+            warning("A categorical column inputted is not among dataframe's columns.")
+            break
+          }
+          df[col] = as.factor(df[col])
+      }
+    }
   }
+  return(df)
 }
 

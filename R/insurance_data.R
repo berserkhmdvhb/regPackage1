@@ -1,11 +1,8 @@
-#' Medical Cost Personal Datasets
-#'
-#' Individual medical costs billed by health insurance along with properties of individuals
-#' @name insurance_data
+#' @title Medical Cost Personal Datasets
+#' @description Individual medical costs billed by health insurance along with properties of individuals
 #' @docType data
 #' @usage data(insurance_data)
-#' @format ## `who`
-#' A data frame with 1,338 rows and 7 columns:
+#' @format A data frame with 1,338 rows and 7 columns:
 #' \describe{
 #'   \item{age}{Age of primary beneficiary}
 #'   \item{sex}{Insurance contractor gender, female, male}
@@ -15,11 +12,6 @@
 #'   \item{smoker}{Individual is smoker or not}
 #'   \item{region}{The beneficiary's residential area in the US, northeast, southeast, southwest, northwest.}
 #'   \item{charges}{Individual medical costs billed by health insurance}
-#'   ...
 #' }
 #' @source <https://www.kaggle.com/datasets/mirichoi0218/insurance>
 "insurance_data"
-
-#data("insurance_data", package="regPackage1")
-# always run the following when you change the documentation
-# devtools::documnet()

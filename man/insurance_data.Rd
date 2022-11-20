@@ -5,7 +5,6 @@
 \alias{insurance_data}
 \title{Medical Cost Personal Datasets}
 \format{
-## `who`
 A data frame with 1,338 rows and 7 columns:
 \describe{
   \item{age}{Age of primary beneficiary}
@@ -16,7 +15,6 @@ A data frame with 1,338 rows and 7 columns:
   \item{smoker}{Individual is smoker or not}
   \item{region}{The beneficiary's residential area in the US, northeast, southeast, southwest, northwest.}
   \item{charges}{Individual medical costs billed by health insurance}
-  ...
 }
 }
 \source{

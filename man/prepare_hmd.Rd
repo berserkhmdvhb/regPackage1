@@ -9,6 +9,8 @@ prepare_hmd(data = insurance_data, cat_cols = list())
 }
 \arguments{
 \item{data}{An arbitrary dataframe}
+
+\item{cat_cols}{Set of categorical columns to be factorized}
 }
 \value{
 Returns cleaned dataframe ready to be fed into models

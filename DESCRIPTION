@@ -10,7 +10,7 @@ LazyData: true
 RoxygenNote: 7.2.2
 RemoteType: github
 Depends:
-    R (>= 4.2.2),
+    R (>= 4.2),
 Imports:
     dplyr,
     janitor,

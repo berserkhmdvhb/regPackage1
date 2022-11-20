@@ -1,6 +1,7 @@
 #' Prepare dataframe to bed fed into models
 #' target variable, family of distribution
 #' @param data An arbitrary dataframe
+#' @param cat_cols Set of categorical columns to be factorized
 #' @export
 #' @return Returns cleaned dataframe ready to be fed into models
 #' @details

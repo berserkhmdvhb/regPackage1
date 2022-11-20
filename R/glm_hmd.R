@@ -14,6 +14,7 @@
 #' @details
 #' This functions allows the user to perform generalized linear model on a given
 #' dataframe, in my case, Medical Cost Personal Datasets
+
 glm_hmd <- function(data=insurance_data,
                       features_names,
                       target="charges",
@@ -26,9 +27,16 @@ glm_hmd <- function(data=insurance_data,
   }
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
-  # clean names of columns of dataframe
-  df <- janitor::clean_names(df)
-  # extract feature names
+  # extract feature names either from input or dataframe
+  if (!(typeof(feature_names) == "character")){
+    warning("Please input character type, e.g. c(col1,col2,...)")
+  }
+  else{
+  if (length(feature_names) == 0)
+  {
+    features_names <- names(df)[names(df) != {{target}}]
+  }
+  }
   features_names <- names(df)[names(df) != {{target}}]
   # extract features subset of dadtaframe
   features <- df[,names(df) != {{target}}]
@@ -50,13 +58,15 @@ glm_hmd <- function(data=insurance_data,
     }
   }
 
+
   glm_format <- stats::as.formula(paste({{target}}, "~",
                    paste({{features_names}}, collapse = "+"),
                    sep = ""
                   ))
   fit <- stats::glm(glm_format,
              data=df,
-             family={{family}})
+             family={{family}}
+             )
   return(fit)
 }
 

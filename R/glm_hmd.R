@@ -16,7 +16,7 @@
 #' dataframe, in my case, Medical Cost Personal Datasets
 
 glm_hmd <- function(data=insurance_data,
-                      features_names,
+                      features_names=names({{data}})[names({{data}}) != {{target}}],
                       target="charges",
                       normalize=FALSE,
                       normalize_method="std",
@@ -28,18 +28,32 @@ glm_hmd <- function(data=insurance_data,
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
   # extract feature names either from input or dataframe
-  if (!(typeof(feature_names) == "character")){
-    warning("Please input character type, e.g. c(col1,col2,...)")
+  if (!(typeof(features_names) %in% c("list","character")))
+  {
+    warning("Please input cat_cols as either character type, e.g. c(col1,col2,...) or list type list(col1,col2,...)")
+    features_names <- names(df)[names(df) != {{target}}]
   }
   else{
-  if (length(feature_names) == 0)
+  if (length(features_names) == 0)
   {
     features_names <- names(df)[names(df) != {{target}}]
   }
+    else
+    {
+      features_names <- janitor::make_clean_names(features_names)
+      for (col in features_names)
+      {
+        if (!(col %in% names(df)))
+        {
+          warning("A categorical column from your ipnut list cat_col is not among dataframe's columns.")
+          break
+        }
+      }
+    }
   }
-  features_names <- names(df)[names(df) != {{target}}]
+  #features_names <- names(df)[names(df) != {{target}}]
   # extract features subset of dadtaframe
-  features <- df[,names(df) != {{target}}]
+  #features <- df[,names(df) != {{target}}]
 
   # normalize data based on user preference
   if (normalize == TRUE){

@@ -7,7 +7,20 @@ target variable, family of distribution}
 \usage{
 glm_hmd(
   data = insurance_data,
-  features_names,
+  features_names = names({
+     {
+         data
+     }
+ })[names({
+     {
+         data
+ 
+       }
+ }) != {
+     {
+         target
+     }
+ }],
   target = "charges",
   normalize = FALSE,
   normalize_method = "std",

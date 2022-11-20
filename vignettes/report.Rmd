@@ -1,5 +1,5 @@
 ---
-title: "report"
+title: "Report"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{report}
@@ -17,7 +17,33 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(regPackage1)
 ```
-
-You can install the `regPackage1` I built, by first installing the [devtools](https://www.r-project.org/nosvn/pandoc/devtools.html) package and then using the following syntax:
+As a project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
+You can install this package by first installing the [devtools](https://www.r-project.org/nosvn/pandoc/devtools.html) package and then using the following syntax:
 
 `devtools::install_github("https://github.com/berserkhmdvhb/regPackage1")`
+
+You can explore the documentation of package I provided with 
+
+`help(package="regPackage1")`
+
+Also, this report is accessible as vignette of the package, which can be accessed with
+
+`vignette(package = "regPackage1")`
+
+(Note: I just made a meta-reference)
+
+# Load Dataset
+The dataset used for this package is [Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance).
+In order to be familiarized with the dataset, after loading the `regPackage1` package, run `?insurance_data`.
+
+The dataset is embedded in the package, therefore by simply running the following commands one can load and display the dataset.
+
+```{r message = FALSE, warning = FALSE}
+data(insurance_data)
+head(insurance_data)
+summary(insurance_data)
+```
+
+
+
+

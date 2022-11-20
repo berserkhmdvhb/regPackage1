@@ -643,6 +643,14 @@
         "openssl"
       ]
     },
+    "insuranceData": {
+      "Package": "insuranceData",
+      "Version": "1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "fbeb0991af917beba2916e557a115f4d",
+      "Requirements": []
+    },
     "ipred": {
       "Package": "ipred",
       "Version": "0.9-13",

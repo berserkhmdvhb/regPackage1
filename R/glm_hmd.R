@@ -60,7 +60,7 @@ glm_hmd <- function(data=insurance_data,
     numeric_features <- dplyr::select_if(features, is.numeric)
     # standard normalizer
     if (tolower(normalize_method) == tolower("std")){
-    df <- df |> dplyr::mutate_at(names(numeric_features), ~(scale(.) |> as.vector))
+    df <- df |> dplyr::mutate_at(names(numeric_features), ~(scale(.) %>% as.vector))
     }
     # minmax normalizer
     else if (tolower(normalize_method) == tolower("minmax")){

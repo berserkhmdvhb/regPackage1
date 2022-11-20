@@ -16,6 +16,11 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(regPackage1)
+library(dplyr)
+library(janitor)
+library(car)
+library(caret)
+library(insuranceData)
 ```
 # Introduction
 As a project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
@@ -34,7 +39,9 @@ Also, this report is accessible as vignette of the package, which can be accesse
 (Note: I just made a meta-reference)
 
 # Load Dataset
-The dataset used for this package is [Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance).
+
+## Medical Cost Personal Datasets
+As main focus on a dataset with continous target, the dataset used for this package is [Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance).
 In order to be familiarized with the dataset, after loading the `regPackage1` package, run `?insurance_data`.
 
 The dataset is embedded in the package, therefore by simply running the following commands one can load and display the dataset.
@@ -45,6 +52,13 @@ head(insurance_data)
 summary(insurance_data)
 ```
 Note that all functions of the package are suffixed with `hmd`.
+
+# Prepare the Dataset
+```{r message = FALSE, warning = FALSE}
+insurance_data_cleaned <- prepare_hmd(insurance_data)
+head(insurance_data_cleaned)
+```
+
 # Generalized Linear Model (GLM)
 Let us see the result of applying GLM on the target variable, which is `chargres`. 
 For this, I wrote the function [glm_hmd](https://github.com/berserkhmdvhb/regPackage1/blob/main/R/glm_hmd.R).
@@ -56,13 +70,13 @@ We try to use different distributions, and also check if normalization of respon
 ### Without Normalize
 
 ```{r message = FALSE, warning = FALSE}
-glm_hmd(insurance_data, target="charges", family=gaussian)
+glm_hmd(insurance_data_cleaned, target="charges", family=gaussian)
 ```
 
 ### With Normalize
 
 ```{r message = FALSE, warning = FALSE}
-#glm_hmd(insurance_data, target="charges", #family=gaussian, normalize=TRUE)
+glm_hmd(insurance_data_cleaned, target="charges", family=gaussian, normalize=TRUE)
 ```
 
 ## Gamma
@@ -71,10 +85,38 @@ glm_hmd(insurance_data, target="charges", family=gaussian)
 
 ### Without Normalize
 ```{r message = FALSE, warning = FALSE}
-glm_hmd(insurance_data, target="charges", family=Gamma)
+glm_hmd(insurance_data_cleaned, target="charges", family=Gamma)
 ```
 
 ### With Normalize
 ```{r message = FALSE, warning = FALSE}
-glm_hmd(insurance_data, target="charges", family=Gamma, normalize=TRUE)
+glm_hmd(insurance_data_cleaned, target="charges", family=Gamma, normalize=TRUE)
 ```          
+
+## British Car Insurance Claims for 1975
+To provide a test case on a dataset with discrete target variable, I used the the [claims dataset](http://www.statsci.org/data/general/carinsuk.html). It concerns the average claims for damage to the owner's car for privately owned and comprehensively insured vehicles in Britain in 1975. Averages are given in pounds sterling adjusted for inflation. It contains 128 policyholders and three covariates: 
+
+```{r message = FALSE, warning = FALSE}
+header <- read.table("http://www.statsci.org/data/general/carinsuk.txt", nrows = 1, header = FALSE, sep =';', stringsAsFactors = FALSE)
+UKAuto    <- read.table("http://www.statsci.org/data/general/carinsuk.txt", skip = 2, header = FALSE, sep =';')
+colnames(UKAuto) <- unlist(header)
+head(UKAuto)
+```
+
+Before feeding to model, we need to factorise the categorical columns, which can be done by merely inputting columns intended to be converted in `cat_cols` in the `prepare_hmd` function.
+
+```{r message = FALSE, warning = FALSE}
+
+#head(UKAuto)
+#UKAuto <- prepare_hmd(data=UKAuto, cat_cols=list)
+#head(UKAuto)
+#names(UKAuto)
+```
+
+
+## Poisson
+
+
+```{r message = FALSE, warning = FALSE}
+#glm_hmd(data=UKAuto, target="NClaims", #family=poisson())
+```

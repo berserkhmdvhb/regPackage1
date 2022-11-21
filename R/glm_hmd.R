@@ -23,7 +23,7 @@ glm_hmd <- function(data=insurance_data,
                       normalize_method="std",
                       family="gaussian"){
   # ensure dataframe is not empty
-  features_names_main <- features_names
+  features_names_main <- {{features_names}}
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
   }

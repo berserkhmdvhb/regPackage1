@@ -6,37 +6,24 @@
 \usage{
 splitter_norm_hmd(
   data = insurance_data,
-  features_names = names({
-     {
-         data
-     }
- })[names({
-     {
-         data
- 
-       }
- }) != {
-     {
-         target
-     }
- }],
-  target = "charges",
+  replace = TRUE,
+  proportion = 0.7,
   normalize = FALSE,
-  normalize_method = "std"
+  normalize_method = "minmax"
 )
 }
 \arguments{
 \item{data}{An arbitrary dataframe}
 
-\item{features_names}{Name of features. If not specified, takes all columns
-except the target}
+\item{replace}{If set to TRUE, the split will be replaced samples}
 
-\item{target}{The target variable aimed for prediction}
+\item{proportion}{Proportion of train to test}
 
 \item{normalize}{If set to TRUE, then the features are normalized either by
 minmax or std, which is determined by the parameter "normalized_method"}
 
-\item{normalize_method}{if set to "std", then standard scaler is used for
+\item{normalize_method}{if set to "std", then standard scaler is used, and if
+set to "minmax", minmax is applied.
 normalization of features, and if set to "minmax", then minmax scaler is used. Default is "std".}
 }
 \value{

@@ -1,11 +1,11 @@
 #' Splitting and Normalizind Data
 #' @param data An arbitrary dataframe
-#' @param features_names Name of features. If not specified, takes all columns
-#' except the target
-#' @param target The target variable aimed for prediction
+#' @param replace If set to TRUE, the split will be replaced samples
+#' @param proportion Proportion of train to test
 #' @param normalize If set to TRUE, then the features are normalized either by
 #' minmax or std, which is determined by the parameter "normalized_method"
-#' @param normalize_method if set to "std", then standard scaler is used for
+#' @param normalize_method if set to "std", then standard scaler is used, and if
+#' set to "minmax", minmax is applied.
 #' normalization of features, and if set to "minmax", then minmax scaler is used. Default is "std".
 #' @export
 #' @return Returns a list of containing train and test data (both normalized if user requests)
@@ -14,42 +14,55 @@
 #' if the user sets normalize to TRUE, it normalizes data based on the moethod
 #' user prefers
 splitter_norm_hmd <- function(data=insurance_data,
-                    features_names=names({{data}})[names({{data}}) != {{target}}],
-                    target="charges",
+                    replace=TRUE,
+                    proportion=0.7,
                     normalize=FALSE,
-                    normalize_method="std"){
+                    normalize_method="minmax"){
   # ensure dataframe is not empty
-  feature_names_main <- feature_names
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
   }
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
-  # extract feature names either from input or dataframe
-  if (!(typeof(features_names) %in% c("list","character")))
-  {
-    warning("Please input cat_cols as either character type,
-            e.g. c(col1,col2,...) or list type list(col1,col2,...)")
-    feature_names_main <- names(df)[names(df) != {{target}}]
-  }
-  else{
-    if (length(feature_names) == 0)
-    {
-      warning("List is empty. All columns except target will be selected")
-      feature_names_main <- names(df)[names(df) != {{target}}]
+
+  # for reproducability purpose
+  set.seed(1)
+
+
+  #use 70% of dataset as training set and 30% as test set
+  sample <- sample(c(TRUE, FALSE), nrow(df),
+                   replace={{replace}}, prob=c({{proportion}},1-{{proportion}}))
+  train  <- df[sample, ]
+  test   <- df[!sample, ]
+
+
+
+
+  # normalize data based on user preference
+  if (normalize == TRUE){
+    train_numeric <- dplyr::select_if(train, is.numeric)
+    test_numeric <- dplyr::select_if(test, is.numeric)
+    if(tolower(normalized_method) == "minmax"){
+      method <- c("range")
     }
-    else
-    {
-      if (!(all(feature_names_main %in% names(df))))
-      {
-        warning("A feature from your input list cat_cols is not among
-                dataframe columns. Will select all columns instead")
-        feature_names_main <- names(df)[names(df) != {{target}}]
-      }
+    else if (tolower(normalized_method) == "std"){
+      method <- c("center", "scale")
+    }
+    else{
+      warning("Method is not defined, minmax will be used")
+    }
+    # normalizer
+
+    process <- caret::preProcess(train_numeric, method=c("range"))
+    train_norm <- stats::predict(process, train_numeric)
+    test_norm <- stats::predict(process, test_numeric)
+    for (col in names(numeric_features)){
+      train[col] <- train_norm[col]
+      test[col] <- test_norm[col]
     }
   }
 
-
-  return(df)
+  l <- list(train,test)
+  return(test)
 }
 

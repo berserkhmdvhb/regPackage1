@@ -35,7 +35,7 @@ except the target}
 \item{family}{specify family of distribution.}
 }
 \value{
-Returns fit object of lm function
+Returns fit object of glm function
 }
 \description{
 GLM Model

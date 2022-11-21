@@ -1,6 +1,6 @@
 Package: regPackage1
 Type: Package
-Title: Insurance Data GLM
+Title: Insurance Data Forecast
 Version: 0.1.0
 Authors@R: person("Hamed", "Vaheb", email = "hamed.vaheb@gmail.com", role = c("aut", "cre"))
 Description: This package is for analyzing and forecasting data of insurance.

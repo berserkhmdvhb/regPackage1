@@ -4,7 +4,7 @@
 \alias{predict_glmnet_cv_hmd}
 \title{Predict data with results from CV GLMNET model}
 \usage{
-predict_glmnet_cv_hmd(fit, data, lchoice = "min")
+predict_glmnet_cv_hmd(fit, data, lchoice = "min", type = "response")
 }
 \arguments{
 \item{fit}{fit object from a cv.glmnet model}

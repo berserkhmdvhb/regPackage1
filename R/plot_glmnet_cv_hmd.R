@@ -8,5 +8,7 @@
 
 plot_glmnet_cv_hmd <- function(fit){
   #fit <- regressor({{data}},{{target}})
+  plot(fit, xvar = "lambda", label = TRUE)
   return(plot({{fit}}))
+
 }

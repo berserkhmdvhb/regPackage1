@@ -14,11 +14,17 @@
 
 predict_glmnet_cv_hmd <- function(fit,
                                   data,
-                                  lchoice="min"
+                                  lchoice="min",
+                                  type="response"
                           ){
   lambda <- paste("lambda.",{{lchoice}},sep = "")
   coef <- coef({{fit}}, s=lambda)
-  predict <- predict({{fit}}, data, s=lambda)
-
+  if ({{type}} == "response")
+  {
+    predict <- predict({{fit}}, data, s=lambda, type="response")
+  }
+  else{
+    predict <- predict({{fit}}, data, s=lambda)
+  }
   return(list(coef,predict))
 }

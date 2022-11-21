@@ -48,11 +48,11 @@ glmnet_cv_hmd <- function(data=insurance_data,
     }
   }
 
-  features <- as.matrix(df[features_names_main])
+  features <- data.matrix(df[features_names_main])
   target_col <- as.numeric(unlist(df[{{target}}]))
-  #fit <- glmnet::cv.glmnet(features,
-  #                      target_col,
-  #                      family={{family}}
-  #)
+  fit <- glmnet::cv.glmnet(features,
+                        target_col,
+                        family={{family}}
+  )
   return(list(features,target_col))
 }

@@ -5,7 +5,7 @@
 #' @param target The target variable aimed for prediction
 #' @param family specify family of distribution.
 #' @export
-#' @return Returns fit object of lm function
+#' @return Returns fit object of glmnet function
 #' @details
 #' This functions allows the user to perform generalized linear model on a given
 #' dataframe by specifying feature names (response variables),

@@ -54,5 +54,5 @@ glmnet_cv_hmd <- function(data=insurance_data,
                         target_col,
                         family={{family}}
   )
-  return(list(features,target_col))
+  return(fit)
 }

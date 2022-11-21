@@ -12,9 +12,9 @@
 #' target variable, family of distribution, and the dataset (in my case, Medical Cost Personal Datasets)
 
 glm_hmd <- function(data=insurance_data,
-                      features_names=names({{data}})[names({{data}}) != {{target}}],
-                      target="charges",
-                      family="gaussian"){
+                    features_names=names({{data}})[names({{data}}) != {{target}}],
+                    target="charges",
+                    family="gaussian"){
   # ensure dataframe is not empty
   features_names_main <- {{features_names}}
   if(nrow({{data}}) == 0) {
@@ -31,11 +31,11 @@ glm_hmd <- function(data=insurance_data,
     features_names_main <- names(df)[names(df) != {{target}}]
   }
   else{
-  if (length(features_names) == 0)
-  {
-    warning("List is empty. All columns except target will be selected")
-    features_names_main <- names(df)[names(df) != {{target}}]
-  }
+    if (length(features_names) == 0)
+    {
+      warning("List is empty. All columns except target will be selected")
+      features_names_main <- names(df)[names(df) != {{target}}]
+    }
     else
     {
       if (!(all(features_names_main %in% names(df))))
@@ -49,13 +49,13 @@ glm_hmd <- function(data=insurance_data,
 
 
   glm_format <- stats::as.formula(paste({{target}}, "~",
-                   paste(features_names_main, collapse = "+"),
-                   sep = ""
-                  ))
+                                        paste(features_names_main, collapse = "+"),
+                                        sep = ""
+  ))
   fit <- stats::glm(glm_format,
-             data=df,
-             family={{family}}
-             )
+                    data=df,
+                    family={{family}}
+  )
   return(fit)
 }
 

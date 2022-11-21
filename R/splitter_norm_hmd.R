@@ -25,7 +25,6 @@ splitter_norm_hmd <- function(data=insurance_data,
   }
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
-
   # for reproducability purpose
   set.seed(1)
 

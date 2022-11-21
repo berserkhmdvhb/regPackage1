@@ -7,7 +7,8 @@
 #' @export
 #' @return Returns fit object of glmnet function
 #' @details
-#' This functions allows the user to perform generalized linear model on a given
+#' This functions allows the user to perform eslastic net (which is a generalized
+#' linear model) on a given
 #' dataframe by specifying feature names (response variables),
 #' target variable, family of distribution, and the dataset (in my case, Medical Cost Personal Datasets)
 
@@ -22,6 +23,7 @@ glmnet_hmd <- function(data=insurance_data,
   }
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
+  df <- prepare_hmd(df)
   # extract feature names either from input or dataframe
   if (!(typeof(features_names) %in% c("list","character")))
   {
@@ -48,7 +50,7 @@ glmnet_hmd <- function(data=insurance_data,
 
   features <- as.matrix(df[features_names_main])
   target_col <- as.numeric(unlist(df[{{target}}]))
-  fit <- glmnet::glmnet(features,
+   fit <- glmnet::glmnet(features,
                         target_col,
                         family={{family}}
   )

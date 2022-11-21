@@ -1,20 +1,21 @@
-#' GLM Model
+#' CV GLMNET model
 #' @param data An arbitrary dataframe
 #' @param features_names Name of features. If not specified, takes all columns
 #' except the target
 #' @param target The target variable aimed for prediction
 #' @param family specify family of distribution.
 #' @export
-#' @return Returns fit object of glm function
+#' @return Returns fit object of glmnet function
 #' @details
-#' This functions allows the user to perform generalized linear model on a given
+#' This functions allows the user to perform cross-validated eslastic net (which is a generalized
+#' linear model) on a given
 #' dataframe by specifying feature names (response variables),
 #' target variable, family of distribution, and the dataset (in my case, Medical Cost Personal Datasets)
 
-glm_hmd <- function(data=insurance_data,
-                      features_names=names({{data}})[names({{data}}) != {{target}}],
-                      target="charges",
-                      family="gaussian"){
+glmnet_cv_hmd <- function(data=insurance_data,
+                       features_names=names({{data}})[names({{data}}) != {{target}}],
+                       target="charges",
+                       family="gaussian"){
   # ensure dataframe is not empty
   features_names_main <- {{features_names}}
   if(nrow({{data}}) == 0) {
@@ -31,11 +32,11 @@ glm_hmd <- function(data=insurance_data,
     features_names_main <- names(df)[names(df) != {{target}}]
   }
   else{
-  if (length(features_names) == 0)
-  {
-    warning("List is empty. All columns except target will be selected")
-    features_names_main <- names(df)[names(df) != {{target}}]
-  }
+    if (length(features_names) == 0)
+    {
+      warning("List is empty. All columns except target will be selected")
+      features_names_main <- names(df)[names(df) != {{target}}]
+    }
     else
     {
       if (!(all(features_names_main %in% names(df))))
@@ -47,15 +48,11 @@ glm_hmd <- function(data=insurance_data,
     }
   }
 
-
-  glm_format <- stats::as.formula(paste({{target}}, "~",
-                   paste(features_names_main, collapse = "+"),
-                   sep = ""
-                  ))
-  fit <- stats::glm(glm_format,
-             data=df,
-             family={{family}}
-             )
-  return(fit)
+  features <- as.matrix(df[features_names_main])
+  target_col <- as.numeric(unlist(df[{{target}}]))
+  #fit <- glmnet::cv.glmnet(features,
+  #                      target_col,
+  #                      family={{family}}
+  #)
+  return(list(features,target_col))
 }
-

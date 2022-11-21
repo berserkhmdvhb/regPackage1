@@ -1,9 +1,10 @@
 #' Splitting and Normalizind Data
 #' @param data An arbitrary dataframe
 #' @param replace If set to TRUE, the split will be replaced samples
-#' @param proportion Proportion of train to test
+#' @param proportion Proportion of train to test. Default is 0.7, which results
+#' in 935 rows for train and 403 rows for test in case of using insurance_data.
 #' @param normalize If set to TRUE, then the features are normalized either by
-#' minmax or std, which is determined by the parameter "normalized_method"
+#' minmax or std, which is determined by the parameter "normalize_method"
 #' @param normalize_method if set to "std", then standard scaler is used, and if
 #' set to "minmax", minmax is applied.
 #' normalization of features, and if set to "minmax", then minmax scaler is used. Default is "std".
@@ -42,10 +43,10 @@ splitter_norm_hmd <- function(data=insurance_data,
   if (normalize == TRUE){
     train_numeric <- dplyr::select_if(train, is.numeric)
     test_numeric <- dplyr::select_if(test, is.numeric)
-    if(tolower(normalized_method) == "minmax"){
+    if(tolower(normalize_method) == "minmax"){
       method <- c("range")
     }
-    else if (tolower(normalized_method) == "std"){
+    else if (tolower(normalize_method) == "std"){
       method <- c("center", "scale")
     }
     else{
@@ -56,13 +57,14 @@ splitter_norm_hmd <- function(data=insurance_data,
     process <- caret::preProcess(train_numeric, method=c("range"))
     train_norm <- stats::predict(process, train_numeric)
     test_norm <- stats::predict(process, test_numeric)
-    for (col in names(numeric_features)){
+    for (col in names(train_numeric)){
       train[col] <- train_norm[col]
       test[col] <- test_norm[col]
     }
   }
 
   l <- list(train,test)
-  return(test)
+  return(l)
 }
 
+#train,test = l[[1]],l[[2]]

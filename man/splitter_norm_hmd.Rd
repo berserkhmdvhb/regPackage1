@@ -17,10 +17,11 @@ splitter_norm_hmd(
 
 \item{replace}{If set to TRUE, the split will be replaced samples}
 
-\item{proportion}{Proportion of train to test}
+\item{proportion}{Proportion of train to test. Default is 0.7, which results
+in 935 rows for train and 403 rows for test in case of using insurance_data.}
 
 \item{normalize}{If set to TRUE, then the features are normalized either by
-minmax or std, which is determined by the parameter "normalized_method"}
+minmax or std, which is determined by the parameter "normalize_method"}
 
 \item{normalize_method}{if set to "std", then standard scaler is used, and if
 set to "minmax", minmax is applied.

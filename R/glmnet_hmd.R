@@ -46,8 +46,8 @@ glmnet_hmd <- function(data=insurance_data,
     }
   }
 
-  features <- as.numeric(df[features_names_main])
-  target_col <- as.numeric(df[{{target}}])
+  features <- as.matrix(df[features_names_main])
+  target_col <- as.numeric(unlist(df[{{target}}]))
   fit <- glmnet::glmnet(features,
                         target_col,
                         family={{family}}

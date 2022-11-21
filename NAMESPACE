@@ -2,6 +2,7 @@
 
 export(anova_hmd)
 export(glm_hmd)
+export(glmnet_hmd)
 export(plot_hmd)
 export(prepare_hmd)
 export(splitter_norm_hmd)

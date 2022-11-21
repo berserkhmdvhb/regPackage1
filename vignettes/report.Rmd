@@ -64,7 +64,7 @@ head(UKAuto)
 
 
 ```{r message = FALSE, warning = FALSE}
-#glm_hmd(data=UKAuto, target="n_claims", family=poisson())
+glm_hmd(data=UKAuto, target="n_claims", family=poisson())
 ```
 
 
@@ -101,7 +101,7 @@ We try to use different distributions, and also check if normalization of respon
 1. Without Normalize
 
 ```{r message = FALSE, warning = FALSE}
-glm_hmd(insurance_data_cleaned, target="charges", family=gaussian)
+#glm_hmd(insurance_data_cleaned, target="charges", family=gaussian)
 ```
 
 2. With Normalize

@@ -90,7 +90,7 @@ vis_dat(car_insurance_data)
 ```
 
 ```{r}
-insurance_data_cleaned <- prepare_hmd(car_insurance_data)
+insurance_data_cleaned <- categoricals_print_hmd(car_insurance_data)
 dplyr::glimpse(insurance_data_cleaned)
 ```
 

@@ -25,6 +25,7 @@ library(tidymodels)
 library(visdat)
 library(ggplot2)
 library(imbalance)
+library(readr)
 ```
 # Introduction
 This report is dedicated to project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
@@ -148,7 +149,13 @@ ggplot(df, aes(x = outcome)) +
     geom_bar()
 ```
 
+```{r}
+table(df$outcome)
+```
 
+```{r}
+imbalance::imbalanceRatio(df, classAttr = "outcome")
+```
 ### Encoding Categorical Columns
 
 Since later it is realized that data is imbalanced and therefore it should be resampled, it is required that data would only contain numerical columns for the next part. For this reason, one-hot-encoding is applied in the following:
@@ -169,16 +176,33 @@ is.na(df_enc) |> colSums()
 ### Oversampling Target
 
 
-```{r message = FALSE, warning = FALSE, results = 'hide'}
-X <- df_enc[, colnames(df_enc)[colnames(df_enc) != 'outcome']]
-y <- df_enc[['outcome']]
+```{r}
+#X <- df_enc[, colnames(df_enc)[colnames(df_enc) != #'outcome']]
+#y <- df_enc[['outcome']]
+
+df_racog <- racog(df_enc, numInstances = 3734, burnin = 100, lag = 20, classAttr = "outcome")
+
 #df_smote <- smotefamily::BLSMOTE(X, y)$syn_data
 ```
 
-```{r message = FALSE, warning = FALSE, results = 'hide'}
+
+```{r}
+table(df_racog$outcome)
+```
+
+```{r}
+dplyr::glimpse(df_racog)
+```
+
+#```{r message = FALSE, warning = FALSE, results = #'hide'}
+```{r}
 #df_smote <- rename(df_smote, outcome = class)
 #ggplot(df_smote, aes(x = outcome)) +
 #    geom_bar()
 ```
 
  
+Save the processed dataframe to memory:
+```{r}
+readr::write.csv(df_racog)
+```

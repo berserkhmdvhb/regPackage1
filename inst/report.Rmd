@@ -25,7 +25,7 @@ library(visdat)
 library(ggplot2)
 library(imbalance)
 library(readr)
-librar(caret) #for dummyVar function
+library(caret) #for dummyVar function
 ```
 # Introduction
 This report is dedicated to project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
@@ -179,13 +179,12 @@ is.na(df_enc) |> colSums()
 ```{r}
 
 df_dict <- train_test_splitter_hmd(df_enc, 
-                             proportion=0.7)
+                             proportion=0.8)
 train <- df_dict$train
 test <- df_dict$test
 
-print("train data has ")
-print(paste("train data has", nrow(train), "rows and", ncol(train)), "columns")
-print(paste("test data has", nrow(test), "rows and", ncol(test)), "columns")
+print(paste("train data has", nrow(train), "rows and", ncol(train), "columns"))
+print(paste("test data has", nrow(test), "rows and", ncol(test), "columns"))
 ```
 
 ### Oversampling
@@ -218,13 +217,13 @@ dplyr::glimpse(insurance_train)
 
  
 Save the processed dataframe to memory:
+
+
 ```{r}
 path = "/home/hamed/Documents/R/regPackage1/inst/"
 file_name = "insurance_train.csv"
 readr::write_csv(insurance_train, 
                  file = paste(path,file_name,sep=""))
-
-
 ```
 
 

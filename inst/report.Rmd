@@ -1,5 +1,5 @@
 ---
-title: "Report"
+title: "Car Insurance Claims Dataset Classification - Report"
 author: "Hamed Vaheb"
 #1date: "09 Jan 2021"
 output:
@@ -38,7 +38,7 @@ library(car)
 library(caret)
 ```
 # Introduction
-As a project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
+This report is dedicated to project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
 You can install this package by first installing the [devtools](https://www.r-project.org/nosvn/pandoc/devtools.html) package and then using the following syntax:
 
 `devtools::install_github("https://github.com/berserkhmdvhb/regPackage1")`
@@ -70,24 +70,10 @@ summary(car_insurance_data)
 dplyr::glimpse(car_insurance_data)
 ```
 
-Before feeding to model, we need to factorise the categorical columns, which can be done by merely inputting columns intended to be converted in `cat_cols` in the `prepare_hmd` function.
-
-```{r message = FALSE, warning = FALSE}
-list <- c("OwnerAge", "Model", "CarAge")
-UKAuto <- prepare_hmd(data=UKAuto, cat_cols=list)
-head(UKAuto)
-```
 
 
-## Poisson
 
-
-```{r message = FALSE, warning = FALSE}
-glm_hmd(data=UKAuto, target="n_claims", family=poisson())
-```
-
-
-# Medical Cost Personal Datasets Regression
+ 
 ## Load Dataset
 
 As main focus on a dataset with continous target, the dataset used for this package is [Medical Cost Personal Datasets](https://www.kaggle.com/datasets/mirichoi0218/insurance).
@@ -97,15 +83,17 @@ The dataset is embedded in the package, therefore by simply running the followin
 
 ```{r message = FALSE, warning = FALSE}
 data(car_insurance_data)
-glimpse(car_insurance_data)
+dplyr::glimpse(car_insurance_data)
 summary(car_insurance_data)
 ```
 Note that all functions of the package are suffixed with `hmd`.
 
-## Prepare the Dataset
+# Preprocess
+Before feeding to model, we need to factorise the categorical columns, which can be done by merely inputting columns intended to be converted in `cat_cols` in the `prepare_hmd` function.
+
 ```{r message = FALSE, warning = FALSE}
-insurance_data_cleaned <- prepare_hmd(insurance_data)
-head(insurance_data_cleaned)
+insurance_data_cleaned <- prepare_hmd(car_insurance_data)
+dplyr::glimpse(insurance_data_cleaned)
 ```
 
 ## Regression Models

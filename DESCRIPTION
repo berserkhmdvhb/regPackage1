@@ -14,7 +14,8 @@ Depends:
 Imports:
     dplyr,
     janitor,
-    stats
+    stats,
+    hash
 Suggests: 
     knitr,
     rmarkdown,

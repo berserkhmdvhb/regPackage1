@@ -17,9 +17,12 @@ train_test_splitter_hmd <- function(data=regPackage1::car_insurance_data,
   }
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
-  train <- df |> dplyr::sample_frac({{proportion}})
-  test  <- dplyr::anti_join(df, train, by = 'id')
-  d <- c("train"=train, "test" =test)
-  return(d)
+  df_train <- df |> dplyr::sample_frac({{proportion}})
+  df_test  <- dplyr::anti_join(df, df_train, by = 'id')
+  #d <- c("train"=df_train, "test" = df_test)
+  h <- hash::hash()
+  h[["train"]] <- df_train
+  h[["test"]] <- df_test
+  return(h)
 }
 

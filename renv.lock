@@ -103,17 +103,6 @@
         "lattice"
       ]
     },
-    "ModelMetrics": {
-      "Package": "ModelMetrics",
-      "Version": "1.2.2.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "40a55bd0b44719941d103291ac5e9d74",
-      "Requirements": [
-        "Rcpp",
-        "data.table"
-      ]
-    },
     "R6": {
       "Package": "R6",
       "Version": "2.5.1",
@@ -265,26 +254,6 @@
         "processx"
       ]
     },
-    "caret": {
-      "Package": "caret",
-      "Version": "6.0-93",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "b42032ec38bd2ebcaf70f26120bd4d3a",
-      "Requirements": [
-        "ModelMetrics",
-        "e1071",
-        "foreach",
-        "ggplot2",
-        "lattice",
-        "nlme",
-        "pROC",
-        "plyr",
-        "recipes",
-        "reshape2",
-        "withr"
-      ]
-    },
     "class": {
       "Package": "class",
       "Version": "7.3-20",
@@ -367,14 +336,6 @@
       "Hash": "e8a1e41acf02548751f45c718d55aa6a",
       "Requirements": []
     },
-    "data.table": {
-      "Package": "data.table",
-      "Version": "1.14.6",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "aecef50008ea7b57c76f1cb5c127fb02",
-      "Requirements": []
-    },
     "dbscan": {
       "Package": "dbscan",
       "Version": "1.1-11",
@@ -454,17 +415,6 @@
         "tibble",
         "tidyselect",
         "vctrs"
-      ]
-    },
-    "e1071": {
-      "Package": "e1071",
-      "Version": "1.7-12",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "0d776df7577206e100c2c4b508208b10",
-      "Requirements": [
-        "class",
-        "proxy"
       ]
     },
     "ellipsis": {
@@ -642,6 +592,14 @@
         "tibble",
         "vctrs"
       ]
+    },
+    "hash": {
+      "Package": "hash",
+      "Version": "2.2.6.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "a26f6bc8609dd65295383003d1ff3eec",
+      "Requirements": []
     },
     "highr": {
       "Package": "highr",
@@ -1015,17 +973,6 @@
       "Hash": "df58958f293b166e4ab885ebcad90e02",
       "Requirements": []
     },
-    "pROC": {
-      "Package": "pROC",
-      "Version": "1.18.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "417fd0d40479932c19faf2747817c473",
-      "Requirements": [
-        "Rcpp",
-        "plyr"
-      ]
-    },
     "parallelly": {
       "Package": "parallelly",
       "Version": "1.33.0",
@@ -1199,14 +1146,6 @@
       "Requirements": [
         "digest"
       ]
-    },
-    "proxy": {
-      "Package": "proxy",
-      "Version": "0.4-27",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "e0ef355c12942cf7a6b91a6cfaea8b3e",
-      "Requirements": []
     },
     "ps": {
       "Package": "ps",

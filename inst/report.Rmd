@@ -20,7 +20,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(regPackage1)
 library(dplyr)
 library(janitor)
-library(caret)
 library(tidymodels)
 library(visdat)
 library(ggplot2)
@@ -197,18 +196,18 @@ print(paste("test data has", nrow(test), "rows and", ncol(test)), "columns")
 #X <- df_enc[, colnames(df_enc)[colnames(df_enc) != #'outcome']]
 #y <- df_enc[['outcome']]
 
-df_racog <- racog(train, numInstances = 3734, burnin = 100, lag = 20, classAttr = "outcome")
+insurance_train <- racog(train, numInstances = 3734, burnin = 100, lag = 20, classAttr = "outcome")
 
 #df_smote <- smotefamily::BLSMOTE(X, y)$syn_data
 ```
 
 
 ```{r}
-table(df_racog$outcome)
+table(insurance_train$outcome)
 ```
 
 ```{r}
-dplyr::glimpse(df_racog)
+dplyr::glimpse(insurance_train)
 ```
 
 #```{r message = FALSE, warning = FALSE, results = #'hide'}
@@ -222,14 +221,26 @@ dplyr::glimpse(df_racog)
 Save the processed dataframe to memory:
 ```{r}
 path = "/home/hamed/Documents/R/regPackage1/inst/"
-file_name = "car_insurance_data_processed.csv"
-readr::write_csv(df_racog, 
+file_name = "insurance_train.csv"
+readr::write_csv(insurance_train, 
                  file = paste(path,file_name,sep=""))
+
+
 ```
 
 
 Load back the processed data
 
 ```{r}
-df_proc <- readr::read_csv(paste(path,file_name,sep=""))
+insurance_train <- readr::read_csv(paste(path,file_name,sep=""))
+```
+
+Do the same for test data
+
+```{r}
+insurance_test <- test
+path = "/home/hamed/Documents/R/regPackage1/inst/"
+file_name = "insurance_test.csv"
+readr::write_csv(insurance_test, 
+                 file = paste(path,file_name,sep=""))
 ```

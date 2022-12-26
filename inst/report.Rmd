@@ -131,8 +131,7 @@ As only two numerical columns include NA values, the will be imputed with the me
 For this `impute_median_hmd` function is used from the package:
 
 ```{r}
-cols_list = c("credit_score", "annual_mileage")
-df <- impute_median_hmd(df, cols_list)
+df <- impute_median_hmd(df)
 is.na(df) |> colSums()
 ```
 As evident, there is no missing data anymore.

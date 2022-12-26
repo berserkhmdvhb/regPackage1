@@ -4,12 +4,10 @@
 \alias{impute_median_hmd}
 \title{Imputes missing values with median}
 \usage{
-impute_median_hmd(data = regPackage1::car_insurance_data, cols_list = list())
+impute_median_hmd(data = regPackage1::car_insurance_data)
 }
 \arguments{
 \item{data}{An arbitrary dataframe}
-
-\item{cols_list}{List of numerical columns intended to be imputed}
 }
 \value{
 Returns dataframe with its categorical columns factorised
@@ -18,6 +16,6 @@ Returns dataframe with its categorical columns factorised
 Imputes missing values with median
 }
 \details{
-This function receives a dataframe and a list of columns to be imputed with median.
-Then it replaces NA values of each column from the given list with median of that column.
+This function receives a dataframe, finds columns containing NA values, and then
+replaces NA values of each founded column with median of that column.
 }

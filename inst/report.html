@@ -705,9 +705,8 @@ pre code {
 ##            982            957</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Classification Models</span></span></code></pre></div>
 <p>As only two numerical columns include NA values, the will be imputed with the median of their respective columns. For this <code>impute_median_hmd</code> function is used from the package:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cols_list <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;credit_score&quot;</span>, <span class="st">&quot;annual_mileage&quot;</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">impute_median_hmd</span>(df, cols_list)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(df) <span class="sc">|&gt;</span> <span class="fu">colSums</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">impute_median_hmd</span>(df)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(df) <span class="sc">|&gt;</span> <span class="fu">colSums</span>()</span></code></pre></div>
 <pre><code>##                  id                 age              gender                race 
 ##                   0                   0                   0                   0 
 ##  driving_experience           education              income        credit_score 

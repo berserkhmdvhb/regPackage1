@@ -10,7 +10,7 @@
 #'   \item{AGE}{Age of the beneficiary, categorize: 26-39, 40-64, other.}
 #'   \item{GENDER}{Gender of the beneficiary, categorized as: male, female.}
 #'   \item{RACE}{Rage of beneficiary, categorized as: major, minor.}
-#'   \item{DRIVING_EXPERTISE}{Duration of the beneficiary's expertise in driving, categorized as:
+#'   \item{DRIVING_EXPERIENCE}{Duration of the beneficiary's experience in driving, categorized as:
 #'   0-9y, 10-19y, other.}
 #'   \item{EDUCATION}{Education level of the beneficiary, categorized as: high school, university.}
 #'   \item{INCOME}{Income cass of the beneficiary, categorized as: upper class, middle class, other.}
@@ -20,6 +20,7 @@
 #'   \item{MARRIED}{Whether the beneficiary is married or not.}
 #'   \item{CHILDREN}{Whether the beneficiary has children or not}
 #'   \item{POSTAL_CODE}{Postal code of the beneficiary.}
+#'   \item{VEHICLE_TYPE}{The type of the vehicle of the beneficiary, categorized as: sedan, sports car.}
 #'   \item{ANNUAL_MILEAGE}{Annual mileage of the vehicle of the beneficiary.}
 #'   \item{SPEEDING_VIOLATIONS}{Number of speeing violations recorded for beneficiary}
 #'   \item{DUIS}{Number of times beneficiary did driving under the influence (DUI).}

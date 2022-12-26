@@ -25,7 +25,7 @@ prepare_hmd <- function(data=regPackage1::car_insurance_data){
   cat_cols = list()
   num_cat_cols=list()
   for (col in colnames(df)){
-    if (is(df[[col]], "character")){
+    if (is.character(df[[col]])){
       cat_cols <- append(cat_cols, col)
     }
     else if (length(unique(df[[col]])) < 10){

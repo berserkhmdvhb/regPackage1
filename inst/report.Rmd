@@ -81,16 +81,21 @@ summary(car_insurance_data)
 Note that all functions of the package are suffixed with `hmd`.
 
 # Preprocess
+Before feeding data to the model, various preprocessing stages are performed in the following subsections:
 
 ## Categorical Columns
-Before feeding to model, we need to factorise the categorical columns, which can be done by merely inputting columns intended to be converted in `cat_cols` in the `prepare_hmd` function.
+We need to factorise the categorical columns, which can be done by merely inputting columns intended to be converted in `cat_cols` in the `prepare_hmd` function. Before doing that, we report and visualise the nature of categorical data and their frequency in the dataset
+
+```{r}
+categoricals_print_hmd(car_insurance_data)
+```
 
 ```{r}
 vis_dat(car_insurance_data)
 ```
 
 ```{r}
-insurance_data_cleaned <- categoricals_print_hmd(car_insurance_data)
+insurance_data_cleaned <- categoricals_hmd(car_insurance_data) 
 dplyr::glimpse(insurance_data_cleaned)
 ```
 
@@ -100,14 +105,14 @@ vis_dat(insurance_data_cleaned)
 ```
 
 
-## Categorical Columns
+## Normalize
 
 
 
 ```{r}
 
-insurance_data_cleaned <- prepare_hmd(car_insurance_data)
-dplyr::glimpse(insurance_data_cleaned)
+#insurance_data_cleaned <- prepare_hmd(car_insurance_data)
+
 ```
 
 

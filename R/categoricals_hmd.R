@@ -35,11 +35,6 @@ categoricals_hmd <- function(data=regPackage1::car_insurance_data){
     }
   }
   cat_cols = append(char_cols, num_cols)
-
-  print("List of categorical columns containing characters: ")
-  print( unlist(char_cols, use.names=FALSE))
-  print("List of categorical columns containing numbers: ")
-  print( unlist(num_cols, use.names=FALSE))
   cat_cols <- unlist(cat_cols, use.names=FALSE)
   df[cat_cols] <- lapply(df[cat_cols], factor)
   return(df)

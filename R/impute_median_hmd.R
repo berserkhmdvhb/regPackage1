@@ -44,7 +44,7 @@ impute_median_hmd <- function(data=regPackage1::car_insurance_data,
             warning("A categorical column from your input list cat_cols is not among dataframe columns.")
             break
           }
-          df |> dplyr::mutate(col = ifelse(is.na(col),
+          df <- df |> dplyr::mutate(col = ifelse(is.na(col),
                                     stats::median(col, na.rm = T),
                                     col))
 

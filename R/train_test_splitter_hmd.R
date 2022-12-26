@@ -8,7 +8,7 @@
 
 
 
-splitter_norm_hmd <- function(data=regPackage1::car_insurance_data,
+train_test_splitter_hmd <- function(data=regPackage1::car_insurance_data,
                               proportion=0.7
                               ){
   # ensure dataframe is not empty
@@ -19,7 +19,7 @@ splitter_norm_hmd <- function(data=regPackage1::car_insurance_data,
   df <- data.frame({{data}})
   train <- df |> dplyr::sample_frac({{proportion}})
   test  <- dplyr::anti_join(df, train, by = 'id')
-  l <- c("train"=train, "test" =test)
-  return(l)
+  d <- c("train"=train, "test" =test)
+  return(d)
 }
 

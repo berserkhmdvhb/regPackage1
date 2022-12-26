@@ -24,7 +24,7 @@ library(caret)
 library(tidymodels)
 library(visdat)
 library(ggplot2)
-library(smotefamily)
+library(imbalance)
 ```
 # Introduction
 This report is dedicated to project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
@@ -170,10 +170,16 @@ is.na(df_enc) |> colSums()
 ### Oversampling Target
 
 
-```{r}
+```{r message = FALSE, warning = FALSE, results = 'hide'}
 X <- df_enc[, colnames(df_enc)[colnames(df_enc) != 'outcome']]
 y <- df_enc[['outcome']]
-smotefamily::DBSMOTE(X, y)
+#df_smote <- smotefamily::BLSMOTE(X, y)$syn_data
+```
+
+```{r message = FALSE, warning = FALSE, results = 'hide'}
+#df_smote <- rename(df_smote, outcome = class)
+#ggplot(df_smote, aes(x = outcome)) +
+#    geom_bar()
 ```
 
  

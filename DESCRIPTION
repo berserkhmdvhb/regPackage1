@@ -22,7 +22,7 @@ Suggests:
     testthat (>= 3.0.0),
     tibble,
     visdat,
-    smotefamily,
+    imbalance,
     tidymodels,
     ggplot2,
 VignetteBuilder: knitr

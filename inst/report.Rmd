@@ -22,6 +22,7 @@ library(dplyr)
 library(janitor)
 library(caret)
 library(tidymodels)
+library(visdat)
 ```
 # Introduction
 This report is dedicated to project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
@@ -85,46 +86,29 @@ Note that all functions of the package are suffixed with `hmd`.
 Before feeding to model, we need to factorise the categorical columns, which can be done by merely inputting columns intended to be converted in `cat_cols` in the `prepare_hmd` function.
 
 ```{r}
+vis_dat(car_insurance_data)
+```
+
+```{r}
 insurance_data_cleaned <- prepare_hmd(car_insurance_data)
 dplyr::glimpse(insurance_data_cleaned)
 ```
 
 
+```{r}
+vis_dat(insurance_data_cleaned)
+```
+
+
 ## Categorical Columns
 
+
+
+```{r}
+
+insurance_data_cleaned <- prepare_hmd(car_insurance_data)
+dplyr::glimpse(insurance_data_cleaned)
+```
+
+
 ## Classification Models
-#### Generalized Linear Model (GLM)
-Let us see the result of applying GLM on the target variable, which is `outcome`. 
-For this, I wrote the function [glm_hmd](https://github.com/berserkhmdvhb/regPackage1/blob/main/R/glm_hmd.R).
-
-Since the target variable is binary, and the goal is classification, adiscrete distribution, e.g., poisson is used, and also check if normalization of response variables would have any significant effect:
-
-**Poisson**
-
-
-1. Without Normalize
-
-```{r}
-glm_hmd(insurance_data_cleaned, target="outcome", family=poisson)
-```
-
-2. With Normalize
-
-```{r}
-#glm_hmd(insurance_data_cleaned, target="charges", family=gaussian, normalize=TRUE)
-```
-
-**Gamma**
-
-
-
-1. Without Normalize
-```{r}
-#glm_hmd(insurance_data_cleaned, target="charges", family=Gamma)
-```
-
-### With Normalize
-```{r}
-#glm_hmd(insurance_data_cleaned, target="charges", family=Gamma, normalize=TRUE)
-```          
-

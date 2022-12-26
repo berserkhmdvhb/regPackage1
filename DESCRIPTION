@@ -3,7 +3,7 @@ Type: Package
 Title: Insurance Data Forecast
 Version: 0.1.0
 Authors@R: person("Hamed", "Vaheb", email = "hamed.vaheb@gmail.com", role = c("aut", "cre"))
-Description: This package is for analyzing and forecasting data of insurance.
+Description: This package is for analyzing and forecasting car insurance data.
 License: GPL (>=3)
 Encoding: UTF-8
 LazyData: true

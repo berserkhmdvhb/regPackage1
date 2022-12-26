@@ -38,6 +38,6 @@ categoricals_hmd <- function(data=regPackage1::car_insurance_data){
   char_cols <- unlist(char_cols, use.names=FALSE)
   num_cols <- unlist(num_cols, use.names=FALSE)
   cat_cols <- unlist(cat_cols, use.names=FALSE)
-  df[char_cols] <- lapply(df[char_cols], factor)
+  df[cat_cols] <- lapply(df[cat_cols], factor)
   return(df)
 }

@@ -22,18 +22,21 @@ prepare_hmd <- function(data=regPackage1::car_insurance_data){
   # replace "Inf" and na values with NA
   # this is needed when applying models
   df[is.na(df) | df=="Inf"] = NA
+  char_cols = list()
+  num_cols = list()
   cat_cols = list()
-  num_cat_cols=list()
   for (col in colnames(df)){
     if (is.character(df[[col]])){
-      cat_cols <- append(cat_cols, col)
+      char_cols <- append(char_cols, col)
     }
     else if (length(unique(df[[col]])) < 10){
-      num_cat_cols <- append(num_cat_cols, col)
+      num_cols <- append(num_cols, col)
     }
   }
+  cat_cols = c(char_cols, num_cols)
+  print("List of categorical columns containing characters: ", char_cols)
+  print("List of categorical columns containing numbers: ", num_cols)
   df[cat_cols] <- lapply(df[cat_cols], factor)
-
   return(df)
 }
 

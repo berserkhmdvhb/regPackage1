@@ -135,7 +135,7 @@ cols_list = c("credit_score", "annual_mileage")
 df <- impute_median_hmd(df, cols_list)
 is.na(df) |> colSums()
 ```
-
+As evident, there is no missing data anymore.
 ## Fix Imbalanced Target
 
 ### Visualize Balance 
@@ -158,16 +158,22 @@ Since later it is realized that data is imbalanced and therefore it should be re
 dummy <- dummyVars(" ~ .", data=df)
 df_enc <- data.frame(predict(dummy, newdata = df)) 
 dplyr::glimpse(df_enc)
+
 ```
+
+Ensuring the encoded dataframe didn't slip a NA value:
+```{r}
+is.na(df_enc) |> colSums()
+```
+
 
 ### Oversampling Target
 
 
 ```{r}
-is.na(df_enc) |> colSums()
-#X <- df_enc[, colnames(df_enc)[colnames(df_enc) != 'outcome']]
-#y <- df_enc[['outcome']]
-#smotefamily::DBSMOTE(X, y)
+X <- df_enc[, colnames(df_enc)[colnames(df_enc) != 'outcome']]
+y <- df_enc[['outcome']]
+smotefamily::DBSMOTE(X, y)
 ```
 
  

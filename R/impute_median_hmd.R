@@ -43,7 +43,6 @@ impute_median_hmd <- function(data=regPackage1::car_insurance_data,
             warning("A categorical column from your input list cat_cols is not among dataframe columns.")
             break
           }
-          print(col)
           df[[col]][is.na(df[[col]])] <- stats::median(df[[col]], na.rm = T)
 
         }

@@ -15,7 +15,8 @@ Imports:
     dplyr,
     janitor,
     stats,
-    hash
+    hash,
+    caret
 Suggests: 
     knitr,
     rmarkdown,

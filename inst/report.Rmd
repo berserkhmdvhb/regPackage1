@@ -25,6 +25,7 @@ library(visdat)
 library(ggplot2)
 library(imbalance)
 library(readr)
+librar(caret) #for dummyVar function
 ```
 # Introduction
 This report is dedicated to project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
@@ -177,10 +178,8 @@ is.na(df_enc) |> colSums()
 
 ```{r}
 
-df_dict <- splitter_norm_hmd(df_enc, 
-                             replace=FALSE,
-                             proportion=0.7,
-                             normalize=FALSE)
+df_dict <- train_test_splitter_hmd(df_enc, 
+                             proportion=0.7)
 train <- df_dict$train
 test <- df_dict$test
 

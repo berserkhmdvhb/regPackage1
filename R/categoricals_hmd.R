@@ -3,8 +3,8 @@
 #' @export
 #' @return Returns dataframe with its categorical columns factorised
 #' @details
-#' This functions treats the categorical columns by first detecting them and the
-#' convert them to factors. To detect categorical columns, the function selects a column
+#' This functions treats the categorical columns by first detecting them and then
+#' convert those including characters to factors. To detect categorical columns, the function selects a column
 #' as categorical if either its class is "character", or if number of unique values
 #' the column has is less than 5.
 
@@ -35,7 +35,9 @@ categoricals_hmd <- function(data=regPackage1::car_insurance_data){
     }
   }
   cat_cols = append(char_cols, num_cols)
+  char_cols <- unlist(char_cols, use.names=FALSE)
+  num_cols <- unlist(num_cols, use.names=FALSE)
   cat_cols <- unlist(cat_cols, use.names=FALSE)
-  df[cat_cols] <- lapply(df[cat_cols], factor)
+  df[char_cols] <- lapply(df[char_cols], factor)
   return(df)
 }

@@ -16,8 +16,8 @@ Returns dataframe with its categorical columns factorised
 Treat categorical columns
 }
 \details{
-This functions treats the categorical columns by first detecting them and the
-convert them to factors. To detect categorical columns, the function selects a column
+This functions treats the categorical columns by first detecting them and then
+convert those including characters to factors. To detect categorical columns, the function selects a column
 as categorical if either its class is "character", or if number of unique values
 the column has is less than 5.
 }

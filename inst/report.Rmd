@@ -204,5 +204,15 @@ dplyr::glimpse(df_racog)
  
 Save the processed dataframe to memory:
 ```{r}
-readr::write.csv(df_racog)
+path = "/home/hamed/Documents/R/regPackage1/inst/"
+file_name = "car_insurance_data_processed.csv"
+readr::write_csv(df_racog, 
+                 file = paste(path,file_name,sep=""))
+```
+
+
+Load back the processed data
+
+```{r}
+df_proc <- readr::read_csv(paste(path,file_name,sep=""))
 ```

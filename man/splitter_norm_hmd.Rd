@@ -5,7 +5,7 @@
 \title{Splitting and Normalizind Data}
 \usage{
 splitter_norm_hmd(
-  data = insurance_data,
+  data = car_insurance_data,
   replace = TRUE,
   proportion = 0.7,
   normalize = FALSE,

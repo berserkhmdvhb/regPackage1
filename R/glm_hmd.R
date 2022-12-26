@@ -11,10 +11,10 @@
 #' dataframe by specifying feature names (response variables),
 #' target variable, family of distribution, and the dataset (in my case, Medical Cost Personal Datasets)
 
-glm_hmd <- function(data=insurance_data,
+glm_hmd <- function(data=car_insurance_data,
                     features_names=names({{data}})[names({{data}}) != {{target}}],
-                    target="charges",
-                    family="gaussian"){
+                    target="outcome",
+                    family="poisson"){
   # ensure dataframe is not empty
   features_names_main <- {{features_names}}
   if(nrow({{data}}) == 0) {

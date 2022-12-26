@@ -14,7 +14,7 @@
 #' This functions allows the user to split data into train and test, and then
 #' if the user sets normalize to TRUE, it normalizes data based on the moethod
 #' user prefers
-splitter_norm_hmd <- function(data=insurance_data,
+splitter_norm_hmd <- function(data=car_insurance_data,
                     replace=TRUE,
                     proportion=0.7,
                     normalize=FALSE,

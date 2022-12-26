@@ -1,11 +1,27 @@
 ---
 title: "Report"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{report}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+author: "Hamed Vaheb"
+#1date: "09 Jan 2021"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    code_folding: hide
+    theme: readable
+    highlight: haddock
+  pdf_document:
+    toc: yes
 ---
+
+
+#---
+#title: "Report"
+#output: rmarkdown::html_vignette
+#vignette: >
+#  %\VignetteIndexEntry{report}
+#  %\VignetteEngine{knitr::rmarkdown}
+#  %\VignetteEncoding{UTF-8}
+#---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -37,10 +53,15 @@ Also, this report is accessible as vignette of the package, which can be accesse
 
 (Note: I just made a meta-reference)
 
-# Test Case 
 
-## British Car Insurance Claims for 1975
-To provide a test case on a dataset with discrete target variable, I used the the [claims dataset](http://www.statsci.org/data/general/carinsuk.html). It concerns the average claims for damage to the owner's car for privately owned and comprehensively insured vehicles in Britain in 1975. Averages are given in pounds sterling adjusted for inflation. It contains 128 policyholders and three covariates: 
+## Import Data
+To provide a test case on a dataset with discrete target variable, I used the the [car insurance data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
+I incorporated this dataset in the package. It can be used by the following syntax:
+
+`data(car_insurance_data)`
+
+
+
 
 ```{r message = FALSE, warning = FALSE}
 header <- read.table("http://www.statsci.org/data/general/carinsuk.txt", nrows = 1, header = FALSE, sep ='\t', stringsAsFactors = FALSE)
@@ -77,9 +98,9 @@ In order to be familiarized with the dataset, after loading the `regPackage1` pa
 The dataset is embedded in the package, therefore by simply running the following commands one can load and display the dataset.
 
 ```{r message = FALSE, warning = FALSE}
-data(insurance_data)
-head(insurance_data)
-summary(insurance_data)
+data(car_insurance_data)
+glimpse(car_insurance_data)
+summary(car_insurance_data)
 ```
 Note that all functions of the package are suffixed with `hmd`.
 

@@ -5,7 +5,7 @@
 \title{Prepare dataframe to bed fed into models
 target variable, family of distribution}
 \usage{
-prepare_hmd(data = insurance_data, cat_cols = list())
+prepare_hmd(data = car_insurance_data, cat_cols = list())
 }
 \arguments{
 \item{data}{An arbitrary dataframe}

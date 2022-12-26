@@ -11,9 +11,7 @@
 
 
 
-prepare_hmd <- function(data=insurance_data,
-                    cat_cols=list()
-                    ){
+prepare_hmd <- function(data=car_insurance_data){
   # ensure dataframe is not empy
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
@@ -22,36 +20,18 @@ prepare_hmd <- function(data=insurance_data,
   df <- data.frame({{data}})
   # clean names of columns of dataframe
   df <- janitor::clean_names(df)
+
   # replace "Inf" and na values with NA
   # this is needed when applying models
   df[is.na(df) | df=="Inf"] = NA
-
-  #ensure user inputs a proper object for cat_cols
-  if (!(typeof({{cat_cols}}) %in% c("list","character")))
-  {
-    warning("Please input cat_cols as either character type, e.g. c(col1,col2,...) or list type list(col1,col2,...)")
-  }
-  else
-  {
-    #ensure use doesn't input an empty list for cat_cols
-    if (length({{cat_cols}}) == 0)
-    {
-      warning("No column is selected. No columns will be modified.")
-      return(df)
-    }
-    else
-    {
-      #match cat_cols with columns of name-cleaned dataframe
-      cat_cols_cleaned <- janitor::make_clean_names({{cat_cols}})
-
-      if (!(all(cat_cols_cleaned %in% names(df))))
-      {
-        warning("A categorical column from your input list cat_cols is not among dataframe columns.")
-        break
-      }
-      df[cat_cols_cleaned] <- lapply(df[cat_cols_cleaned], factor)
+  cat_cols = list()
+  for (col in colnames(df)){
+    if (class(df[[col]]) == "character"){
+      cat_cols <- append(cat_cols, col)
     }
   }
+  df[cat_cols] <- lapply(df[cat_cols], factor)
+
   return(df)
 }
 

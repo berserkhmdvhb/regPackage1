@@ -5,7 +5,7 @@
 \title{GLM Model}
 \usage{
 glm_hmd(
-  data = insurance_data,
+  data = car_insurance_data,
   features_names = names({
      {
          data
@@ -20,8 +20,8 @@ glm_hmd(
          target
      }
  }],
-  target = "charges",
-  family = "gaussian"
+  target = "outcome",
+  family = "poisson"
 )
 }
 \arguments{

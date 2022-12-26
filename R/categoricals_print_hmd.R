@@ -9,7 +9,7 @@
 
 
 
-categoricals_hmd <- function(data=regPackage1::car_insurance_data){
+categoricals_print_hmd <- function(data=regPackage1::car_insurance_data){
   # ensure dataframe is not empy
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")

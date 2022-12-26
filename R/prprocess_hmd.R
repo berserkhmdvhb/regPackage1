@@ -8,7 +8,7 @@
 
 
 
-categoricals_hmd <- function(data=regPackage1::car_insurance_data){
+preprocess <- function(data=regPackage1::car_insurance_data){
   # ensure dataframe is not empy
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")

@@ -14,23 +14,9 @@ output:
 ---
 
 
-#---
-#title: "Report"
-#output: rmarkdown::html_vignette
-#vignette: >
-#  %\VignetteIndexEntry{report}
-#  %\VignetteEngine{knitr::rmarkdown}
-#  %\VignetteEncoding{UTF-8}
-#---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
-
-```{r setup}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 library(regPackage1)
 library(dplyr)
 library(janitor)
@@ -63,13 +49,18 @@ I incorporated this dataset in the package. It can be used by the following synt
 
 
 
-```{r message = FALSE, warning = FALSE}
+```{r}
 data(car_insurance_data)
 
-summary(car_insurance_data)
 dplyr::glimpse(car_insurance_data)
 ```
 
+
+Summary of statistical properties of columns are provided in the following:
+
+```{r}
+summary(car_insurance_data)
+```
 
 
 
@@ -81,7 +72,7 @@ In order to be familiarized with the dataset, after loading the `regPackage1` pa
 
 The dataset is embedded in the package, therefore by simply running the following commands one can load and display the dataset.
 
-```{r message = FALSE, warning = FALSE}
+```{r}
 data(car_insurance_data)
 dplyr::glimpse(car_insurance_data)
 summary(car_insurance_data)
@@ -91,29 +82,29 @@ Note that all functions of the package are suffixed with `hmd`.
 # Preprocess
 Before feeding to model, we need to factorise the categorical columns, which can be done by merely inputting columns intended to be converted in `cat_cols` in the `prepare_hmd` function.
 
-```{r message = FALSE, warning = FALSE}
+```{r}
 insurance_data_cleaned <- prepare_hmd(car_insurance_data)
 dplyr::glimpse(insurance_data_cleaned)
 ```
 
-## Regression Models
+## Classification Models
 #### Generalized Linear Model (GLM)
 Let us see the result of applying GLM on the target variable, which is `chargres`. 
 For this, I wrote the function [glm_hmd](https://github.com/berserkhmdvhb/regPackage1/blob/main/R/glm_hmd.R).
 We try to use different distributions, and also check if normalization of response variables would have any significant effect:
 
-**Gaussian**
+**Poisson**
 
 
 1. Without Normalize
 
-```{r message = FALSE, warning = FALSE}
+```{r}
 #glm_hmd(insurance_data_cleaned, target="charges", family=gaussian)
 ```
 
 2. With Normalize
 
-```{r message = FALSE, warning = FALSE}
+```{r}
 #glm_hmd(insurance_data_cleaned, target="charges", family=gaussian, normalize=TRUE)
 ```
 
@@ -122,12 +113,12 @@ We try to use different distributions, and also check if normalization of respon
 
 
 1. Without Normalize
-```{r message = FALSE, warning = FALSE}
+```{r}
 #glm_hmd(insurance_data_cleaned, target="charges", family=Gamma)
 ```
 
 ### With Normalize
-```{r message = FALSE, warning = FALSE}
+```{r}
 #glm_hmd(insurance_data_cleaned, target="charges", family=Gamma, normalize=TRUE)
 ```          
 

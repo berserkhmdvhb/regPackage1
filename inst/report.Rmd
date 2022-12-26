@@ -89,9 +89,10 @@ dplyr::glimpse(insurance_data_cleaned)
 
 ## Classification Models
 #### Generalized Linear Model (GLM)
-Let us see the result of applying GLM on the target variable, which is `chargres`. 
+Let us see the result of applying GLM on the target variable, which is `outcome`. 
 For this, I wrote the function [glm_hmd](https://github.com/berserkhmdvhb/regPackage1/blob/main/R/glm_hmd.R).
-We try to use different distributions, and also check if normalization of response variables would have any significant effect:
+
+Since the target variable is binary, and the goal is classification, adiscrete distribution, e.g., poisson is used, and also check if normalization of response variables would have any significant effect:
 
 **Poisson**
 
@@ -99,7 +100,7 @@ We try to use different distributions, and also check if normalization of respon
 1. Without Normalize
 
 ```{r}
-#glm_hmd(insurance_data_cleaned, target="charges", family=gaussian)
+glm_hmd(insurance_data_cleaned, target="outcome", family=poisson)
 ```
 
 2. With Normalize

@@ -4,14 +4,18 @@
 \alias{predict_glmnet_cv_hmd}
 \title{Predict data with results from CV GLMNET model}
 \usage{
-predict_glmnet_cv_hmd(fit, data, lchoice = "min", type = "response")
+predict_glmnet_cv_hmd(fit, data, lchoice = "min", type = "link")
 }
 \arguments{
-\item{fit}{fit object from a cv.glmnet model}
+\item{fit}{Fit object from a cv.glmnet model}
 
 \item{data}{An arbitrary dataframe}
 
-\item{lchoice}{how to choose lambda model. Choices are "min", "1se".}
+\item{lchoice}{How to choose lambda model. Choices are "min", "1se"}
+
+\item{type}{Type of prediction required. Type "link" gives the linear
+predictors for "binomial" or "multinomial" models;
+for "gaussian" models it gives the fitted values. Type "response" gi.}
 }
 \value{
 Returns fit object of glmnet function

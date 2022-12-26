@@ -1,7 +1,10 @@
 #' Predict data with results from CV GLMNET model
-#' @param fit fit object from a cv.glmnet model
+#' @param fit Fit object from a cv.glmnet model
 #' @param data An arbitrary dataframe
-#' @param lchoice how to choose lambda model. Choices are "min", "1se".
+#' @param lchoice How to choose lambda model. Choices are "min", "1se"
+#' @param type Type of prediction required. Type "link" gives the linear
+#' predictors for "binomial" or "multinomial" models;
+#' for "gaussian" models it gives the fitted values. Type "response" gi.
 #' @export
 #' @return Returns fit object of glmnet function
 #' @details
@@ -15,13 +18,13 @@
 predict_glmnet_cv_hmd <- function(fit,
                                   data,
                                   lchoice="min",
-                                  type="response"
+                                  type="link"
                           ){
   lambda <- paste("lambda.",{{lchoice}},sep = "")
   coef <- coef({{fit}}, s=lambda)
-  if ({{type}} == "response")
+  if ({{type}} == "link")
   {
-    predict <- predict({{fit}}, data, s=lambda, type="response")
+    predict <- predict({{fit}}, data, s=lambda, type="link")
   }
   else{
     predict <- predict({{fit}}, data, s=lambda)

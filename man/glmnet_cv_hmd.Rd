@@ -5,7 +5,7 @@
 \title{CV GLMNET model}
 \usage{
 glmnet_cv_hmd(
-  data = car_insurance_data,
+  data = regPackage1::car_insurance_data,
   features_names = names({
      {
          data

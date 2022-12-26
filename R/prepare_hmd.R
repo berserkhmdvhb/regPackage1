@@ -9,7 +9,7 @@
 
 
 
-prepare_hmd <- function(data=car_insurance_data){
+prepare_hmd <- function(data=regPackage1::car_insurance_data){
   # ensure dataframe is not empy
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
@@ -23,12 +23,13 @@ prepare_hmd <- function(data=car_insurance_data){
   # this is needed when applying models
   df[is.na(df) | df=="Inf"] = NA
   cat_cols = list()
+  num_cat_cols=list()
   for (col in colnames(df)){
-    if (class(df[[col]]) == "character"){
+    if (is(df[[col]], "character")){
       cat_cols <- append(cat_cols, col)
     }
     else if (length(unique(df[[col]])) < 10){
-      cat_cols <- append(cat_cols, col)
+      num_cat_cols <- append(num_cat_cols, col)
     }
   }
   df[cat_cols] <- lapply(df[cat_cols], factor)

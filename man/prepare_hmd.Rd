@@ -5,12 +5,10 @@
 \title{Prepare dataframe to bed fed into models
 target variable, family of distribution}
 \usage{
-prepare_hmd(data = car_insurance_data, cat_cols = list())
+prepare_hmd(data = regPackage1::car_insurance_data)
 }
 \arguments{
 \item{data}{An arbitrary dataframe}
-
-\item{cat_cols}{Set of categorical columns to be factorized}
 }
 \value{
 Returns cleaned dataframe ready to be fed into models
@@ -20,7 +18,6 @@ Prepare dataframe to bed fed into models
 target variable, family of distribution
 }
 \details{
-This functions allows to clean and prepare dataframe by factorizing the
-specified cateogrical columns, cleaning column names, replace "na" and "Inf"
-values with NA
+This functions allows to clean and prepare dataframe by cleaning column names, automatically detecting the
+categorical columns and then factorizing them, and replace "na" and "Inf" values with NA
 }

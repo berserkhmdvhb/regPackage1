@@ -12,7 +12,7 @@
 #' dataframe by specifying feature names (response variables),
 #' target variable, family of distribution, and the dataset (in my case, Medical Cost Personal Datasets)
 
-glmnet_cv_hmd <- function(data=car_insurance_data,
+glmnet_cv_hmd <- function(data=regPackage1::car_insurance_data,
                        features_names=names({{data}})[names({{data}}) != {{target}}],
                        target="outcome",
                        family="poisson"){

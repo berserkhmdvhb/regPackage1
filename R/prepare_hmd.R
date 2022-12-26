@@ -1,13 +1,11 @@
 #' Prepare dataframe to bed fed into models
 #' target variable, family of distribution
 #' @param data An arbitrary dataframe
-#' @param cat_cols Set of categorical columns to be factorized
 #' @export
 #' @return Returns cleaned dataframe ready to be fed into models
 #' @details
-#' This functions allows to clean and prepare dataframe by factorizing the
-#' specified cateogrical columns, cleaning column names, replace "na" and "Inf"
-#' values with NA
+#' This functions allows to clean and prepare dataframe by cleaning column names, automatically detecting the
+#' categorical columns and then factorizing them, and replace "na" and "Inf" values with NA
 
 
 
@@ -27,6 +25,9 @@ prepare_hmd <- function(data=car_insurance_data){
   cat_cols = list()
   for (col in colnames(df)){
     if (class(df[[col]]) == "character"){
+      cat_cols <- append(cat_cols, col)
+    }
+    else if (length(unique(df[[col]])) < 10){
       cat_cols <- append(cat_cols, col)
     }
   }

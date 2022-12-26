@@ -14,9 +14,7 @@ Depends:
 Imports:
     dplyr,
     janitor,
-    car,
-    caret,
-    glmnet
+    caret
 Suggests: 
     knitr,
     rmarkdown,

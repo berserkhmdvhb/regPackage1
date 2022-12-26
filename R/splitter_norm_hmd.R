@@ -18,7 +18,7 @@
 
 
 splitter_norm_hmd <- function(data=regPackage1::car_insurance_data,
-                              replace=TRUE,
+                              replace=FALSE,
                               proportion=0.7,
                               normalize=FALSE,
                               normalize_method="minmax"){
@@ -65,7 +65,7 @@ splitter_norm_hmd <- function(data=regPackage1::car_insurance_data,
     }
   }
 
-  l <- list(train,test)
+  l <- c("train"=train, "test" =test)
   return(l)
 }
 

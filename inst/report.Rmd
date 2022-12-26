@@ -172,15 +172,32 @@ Ensuring the encoded dataframe didn't slip a NA value:
 is.na(df_enc) |> colSums()
 ```
 
+### Split to Train/Test
 
-### Oversampling Target
+
+
+```{r}
+
+df_dict <- splitter_norm_hmd(df_enc, 
+                             replace=FALSE,
+                             proportion=0.7,
+                             normalize=FALSE)
+train <- df_dict$train
+test <- df_dict$test
+
+print("train data has ")
+print(paste("train data has", nrow(train), "rows and", ncol(train)), "columns")
+print(paste("test data has", nrow(test), "rows and", ncol(test)), "columns")
+```
+
+### Oversampling
 
 
 ```{r}
 #X <- df_enc[, colnames(df_enc)[colnames(df_enc) != #'outcome']]
 #y <- df_enc[['outcome']]
 
-df_racog <- racog(df_enc, numInstances = 3734, burnin = 100, lag = 20, classAttr = "outcome")
+df_racog <- racog(train, numInstances = 3734, burnin = 100, lag = 20, classAttr = "outcome")
 
 #df_smote <- smotefamily::BLSMOTE(X, y)$syn_data
 ```

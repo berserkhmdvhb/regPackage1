@@ -35,7 +35,6 @@ impute_median_hmd <- function(data=regPackage1::car_insurance_data,
       if (!(all({{cols_list}} %in% names(df))))
       {
         warning("A categorical column from your input list cat_cols is not among dataframe columns.")
-        break
       }
       else{
         for (col in {{cols_list}}){

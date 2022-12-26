@@ -23,6 +23,8 @@ library(janitor)
 library(caret)
 library(tidymodels)
 library(visdat)
+library(ggplot2)
+library(smotefamily)
 ```
 # Introduction
 This report is dedicated to project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
@@ -84,6 +86,11 @@ df <- janitor::clean_names(car_insurance_data)
 names(df)
 ```
 
+And the following is to make the codes reproducible, as random values might be involved in different stages:
+```{r}
+set.seed(12345)
+```
+
 ## Categorical Columns
 We need to factorise the categorical columns, which can be done by merely inputting columns intended to be converted in `cat_cols` in the `prepare_hmd` function. Before doing that, we report and visualise the nature of categorical data and their frequency in the dataset
 
@@ -126,5 +133,9 @@ As imbalance of target classes affect predictions, the frequency of each class i
 
 
 ```{r}
-as.numeric(df$outcome) |> hist()
+# Most basic bar chart
+ggplot(df, aes(x = outcome)) +
+    geom_bar()
 ```
+
+

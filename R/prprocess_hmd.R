@@ -1,5 +1,4 @@
 #' Prepare dataframe to bed fed into models
-#' target variable, family of distribution
 #' @param data An arbitrary dataframe
 #' @export
 #' @return Returns cleaned dataframe ready to be fed into models
@@ -9,7 +8,7 @@
 
 
 
-prepare_hmd <- function(data=regPackage1::car_insurance_data){
+categoricals_hmd <- function(data=regPackage1::car_insurance_data){
   # ensure dataframe is not empy
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
@@ -22,24 +21,5 @@ prepare_hmd <- function(data=regPackage1::car_insurance_data){
   # replace "Inf" and na values with NA
   # this is needed when applying models
   df[is.na(df) | df=="Inf"] = NA
-  char_cols = list()
-  num_cols = list()
-  cat_cols = list()
-  for (col in colnames(df)){
-    if (is.character(df[[col]])){
-      char_cols <- append(char_cols, col)
-    }
-    else if (length(unique(df[[col]])) < 10){
-      num_cols <- append(num_cols, col)
-    }
-  }
-  cat_cols = append(char_cols, num_cols)
-
-  print("List of categorical columns containing characters: ")
-  print( unlist(char_cols, use.names=FALSE))
-  print("List of categorical columns containing numbers: ")
-  print( unlist(num_cols, use.names=FALSE))
-  cat_cols <- unlist(cat_cols, use.names=FALSE)
-  df[cat_cols] <- lapply(df[cat_cols], factor)
   return(df)
 }

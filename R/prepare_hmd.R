@@ -33,12 +33,13 @@ prepare_hmd <- function(data=regPackage1::car_insurance_data){
       num_cols <- append(num_cols, col)
     }
   }
-  cat_cols = c(char_cols, num_cols)
+  cat_cols = append(char_cols, num_cols)
 
   print("List of categorical columns containing characters: ")
   print(char_cols)
   print("List of categorical columns containing numbers: ")
   print(num_cols)
+  cat_cols <- unlist(cat_cols, use.names=FALSE)
   df[cat_cols] <- lapply(df[cat_cols], factor)
   return(df)
 }

@@ -17,12 +17,7 @@ categoricals_hmd <- function(data=regPackage1::car_insurance_data){
   }
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
-  # clean names of columns of dataframe
-  df <- janitor::clean_names(df)
 
-  # replace "Inf" and na values with NA
-  # this is needed when applying models
-  df[is.na(df) | df=="Inf"] = NA
   char_cols = list()
   num_cols = list()
   cat_cols = list()
@@ -38,6 +33,6 @@ categoricals_hmd <- function(data=regPackage1::car_insurance_data){
   char_cols <- unlist(char_cols, use.names=FALSE)
   num_cols <- unlist(num_cols, use.names=FALSE)
   cat_cols <- unlist(cat_cols, use.names=FALSE)
-  df[cat_cols] <- lapply(df[cat_cols], factor)
+  df[char_cols] <- lapply(df[char_cols], factor)
   return(df)
 }

@@ -45,11 +45,10 @@ Also, this report is accessible as vignette of the package, which can be accesse
 
 Note that all functions of the package are suffixed with `hmd`.
 
-## Import Data
-To provide a test case on a dataset with discrete target variable, I used the the [car insurance data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
 
  
-## Load Dataset
+# Load Dataset
+To provide a test case on a dataset with discrete target variable, I used the the [car insurance data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
 
 The dataset is embedded in the package, therefore by simply running the following commands one can load and display the dataset.
 . It can be used by the following syntax:
@@ -124,10 +123,21 @@ vis_miss(df, sort_miss = TRUE)
 
 
 ```{r}
-is.na(df |> select("credit_score","annual_mileage")) %>% colSums()
+is.na(df |> select("credit_score","annual_mileage")) |> colSums()
 ## Classification Models
 ```
-## Balance of Target Classes
+
+As only two numerical columns include NA values, the will be imputed with mean of their respective columns:
+
+```{r}
+cat_cols = c("credit_score", "annual_mileage")
+df_new <- impute_median_hmd(df,cat_cols)
+is.na(df_new) |> colSums()
+```
+
+## Fix Imbalanced Target
+
+### Visualize Balance 
 
 As imbalance of target classes affect predictions, the frequency of each class in the `outcome` column is visualized:
 
@@ -136,6 +146,26 @@ As imbalance of target classes affect predictions, the frequency of each class i
 # Most basic bar chart
 ggplot(df, aes(x = outcome)) +
     geom_bar()
+```
+
+
+### Encoding Categorical Columns
+
+Since later it is realized that data is imbalanced and therefore it should be resampled, it is required that data would only contain numerical columns for the next part. For this reason, one-hot-encoding is applied in the following:
+
+```{r}
+dummy <- dummyVars(" ~ .", data=df)
+df_enc <- data.frame(predict(dummy, newdata = df)) 
+dplyr::glimpse(df_enc)
+```
+
+### Oversampling Target
+
+
+```{r}
+#X <- df_enc[, colnames(df_enc)[colnames(df_enc) != #'outcome']]
+#y <- df_enc[['outcome']]
+#smotefamily::DBSMOTE(X, y)
 ```
 
 

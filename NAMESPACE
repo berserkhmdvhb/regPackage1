@@ -2,5 +2,6 @@
 
 export(categoricals_hmd)
 export(categoricals_print_hmd)
+export(impute_median_hmd)
 export(preprocess)
 export(splitter_norm_hmd)

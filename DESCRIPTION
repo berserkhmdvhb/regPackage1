@@ -15,13 +15,14 @@ Imports:
     dplyr,
     janitor,
     caret,
-    tidymodels,
-    ggplot2
+    stats
 Suggests: 
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
     tibble,
     visdat,
-    smotefamily
+    smotefamily,
+    tidymodels,
+    ggplot2,
 VignetteBuilder: knitr

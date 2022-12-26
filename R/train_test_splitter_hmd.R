@@ -13,7 +13,7 @@ train_test_splitter_hmd <- function(data=regPackage1::car_insurance_data,
                               ){
   # ensure dataframe is not empty
   if(nrow({{data}}) == 0) {
-    warning("The returned data frame is empty.")
+    warning("The inputted data frame is empty.")
   }
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})

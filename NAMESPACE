@@ -3,5 +3,6 @@
 export(categoricals_hmd)
 export(categoricals_print_hmd)
 export(impute_median_hmd)
+export(normalizer_hmd)
 export(preprocess)
 export(train_test_splitter_hmd)

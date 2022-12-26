@@ -136,9 +136,9 @@ df <- impute_median_hmd(df)
 is.na(df) |> colSums()
 ```
 As evident, there is no missing data anymore.
-## Fix Imbalanced Target
+## Check Imbalance of Target
 
-### Visualize Balance 
+**Visualize Balance**
 
 As imbalance of target classes affect predictions, the frequency of each class in the `outcome` column is visualized:
 
@@ -156,7 +156,7 @@ table(df$outcome)
 ```{r}
 imbalance::imbalanceRatio(df, classAttr = "outcome")
 ```
-### Encoding Categorical Columns
+## Encoding Categorical Columns
 
 Since later it is realized that data is imbalanced and therefore it should be resampled, it is required that data would only contain numerical columns for the next part. For this reason, one-hot-encoding is applied in the following:
 
@@ -172,7 +172,7 @@ Ensuring the encoded dataframe didn't slip a NA value:
 is.na(df_enc) |> colSums()
 ```
 
-### Split to Train/Test
+## Split to Train/Test
 
 
 
@@ -187,7 +187,19 @@ print(paste("train data has", nrow(train), "rows and", ncol(train), "columns"))
 print(paste("test data has", nrow(test), "rows and", ncol(test), "columns"))
 ```
 
-### Oversampling
+## Normalize
+
+```{r}
+
+df_dict_norm <- normalizer_hmd(train,test)
+                             
+train <- df_dict_norm$train_norm
+test <- df_dict_norm$test_norm
+
+
+```
+
+## Oversampling
 
 
 ```{r}

@@ -208,6 +208,9 @@ df_dict_norm <- normalizer_hmd(train,test)
 
 train <- df_dict_norm$train_norm
 test <- df_dict_norm$test_norm
+
+train$id <- as.double(train$id)
+test$id <- as.double(test$id)
 ```
 
 ```{r}
@@ -227,8 +230,6 @@ train_racog <- racog(train, numInstances = 3000, burnin = 100, lag = 20, classAt
 
 
 
-
-#```{r}
 
 
 Merge new sampled data with original train dataset

@@ -206,12 +206,27 @@ test <- df_dict_norm$test_norm
 #X <- df_enc[, colnames(df_enc)[colnames(df_enc) != #'outcome']]
 #y <- df_enc[['outcome']]
 
-insurance_train <- racog(train, numInstances = 3734, burnin = 100, lag = 20, classAttr = "outcome")
+train_racog <- racog(train, numInstances = 3734, burnin = 100, lag = 20, classAttr = "outcome")
 
 #df_smote <- smotefamily::BLSMOTE(X, y)$syn_data
 ```
 
 
+
+
+#```{r}
+
+
+Merge new sampled data with original train dataset
+
+```{r}
+insurance_train <- rbind(train , train_racog)
+```
+ 
+
+```{r}
+insurance_train
+```
 ```{r}
 table(insurance_train$outcome)
 ```
@@ -220,15 +235,11 @@ table(insurance_train$outcome)
 dplyr::glimpse(insurance_train)
 ```
 
-#```{r message = FALSE, warning = FALSE, results = #'hide'}
-```{r}
-#df_smote <- rename(df_smote, outcome = class)
-#ggplot(df_smote, aes(x = outcome)) +
-#    geom_bar()
-```
 
- 
 Save the processed dataframe to memory:
+  
+  
+  
 
 
 ```{r}
@@ -253,4 +264,17 @@ path = "/home/hamed/Documents/R/regPackage1/inst/"
 file_name = "insurance_test.csv"
 readr::write_csv(insurance_test, 
                  file = paste(path,file_name,sep=""))
+```
+
+```{r}
+glimpse(insurance_train)
+```
+
+```{r}
+glimpse(insurance_test)
+```
+
+
+```{r}
+table(insurance_train$outcome)
 ```

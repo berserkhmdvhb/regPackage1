@@ -284,6 +284,6 @@ Data Visualisation
 
 
 ```{r}
-insurance_train |> ggplot(aes(x = credit_score, y = speeding_violations)) +
-  geom_point(color = outcome)
+#insurance_train |> ggplot(aes(x = credit_score, y = #speeding_violations)) +
+#  geom_point(color = outcome)
 ```

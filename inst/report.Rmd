@@ -183,8 +183,7 @@ df_dict <- train_test_splitter_hmd(df_enc,
 train <- df_dict$train
 test <- df_dict$test
 
-print(paste("train data has", nrow(train), "rows and", ncol(train), "columns"))
-print(paste("test data has", nrow(test), "rows and", ncol(test), "columns"))
+
 ```
 
 ## Normalize
@@ -197,6 +196,11 @@ train <- df_dict_norm$train_norm
 test <- df_dict_norm$test_norm
 
 
+```
+
+```{r}
+print(paste("train data has", nrow(train), "rows and", ncol(train), "columns"))
+print(paste("test data has", nrow(test), "rows and", ncol(test), "columns"))
 ```
 
 ## Oversampling
@@ -223,17 +227,6 @@ Merge new sampled data with original train dataset
 insurance_train <- rbind(train , train_racog)
 ```
  
-
-```{r}
-insurance_train
-```
-```{r}
-table(insurance_train$outcome)
-```
-
-```{r}
-dplyr::glimpse(insurance_train)
-```
 
 
 Save the processed dataframe to memory:
@@ -277,4 +270,11 @@ glimpse(insurance_test)
 
 ```{r}
 table(insurance_train$outcome)
+```
+
+we need to also remove the id of the beneficiaries as it will bias the learning towards this and may cause data leakage for test datasets with the same id
+
+```{r}
+insurance_train <- within(insurance_train, rm(id))
+insurance_test <- within(insurance_test, rm(id))
 ```

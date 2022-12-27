@@ -42,7 +42,7 @@ normalizer_hmd <- function(train, test,
   train_norm <- stats::predict(process, train_numeric)
   test_norm <- stats::predict(process, test_numeric)
   for (col in names(train_numeric)){
-    if col == "id"{
+    if (col == "id"){
      next
     }
     df_train[col] <- train_norm[col]

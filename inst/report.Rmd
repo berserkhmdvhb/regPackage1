@@ -164,7 +164,6 @@ Since later it is realized that data is imbalanced and therefore it should be re
 dummy <- dummyVars(" ~ .", data=df)
 df_enc <- data.frame(predict(dummy, newdata = df)) 
 dplyr::glimpse(df_enc)
-
 ```
 
 Ensuring the encoded dataframe didn't slip a NA value:
@@ -198,6 +197,7 @@ test <- df_dict_norm$test_norm
 
 ```
 
+
 ```{r}
 print(paste("train data has", nrow(train), "rows and", ncol(train), "columns"))
 print(paste("test data has", nrow(test), "rows and", ncol(test), "columns"))
@@ -210,9 +210,7 @@ print(paste("test data has", nrow(test), "rows and", ncol(test), "columns"))
 #X <- df_enc[, colnames(df_enc)[colnames(df_enc) != #'outcome']]
 #y <- df_enc[['outcome']]
 
-train_racog <- racog(train, numInstances = 3734, burnin = 100, lag = 20, classAttr = "outcome")
-
-#df_smote <- smotefamily::BLSMOTE(X, y)$syn_data
+train_racog <- racog(train, numInstances = 3000, burnin = 100, lag = 20, classAttr = "outcome")
 ```
 
 
@@ -257,6 +255,8 @@ path = "/home/hamed/Documents/R/regPackage1/inst/"
 file_name = "insurance_test.csv"
 readr::write_csv(insurance_test, 
                  file = paste(path,file_name,sep=""))
+                   
+insurance_test <- readr::read_csv(paste(path,file_name,sep=""))
 ```
 
 ```{r}
@@ -277,4 +277,13 @@ we need to also remove the id of the beneficiaries as it will bias the learning 
 ```{r}
 insurance_train <- within(insurance_train, rm(id))
 insurance_test <- within(insurance_test, rm(id))
+```
+
+
+Data Visualisation
+
+
+```{r}
+insurance_train |> ggplot(aes(x = credit_score, y = speeding_violations)) +
+  geom_point(color = outcome)
 ```

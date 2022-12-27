@@ -45,7 +45,8 @@ normalizer_hmd <- function(train, test,
     if (col == "id"){
       next
     }
-    if (all.equal(df_train[[col]], as.integer(df_train[[col]])) == TRUE)
+    #if (all.equal(df_train[[col]], as.integer(df_train[[col]])) == TRUE)
+    if (is.integer(df_train[[col]]== TRUE))
     {
       next
     }

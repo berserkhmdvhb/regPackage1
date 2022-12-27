@@ -189,14 +189,26 @@ test <- df_dict$test
 
 ```{r}
 
-df_dict_norm <- normalizer_hmd(train,test)
-                             
-train <- df_dict_norm$train_norm
-test <- df_dict_norm$test_norm
-
-
+for (col in names(train)){
+  if (col %in% c("annual_mileage", "postal_code", "credit_score"))
+  {
+    next
+  }
+  train[[col]] <- as.integer(train[[col]])
+  test[[col]] <- as.integer(test[[col]])
+}
 ```
 
+
+
+
+```{r}
+df_dict_norm <- normalizer_hmd(train,test)
+
+
+train <- df_dict_norm$train_norm
+test <- df_dict_norm$test_norm
+```
 
 ```{r}
 print(paste("train data has", nrow(train), "rows and", ncol(train), "columns"))

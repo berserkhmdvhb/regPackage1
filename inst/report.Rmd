@@ -334,14 +334,32 @@ Data Visualisation
 
 ## Generalized Linear Models
 
+```{r}
+actual <- insurance_test$outcome
+```
+
 **GLMNET**
 
 ```{r}
 fit <- glmnet_fit_hmd(insurance_train, target="outcome", family="binomial")
+h <- glmnet_cv_predict_hmd(fit, 
+                           data = insurance_test, 
+                           target = "outcome", 
+                           lchoice = "min", 
+                           type = "link")
+coef = h$coef
+pred <- h$predictions
 
 ```
 
-**cross validation GLMNET**
+```{r}
+coef
+```
+
+
+
+
+**cross validated GLMNET**
 
 
 ```{r}
@@ -351,6 +369,50 @@ h <- glmnet_cv_predict_hmd(fit,
                            target = "outcome", 
                            lchoice = "min", 
                            type = "link")
-coef = h$coef
-test_pred <- h$predictions
+coef_cv = h$coef
+pred_cv <- h$predictions
 ```
+
+### Evaluate
+
+
+**GLMNET**
+
+```{r}
+RMSE_ARMA <- rmse(pred, actual)
+RMSE_ARMA
+```
+
+
+```{r}
+MAE_ARMA <- mae(pred, actual)
+MAE_ARMA
+```
+
+
+```{r}
+rsq <- function (x, y) cor(x, y) ^ 2
+RSQ_ARMA <- rsq(pred, actual)
+RSQ_ARMA
+```
+
+**GLMNET CV**
+
+```{r}
+RMSE_ARMA <- rmse(pred_cv, actual)
+RMSE_ARMA
+```
+
+
+```{r}
+MAE_ARMA <- mae(pred_cv, actual)
+MAE_ARMA
+```
+
+
+```{r}
+rsq <- function (x, y) cor(x, y) ^ 2
+RSQ_ARMA <- rsq(pred_cv, actual)
+RSQ_ARMA
+```
+

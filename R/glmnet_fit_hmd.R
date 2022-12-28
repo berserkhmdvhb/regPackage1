@@ -28,8 +28,8 @@ glmnet_fit_hmd <- function(data=regPackage1::insurance_train,
                                         sep = ""
                                         ))
   fit <- stats::glm(glm_format,
-                   data=df,
-                   family={{family}}
+                    data=df,
+                    family={{family}}
                    )
   return(fit)
 }

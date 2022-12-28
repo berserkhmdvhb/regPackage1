@@ -399,7 +399,9 @@ head(pred_glm_cv)
 
 Extract AIC and BIC from the fit of glm
 ```{r}
-fit$aic
+
+glmnet_cv_aic_hmd(fit, lchoice = "min")
+
 ```
 ### Evaluate
 

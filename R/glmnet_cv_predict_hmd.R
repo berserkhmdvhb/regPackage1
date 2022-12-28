@@ -5,6 +5,7 @@
 #' @param type Type of prediction required. Type "link" gives the linear predictors
 #' for "binomial" or "multinomial" models; for "gaussian" models it gives the fitted values.
 #' Type "response" gi
+#' @param target Target column in the data
 #' @export
 #' @return Returns fit object of glmnet function
 #' @details
@@ -17,10 +18,11 @@
 
 glmnet_cv_predict_hmd <- function(fit,
                                   data = regPackage1::insurance_test,
+                                  target = "outcome",
                                   lchoice="min",
                                   type="link"
                           ){
-  #features_names=names({{data}})[names({{data}}) != {{target}}]
+  features_names=names({{data}})[names({{data}}) != {{target}}]
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
   }
@@ -28,17 +30,17 @@ glmnet_cv_predict_hmd <- function(fit,
   df <- data.frame({{data}})
   # extract feature names either from input or dataframe
 
-  #features <- data.matrix(df[features_names_main])
-  #target_col <- as.numeric(unlist(df[{{target}}]))
+  features <- data.matrix(df[features_names])
+  target_col <- as.numeric(unlist(df[{{target}}]))
 
   lambda <- paste("lambda.",{{lchoice}},sep = "")
   coef <- coef({{fit}}, s=lambda)
   if ({{type}} == "link")
   {
-    predict <- predict({{fit}}, df, s=lambda, type="link")
+    predict <- glmnet::predict.glmnet({{fit}}, features, s=lambda, type="link")
   }
   else{
-    predict <- predict({{fit}}, df, s=lambda)
+    predict <- glmnet::predict.glmnet({{fit}}, features, s=lambda)
   }
   return(list(coef,predict))
 }

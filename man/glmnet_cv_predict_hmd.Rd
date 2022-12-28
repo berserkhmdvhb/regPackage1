@@ -7,6 +7,7 @@
 glmnet_cv_predict_hmd(
   fit,
   data = regPackage1::insurance_test,
+  target = "outcome",
   lchoice = "min",
   type = "link"
 )
@@ -15,6 +16,8 @@ glmnet_cv_predict_hmd(
 \item{fit}{fit object from a cv.glmnet model}
 
 \item{data}{An arbitrary dataframe}
+
+\item{target}{Target column in the data}
 
 \item{lchoice}{how to choose lambda model. Choices are "min", "1se".}
 

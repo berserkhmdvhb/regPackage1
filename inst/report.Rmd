@@ -1,5 +1,5 @@
 ---
-title: "Car Insurance Claims Dataset Classification - Report"
+title: "Car Insurance Claims Classification Report"
 author: "Hamed Vaheb"
 #1date: "09 Jan 2021"
 output:

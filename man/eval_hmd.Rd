@@ -4,14 +4,12 @@
 \alias{eval_hmd}
 \title{Evaluation Metrics Computed}
 \usage{
-eval_hmd(actual, predicted, predict_proba)
+eval_hmd(actual, predicted)
 }
 \arguments{
 \item{actual}{The actual data (usually obtained from test data)}
 
-\item{predicted}{Predictions from an arbitrary model}
-
-\item{predict_proba}{Prediction probablities from a classification model (e.g. logistic regression)
+\item{predicted}{Predictions from an arbitrary model
 except the target}
 }
 \value{

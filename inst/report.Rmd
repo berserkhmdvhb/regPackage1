@@ -373,6 +373,7 @@ fit$aic
 **cross validated GLMNET**
 
 
+**min**
 ```{r}
 fit <- glmnet_cv_fit_hmd(insurance_train, target="outcome", family="binomial")
 h <- glmnet_cv_predict_hmd(fit, 
@@ -381,20 +382,22 @@ h <- glmnet_cv_predict_hmd(fit,
                            lchoice = "min", 
                            type = "response")
 coef = h$coef
-pred_glm_cv <- h$predictions
-pred_proba_glm_cv <- h$predict_proba
+pred_glm_cv_min <- h$predictions
+pred_proba_glm_cv_min <- h$predict_proba
 ```
 
 ```{r}
 summary(fit)    
 ```
 
+
+
 ```{r}
 coef
 ```
 
 ```{r}
-head(pred_glm_cv)
+head(pred_glm_cv_min)
 ```
 
 Extract AIC and BIC from the fit of glm
@@ -403,78 +406,151 @@ Extract AIC and BIC from the fit of glm
 glmnet_cv_aic_hmd(fit, lchoice = "min")
 
 ```
+
+
+
+
+
+**1SE**
+
+```{r}
+fit <- glmnet_cv_fit_hmd(insurance_train, target="outcome", family="binomial")
+h <- glmnet_cv_predict_hmd(fit, 
+                           data = insurance_test, 
+                           target = "outcome", 
+                           lchoice = "1se", 
+                           type = "response")
+coef = h$coef
+pred_glm_cv_1se <- h$predictions
+pred_proba_glm_cv_1se <- h$predict_proba
+```
+
+```{r}
+summary(fit)    
+```
+
+
+```{r}
+coef
+```
+
+```{r}
+head(pred_glm_cv_1se)
+```
+
+Extract AIC and BIC from the fit of glm
+```{r}
+
+glmnet_cv_aic_hmd(fit, lchoice = "1se")
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Evaluate
 
 
 **GLMNET**
 
 
-Confusion Matrix
-
-
 ```{r}
-cf_glmnet <- caret::confusionMatrix(data = as.factor(pred_glm), reference = as.factor(actual))
-cf_glmnet
-```
-
-
-```{r}
-acc_glmnet <- Metrics::accuracy(pred_glm,actual)
-acc_glmnet
-```
-
-
-```{r}
-prec_glmnet <- Metrics::precision(pred_glm, actual)
-prec_glmnet
-```
-
-
-```{r}
-rec_glmnet <- Metrics::recall(pred_glm, actual)
-rec_glmnet
+eval <- eval_hmd(actual, pred_glm)
 ```
 
 ```{r}
-f1_glmnet <- Metrics::f1(pred_glm, actual)
-f1_glmnet
+print("confusion matrix: ")
+print(eval$confusion_matrix)
 ```
 
+```{r}
+print("accuracy: ")
+print(eval$accuracy)
+print("precision: ")
+print(eval$precision)
+print("recall: ")
+print(eval$recall)
+print("f1_score")
+print(eval$f1_score)
+print("fbeta_score")
+print(eval$fbeta_score)
+```
 
+```{r}
+pROC::roc(actual ~ pred_proba_glm, plot = TRUE, print.auc = TRUE)
+```
 
 **GLMNET CV**
 
-
+**min**
 Confusion Matrix
 
 
-```{r}
-cf_glmnet_cv <- caret::confusionMatrix(data = as.factor(pred_glm_cv), reference = as.factor(actual))
-cf_glmnet_cv
-```
-
 
 ```{r}
-acc_glmnet_cv <- Metrics::accuracy(pred_glm_cv, actual)
-acc_glmnet_cv
-```
-
-
-```{r}
-prec_glmnet_cv <- Metrics::precision(pred_glm_cv, actual)
-prec_glmnet_cv
-```
-
-
-```{r}
-rec_glmnet_cv <- Metrics::recall(pred_glm_cv, actual)
-rec_glmnet_cv
+eval <- eval_hmd(actual, pred_glm_cv_min)
 ```
 
 ```{r}
-f1_glmnet_cv <- Metrics::f1(pred_glm_cv, actual)
-f1_glmnet_cv
+print("confusion matrix: ")
+print(eval$confusion_matrix)
+```
+
+```{r}
+print("accuracy: ")
+print(eval$accuracy)
+print("precision: ")
+print(eval$precision)
+print("recall: ")
+print(eval$recall)
+print("f1_score")
+print(eval$f1_score)
+print("fbeta_score")
+print(eval$fbeta_score)
+```
+
+```{r}
+pROC::roc(actual ~ pred_proba_glm_cv_min, plot = TRUE, print.auc = TRUE)
 ```
 
 
+**1se**
 
+
+```{r}
+eval <- eval_hmd(actual, pred_glm_cv_1se)
+```
+
+```{r}
+print("confusion matrix: ")
+print(eval$confusion_matrix)
+```
+
+```{r}
+print("accuracy: ")
+print(eval$accuracy)
+print("precision: ")
+print(eval$precision)
+print("recall: ")
+print(eval$recall)
+print("f1_score")
+print(eval$f1_score)
+print("fbeta_score")
+print(eval$fbeta_score)
+```
+
+```{r}
+pROC::roc(actual ~ pred_proba_glm_cv_1se, plot = TRUE, print.auc = TRUE)
+```

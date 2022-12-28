@@ -6,6 +6,6 @@
 #' Plot an added-variable plot of the dependent variable and one independent
 #' variable from a multiple regression.
 
-glm_plot_hmd <- function(fit){
+glmnet_plot_hmd <- function(fit){
   return(car::avPlots({{fit}}))
 }

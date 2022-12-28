@@ -352,6 +352,7 @@ pred_glm <- h$predictions
 pred_proba_glm <- h$predict_proba
 ```
 
+
 ```{r}
 summary(fit)    
 ```
@@ -369,6 +370,14 @@ Extract AIC and BIC from the fit of glm
 fit$aic
 ```
 
+
+
+
+avplot of results
+
+```{r}
+glmnet_plot_hmd(fit)
+```
 
 **cross validated GLMNET**
 

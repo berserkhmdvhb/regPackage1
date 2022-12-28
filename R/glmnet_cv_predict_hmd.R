@@ -37,10 +37,10 @@ glmnet_cv_predict_hmd <- function(fit,
   coef <- coef({{fit}}, s=lambda)
   if ({{type}} == "link")
   {
-    predict <- glmnet::predict.glmnet({{fit}}, features, s=lambda, type="link")
+    predict <- predict({{fit}}, features, s=lambda, type="link")
   }
   else{
-    predict <- glmnet::predict.glmnet({{fit}}, features, s=lambda)
+    predict <- predict({{fit}}, features, s=lambda)
   }
   return(list(coef,predict))
 }

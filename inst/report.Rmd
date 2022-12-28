@@ -225,7 +225,11 @@ print(paste("test data has", nrow(test), "rows and", ncol(test), "columns"))
 #X <- df_enc[, colnames(df_enc)[colnames(df_enc) != #'outcome']]
 #y <- df_enc[['outcome']]
 
-train_racog <- racog(train, numInstances = 3000, burnin = 100, lag = 20, classAttr = "outcome")
+#train_racog <- racog(train, 
+#                     numInstances = 3000, 
+#                     burnin = 100, 
+#                     lag = 20, 
+#                     classAttr = "outcome")
 ```
 
 
@@ -235,7 +239,7 @@ train_racog <- racog(train, numInstances = 3000, burnin = 100, lag = 20, classAt
 Merge new sampled data with original train dataset
 
 ```{r}
-insurance_train <- rbind(train , train_racog)
+#insurance_train <- rbind(train , train_racog)
 ```
  
 
@@ -249,8 +253,8 @@ Save the processed dataframe to memory:
 ```{r}
 path = "/home/hamed/Documents/R/regPackage1/inst/"
 file_name = "insurance_train.csv"
-readr::write_csv(insurance_train, 
-                 file = paste(path,file_name,sep=""))
+#readr::write_csv(insurance_train, 
+#                 file = #paste(path,file_name,sep=""))
 ```
 
 
@@ -263,7 +267,7 @@ insurance_train <- readr::read_csv(paste(path,file_name,sep=""))
 Do the same for test data
 
 ```{r}
-insurance_test <- test
+#insurance_test <- test
 path = "/home/hamed/Documents/R/regPackage1/inst/"
 file_name = "insurance_test.csv"
 readr::write_csv(insurance_test, 
@@ -288,8 +292,8 @@ table(insurance_train$outcome)
 we need to also remove the id of the beneficiaries as it will bias the learning towards this and may cause data leakage for test datasets with the same id
 
 ```{r}
-insurance_train <- within(insurance_train, rm(id))
-insurance_test <- within(insurance_test, rm(id))
+insurance_train <- within(insurance_train, rm("id"))
+insurance_test <- within(insurance_test, rm("id"))
 ```
 
 

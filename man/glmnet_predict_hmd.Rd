@@ -2,7 +2,7 @@
 % Please edit documentation in R/glmnet_predict_hmd.R
 \name{glmnet_predict_hmd}
 \alias{glmnet_predict_hmd}
-\title{Predict data with results from CV GLMNET model}
+\title{Predict data with results from GLMNET model}
 \usage{
 glmnet_predict_hmd(
   fit,
@@ -26,7 +26,7 @@ Type "response" gi}
 Returns fit object of glmnet function
 }
 \description{
-Predict data with results from CV GLMNET model
+Predict data with results from GLMNET model
 }
 \details{
 This functions allows the user to perform cross-validated eslastic net (which

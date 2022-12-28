@@ -39,14 +39,15 @@ glmnet_cv_predict_hmd <- function(fit,
   coef <- coef({{fit}}, s=lambda)
   if ({{type}} == "response")
   {
-    predict_reg <- stats::predict({{fit}}, features, s=lambda, type="response")
+    predict_proba <- stats::predict({{fit}}, features, s=lambda, type="response")
   }
   else{
-    predict_reg <- stats::predict({{fit}}, features, s=lambda)
+    predict_proba <- stats::predict({{fit}}, features, s=lambda)
   }
-  predict <- ifelse(predict_reg >0.5, 1, 0)
+  predict <- ifelse(predict_proba >0.5, 1, 0)
   h <- hash::hash()
   h[["coef"]] <- coef
+  h[["predict_proba"]] <- predict_proba
   h[["predictions"]] <- predict
   return(h)
 }

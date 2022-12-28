@@ -1,4 +1,4 @@
-#' Predict data with results from CV GLMNET model
+#' Predict data with results from GLMNET model
 #' @param fit fit object from a cv.glmnet model
 #' @param data An arbitrary dataframe
 #' @param target An arbitrary dataframe
@@ -34,14 +34,15 @@ glmnet_predict_hmd <- function(fit,
   coef <- coef({{fit}})
   if ({{type}} == "response")
   {
-    predict_reg <- stats::predict({{fit}}, features, type="response")
+    predict_proba <- stats::predict({{fit}}, features, type="response")
   }
   else{
-    predict_reg <- stats::predict({{fit}}, features)
+    predict_proba <- stats::predict({{fit}}, features)
   }
-  predict <- ifelse(predict_reg >0.5, 1, 0)
+  predict <- ifelse(predict_proba >0.5, 1, 0)
   h <- hash::hash()
   h[["coef"]] <- coef
+  h[["predict_proba"]] <- predict_proba
   h[["predictions"]] <- predict
   return(h)
 }

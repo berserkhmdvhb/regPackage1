@@ -2,7 +2,7 @@
 % Please edit documentation in R/preprocess_hmd.R
 \name{preprocess_hmd}
 \alias{preprocess_hmd}
-\title{Prepare dataframe to be fed into models}
+\title{Wrapper of all preprocessing functions and tasks}
 \usage{
 preprocess_hmd(data = regPackage1::car_insurance_data)
 }
@@ -13,7 +13,7 @@ preprocess_hmd(data = regPackage1::car_insurance_data)
 Returns cleaned dataframe ready to be fed into models
 }
 \description{
-Prepare dataframe to be fed into models
+Wrapper of all preprocessing functions and tasks
 }
 \details{
 This function is a wrapper around all functions defined in the preprocessing stage.

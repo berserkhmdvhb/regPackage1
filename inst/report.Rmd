@@ -299,7 +299,10 @@ glimpse(insurance_train)
 ```{r}
 glimpse(insurance_test)
 ```
-
+```{r}
+insurance_train$outcome <- as.factor(insurance_train$outcome)
+insurance_test$outcome <- as.factor(insurance_test$outcome)
+```
 
 ```{r}
 table(insurance_train$outcome)
@@ -346,10 +349,14 @@ fit <- glmnet_fit_hmd(insurance_train, target="outcome", family="binomial")
 h <- glmnet_predict_hmd(fit, 
                         data = insurance_test,  
                         target = "outcome", 
-                        type = "link")
+                        type = "response")
 coef = h$coef
 pred_glm <- h$predictions
+pred_proba_glm <- h$predict_proba
+```
 
+```{r}
+summary(fit)    
 ```
 
 ```{r}
@@ -375,9 +382,14 @@ h <- glmnet_cv_predict_hmd(fit,
                            data = insurance_test, 
                            target = "outcome", 
                            lchoice = "min", 
-                           type = "link")
+                           type = "response")
 coef = h$coef
 pred_glm_cv <- h$predictions
+pred_proba_glm_cv <- h$predict_proba
+```
+
+```{r}
+summary(fit)    
 ```
 
 ```{r}
@@ -408,7 +420,7 @@ cf_glmnet
 
 
 ```{r}
-acc_glmnet <- Metrics::accuracy(pred_glm, actual)
+acc_glmnet <- Metrics::accuracy(as.factor(pred_glm), as.factor(actual))
 acc_glmnet
 ```
 

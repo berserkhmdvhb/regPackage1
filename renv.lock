@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.2.2",
+    "Version": "4.1.2",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -103,6 +103,24 @@
         "lattice"
       ]
     },
+    "MatrixModels": {
+      "Package": "MatrixModels",
+      "Version": "0.5-1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "963ab8fbaf980a5b081ed40419081439",
+      "Requirements": [
+        "Matrix"
+      ]
+    },
+    "Metrics": {
+      "Package": "Metrics",
+      "Version": "0.1.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "1fdc9b3adfe2e2f8f77c22a59cf322ec",
+      "Requirements": []
+    },
     "ModelMetrics": {
       "Package": "ModelMetrics",
       "Version": "1.2.2.2",
@@ -148,12 +166,39 @@
         "Rcpp"
       ]
     },
+    "RcppEigen": {
+      "Package": "RcppEigen",
+      "Version": "0.3.3.9.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "1e035db628cefb315c571202d70202fe",
+      "Requirements": [
+        "Matrix",
+        "Rcpp"
+      ]
+    },
     "SQUAREM": {
       "Package": "SQUAREM",
       "Version": "2021.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "0cf10dab0d023d5b46a5a14387556891",
+      "Requirements": []
+    },
+    "SparseM": {
+      "Package": "SparseM",
+      "Version": "1.81",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "2042cd9759cc89a453c4aefef0ce9aae",
+      "Requirements": []
+    },
+    "abind": {
+      "Package": "abind",
+      "Version": "1.4-5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "4f57884290cc75ab22f4af9e9d4ca862",
       "Requirements": []
     },
     "backports": {
@@ -196,6 +241,14 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "7ff9748dcf18dcf54802e12b553cecb4",
+      "Requirements": []
+    },
+    "boot": {
+      "Package": "boot",
+      "Version": "1.3-28.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "9a052fbcbe97a98ceb18dbfd30ebd96e",
       "Requirements": []
     },
     "brio": {
@@ -264,6 +317,33 @@
         "R6",
         "processx"
       ]
+    },
+    "car": {
+      "Package": "car",
+      "Version": "3.1-1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0bd175a135f51af0545d4ed4f5632026",
+      "Requirements": [
+        "MASS",
+        "abind",
+        "carData",
+        "lme4",
+        "mgcv",
+        "nlme",
+        "nnet",
+        "pbkrtest",
+        "quantreg",
+        "scales"
+      ]
+    },
+    "carData": {
+      "Package": "carData",
+      "Version": "3.0-5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "ac6cdb8552c61bd36b0e54d07cf2aab7",
+      "Requirements": []
     },
     "caret": {
       "Package": "caret",
@@ -596,6 +676,21 @@
         "withr"
       ]
     },
+    "glmnet": {
+      "Package": "glmnet",
+      "Version": "4.1-6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "1366be00d5883779604df7e5e0811c32",
+      "Requirements": [
+        "Matrix",
+        "Rcpp",
+        "RcppEigen",
+        "foreach",
+        "shape",
+        "survival"
+      ]
+    },
     "globals": {
       "Package": "globals",
       "Version": "0.16.2",
@@ -903,6 +998,24 @@
       "Hash": "4fbd3679ec8ee169ba28d4b1ea7d0e8f",
       "Requirements": []
     },
+    "lme4": {
+      "Package": "lme4",
+      "Version": "1.1-31",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "67581bdc21e3d5e6881cf47c0c3113eb",
+      "Requirements": [
+        "MASS",
+        "Matrix",
+        "Rcpp",
+        "RcppEigen",
+        "boot",
+        "lattice",
+        "minqa",
+        "nlme",
+        "nloptr"
+      ]
+    },
     "lubridate": {
       "Package": "lubridate",
       "Version": "1.9.0",
@@ -951,6 +1064,16 @@
       "Repository": "CRAN",
       "Hash": "18e9c28c1d3ca1560ce30658b22ce104",
       "Requirements": []
+    },
+    "minqa": {
+      "Package": "minqa",
+      "Version": "1.2.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "587ce77fd3c7bada7eadb2d18b62930d",
+      "Requirements": [
+        "Rcpp"
+      ]
     },
     "modeldata": {
       "Package": "modeldata",
@@ -1005,6 +1128,16 @@
       "Hash": "b49e163093c0ef46fbbfc40bcb87916c",
       "Requirements": [
         "lattice"
+      ]
+    },
+    "nloptr": {
+      "Package": "nloptr",
+      "Version": "2.0.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "277c67a08f358f42b6a77826e4492f79",
+      "Requirements": [
+        "testthat"
       ]
     },
     "nnet": {
@@ -1092,6 +1225,23 @@
       "Requirements": [
         "ggplot2",
         "gtable"
+      ]
+    },
+    "pbkrtest": {
+      "Package": "pbkrtest",
+      "Version": "0.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b304ff5955f37b48bd30518faf582929",
+      "Requirements": [
+        "MASS",
+        "Matrix",
+        "broom",
+        "dplyr",
+        "knitr",
+        "lme4",
+        "magrittr",
+        "numDeriv"
       ]
     },
     "pillar": {
@@ -1236,6 +1386,20 @@
         "magrittr",
         "rlang",
         "vctrs"
+      ]
+    },
+    "quantreg": {
+      "Package": "quantreg",
+      "Version": "5.94",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "b8b2b861526c344a7e16e5991fa5a4ab",
+      "Requirements": [
+        "MASS",
+        "Matrix",
+        "MatrixModels",
+        "SparseM",
+        "survival"
       ]
     },
     "rappdirs": {
@@ -1428,6 +1592,14 @@
         "rlang",
         "viridisLite"
       ]
+    },
+    "shape": {
+      "Package": "shape",
+      "Version": "1.4.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "9067f962730f58b14d8ae54ca885509f",
+      "Requirements": []
     },
     "slider": {
       "Package": "slider",

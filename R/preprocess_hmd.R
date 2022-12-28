@@ -1,4 +1,4 @@
-#' Prepare dataframe to be fed into models
+#' Wrapper of all preprocessing functions and tasks
 #' @param data An arbitrary dataframe
 #' @export
 #' @return Returns cleaned dataframe ready to be fed into models

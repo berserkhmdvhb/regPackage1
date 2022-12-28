@@ -22,10 +22,11 @@ glmnet_cv_predict_hmd <- function(fit,
                                   lchoice="min",
                                   type="link"
                           ){
-  features_names=names({{data}})[names({{data}}) != {{target}}]
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
   }
+  features_names=names({{data}})[names({{data}}) != {{target}}]
+
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
   # extract feature names either from input or dataframe
@@ -37,10 +38,10 @@ glmnet_cv_predict_hmd <- function(fit,
   coef <- coef({{fit}}, s=lambda)
   if ({{type}} == "link")
   {
-    predict <- predict({{fit}}, features, s=lambda, type="link")
+    predict <- stats::predict({{fit}}, features, s=lambda, type="link")
   }
   else{
-    predict <- predict({{fit}}, features, s=lambda)
+    predict <- stats::predict({{fit}}, features, s=lambda)
   }
   return(list(coef,predict))
 }

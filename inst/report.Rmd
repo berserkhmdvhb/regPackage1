@@ -375,7 +375,7 @@ fit$aic
 
 avplot of results
 
-```{r}
+```{r warning=FALSE}
 glmnet_plot_hmd(fit)
 ```
 
@@ -393,6 +393,10 @@ h <- glmnet_cv_predict_hmd(fit,
 coef = h$coef
 pred_glm_cv_min <- h$predictions
 pred_proba_glm_cv_min <- h$predict_proba
+```
+
+```{r warning=FALSE}
+glmnet_cv_plot_hmd(fit)
 ```
 
 ```{r}

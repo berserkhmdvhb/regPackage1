@@ -54,7 +54,7 @@ To provide a test case on a dataset with discrete target variable, I used the th
 The dataset is embedded in the package, therefore by simply running the following commands one can load and display the dataset.
 . It can be used by the following syntax:
 
-`data(car_insurance_data)`
+`data("car_insurance_data")`
 
 
 
@@ -251,8 +251,8 @@ Save the processed dataframe to memory:
 
 
 ```{r}
-path = "/home/hamed/Documents/R/regPackage1/inst/"
-file_name = "insurance_train.csv"
+#path = "/home/hamed/Documents/R/regPackage1/inst/"
+#file_name = "insurance_train.csv"
 #readr::write_csv(insurance_train, 
 #                 file = #paste(path,file_name,sep=""))
 ```
@@ -261,20 +261,35 @@ file_name = "insurance_train.csv"
 Load back the processed data
 
 ```{r}
-insurance_train <- readr::read_csv(paste(path,file_name,sep=""))
+#insurance_train <- #readr::read_csv(paste(path,file_name,sep=""))
 ```
 
 Do the same for test data
 
 ```{r}
 #insurance_test <- test
-path = "/home/hamed/Documents/R/regPackage1/inst/"
-file_name = "insurance_test.csv"
+#path = "/home/hamed/Documents/R/regPackage1/inst/"
+#file_name = "insurance_test.csv"
 #readr::write_csv(insurance_test, 
 #                 file = paste(path,file_name,sep=""))
                    
-insurance_test <- readr::read_csv(paste(path,file_name,sep=""))
+#insurance_test <- #readr::read_csv(paste(path,file_name,sep=""))
 ```
+
+
+we need to also remove the id of the beneficiaries as it will bias the learning towards this and may cause data leakage for test datasets with the same id
+
+```{r}
+#insurance_train <- within(insurance_train, rm("id"))
+#insurance_test <- within(insurance_test, rm("id"))
+```
+
+```{r}
+data("insurance_train")
+data("insurance_test")
+```
+
+
 
 ```{r}
 glimpse(insurance_train)
@@ -289,12 +304,7 @@ glimpse(insurance_test)
 table(insurance_train$outcome)
 ```
 
-we need to also remove the id of the beneficiaries as it will bias the learning towards this and may cause data leakage for test datasets with the same id
 
-```{r}
-insurance_train <- within(insurance_train, rm("id"))
-insurance_test <- within(insurance_test, rm("id"))
-```
 
 
 
@@ -319,3 +329,9 @@ Data Visualisation
 #insurance_train |> ggplot(aes(x = credit_score, y = #speeding_violations)) +
 #  geom_point(color = outcome)
 ```
+
+# Classification Models
+
+## Generalized Linear Models
+
+Logistic Regression

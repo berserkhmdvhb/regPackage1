@@ -551,6 +551,10 @@ pre code {
 <li><a href="#normalize"><span class="toc-section-number">3.6</span> Normalize</a></li>
 <li><a href="#oversampling"><span class="toc-section-number">3.7</span> Oversampling</a></li>
 </ul></li>
+<li><a href="#classification-models"><span class="toc-section-number">4</span> Classification Models</a>
+<ul>
+<li><a href="#generalized-linear-models"><span class="toc-section-number">4.1</span> Generalized Linear Models</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -569,7 +573,7 @@ pre code {
 <h1><span class="header-section-number">2</span> Load Dataset</h1>
 <p>To provide a test case on a dataset with discrete target variable, I used the the <a href="https://www.kaggle.com/datasets/sagnik1511/car-insurance-data">car insurance data</a>.</p>
 <p>The dataset is embedded in the package, therefore by simply running the following commands one can load and display the dataset. . It can be used by the following syntax:</p>
-<p><code>data(car_insurance_data)</code></p>
+<p><code>data(&quot;car_insurance_data&quot;)</code></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(car_insurance_data)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(car_insurance_data)</span></code></pre></div>
@@ -842,38 +846,28 @@ pre code {
 <p>Merge new sampled data with original train dataset</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_train &lt;- rbind(train , train_racog)</span></span></code></pre></div>
 <p>Save the processed dataframe to memory:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">=</span> <span class="st">&quot;/home/hamed/Documents/R/regPackage1/inst/&quot;</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="ot">=</span> <span class="st">&quot;insurance_train.csv&quot;</span></span>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#path = &quot;/home/hamed/Documents/R/regPackage1/inst/&quot;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co">#file_name = &quot;insurance_train.csv&quot;</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co">#readr::write_csv(insurance_train, </span></span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">#                 file = #paste(path,file_name,sep=&quot;&quot;))</span></span></code></pre></div>
 <p>Load back the processed data</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>insurance_train <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">paste</span>(path,file_name,<span class="at">sep=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
-<pre><code>## Rows: 11000 Columns: 34
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## dbl (34): id, age.16.25, age.26.39, age.40.64, age.65., gender.female, gende...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_train &lt;- #readr::read_csv(paste(path,file_name,sep=&quot;&quot;))</span></span></code></pre></div>
 <p>Do the same for test data</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_test &lt;- test</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>path <span class="ot">=</span> <span class="st">&quot;/home/hamed/Documents/R/regPackage1/inst/&quot;</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>file_name <span class="ot">=</span> <span class="st">&quot;insurance_test.csv&quot;</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#readr::write_csv(insurance_test, </span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                 file = paste(path,file_name,sep=&quot;&quot;))</span></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>                   </span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>insurance_test <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">paste</span>(path,file_name,<span class="at">sep=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
-<pre><code>## Rows: 2000 Columns: 34
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## dbl (34): id, age.16.25, age.26.39, age.40.64, age.65., gender.female, gende...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_test &lt;- test</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">#path = &quot;/home/hamed/Documents/R/regPackage1/inst/&quot;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">#file_name = &quot;insurance_test.csv&quot;</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">#readr::write_csv(insurance_test, </span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                 file = paste(path,file_name,sep=&quot;&quot;))</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>                   </span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_test &lt;- #readr::read_csv(paste(path,file_name,sep=&quot;&quot;))</span></span></code></pre></div>
+<p>we need to also remove the id of the beneficiaries as it will bias the learning towards this and may cause data leakage for test datasets with the same id</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_train &lt;- within(insurance_train, rm(&quot;id&quot;))</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_test &lt;- within(insurance_test, rm(&quot;id&quot;))</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;insurance_train&quot;</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;insurance_test&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(insurance_train)</span></code></pre></div>
 <pre><code>## Rows: 11,000
-## Columns: 34
-## $ id                        &lt;dbl&gt; 96421, 594430, 243937, 314395, 856856, 65827…
+## Columns: 33
 ## $ age.16.25                 &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1,…
 ## $ age.26.39                 &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0,…
 ## $ age.40.64                 &lt;dbl&gt; 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
@@ -909,8 +903,7 @@ pre code {
 ## $ outcome                   &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,…</code></pre>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(insurance_test)</span></code></pre></div>
 <pre><code>## Rows: 2,000
-## Columns: 34
-## $ id                        &lt;dbl&gt; 877557, 275820, 521399, 429728, 906223, 5177…
+## Columns: 33
 ## $ age.16.25                 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,…
 ## $ age.26.39                 &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,…
 ## $ age.40.64                 &lt;dbl&gt; 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1,…
@@ -948,16 +941,20 @@ pre code {
 <pre><code>## 
 ##    0    1 
 ## 5484 5516</code></pre>
-<p>we need to also remove the id of the beneficiaries as it will bias the learning towards this and may cause data leakage for test datasets with the same id</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>insurance_train <span class="ot">&lt;-</span> <span class="fu">within</span>(insurance_train, <span class="fu">rm</span>(<span class="st">&quot;id&quot;</span>))</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>insurance_test <span class="ot">&lt;-</span> <span class="fu">within</span>(insurance_test, <span class="fu">rm</span>(<span class="st">&quot;id&quot;</span>))</span></code></pre></div>
 <p>I added a <code>preprocess_hmd</code> function in package that is a wrapper around all the steps and functions from the <a href="#preprocess">preprocessing section</a> section. Therefore, simply by writing the following syntax, the final <code>insurance_train</code> and <code>insurance_tetst</code> datasets can be obtained from the original <code>car_insurance_data</code>:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#h &lt;- preprocess_hmd(car_insurance_data)</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_train &lt;- h$insurance_train</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_test &lt;- h$insurance_test</span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#h &lt;- preprocess_hmd(car_insurance_data)</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_train &lt;- h$insurance_train</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_test &lt;- h$insurance_test</span></span></code></pre></div>
 <p>Data Visualisation</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_train |&gt; ggplot(aes(x = credit_score, y = #speeding_violations)) +</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_point(color = outcome)</span></span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_train |&gt; ggplot(aes(x = credit_score, y = #speeding_violations)) +</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_point(color = outcome)</span></span></code></pre></div>
+</div>
+</div>
+<div id="classification-models" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Classification Models</h1>
+<div id="generalized-linear-models" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Generalized Linear Models</h2>
+<p>Logistic Regression</p>
 </div>
 </div>
 

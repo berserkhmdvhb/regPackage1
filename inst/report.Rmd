@@ -334,4 +334,23 @@ Data Visualisation
 
 ## Generalized Linear Models
 
-Logistic Regression
+**GLMNET**
+
+```{r}
+fit <- glmnet_fit_hmd(insurance_train, target="outcome", family="binomial")
+
+```
+
+**cross validation GLMNET**
+
+
+```{r}
+fit <- glmnet_cv_fit_hmd(insurance_train, target="outcome", family="binomial")
+h <- glmnet_cv_predict_hmd(fit, 
+                           data = insurance_test, 
+                           target = "outcome", 
+                           lchoice = "min", 
+                           type = "link")
+coef = h$coef
+test_pred <- h$predictions
+```

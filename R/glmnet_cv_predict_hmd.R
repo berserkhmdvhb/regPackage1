@@ -43,5 +43,8 @@ glmnet_cv_predict_hmd <- function(fit,
   else{
     predict <- stats::predict({{fit}}, features, s=lambda)
   }
-  return(list(coef,predict))
+  h <- hash::hash()
+  h[["coef"]] <- coef
+  h[["predictions"]] <- predict
+  return(h)
 }

@@ -12,24 +12,22 @@
 eval_hmd <- function(actual,
                     predicted,
                     predict_proba){
-
-  y_actual <- as.factor({{actual}})
-  y_predicted <- as.factor({{predicted}})
-  cm <- caret::confusionMatrix(data = y_predicted, reference = as.factor(y_actual))
+  y_predicted <- {{predicted}}
+  y_actual <- {{actual}}
+  cm <- caret::confusionMatrix(data = as.factor(y_predicted), reference = as.factor(y_actual))
   acc <- Metrics::accuracy(y_predicted, y_actual)
   prec <- Metrics::precision(y_predicted, y_actual)
   rec <- Metrics::recall(y_predicted, y_actual)
   f1 <- Metrics::f1(y_predicted, y_actual)
   fb <- Metrics::fbeta_score(y_predicted, y_actual)
-
+  roc_obj <- pROC::roc(y_actual ~ {{predict_proba}}, plot = TRUE, print.auc = TRUE)
   h <- hash::hash()
   h[["accuracy"]] <- acc
   h[["precision"]] <- prec
   h[["recall"]] <- rec
   h[["f1_score"]] <- f1
   h[["fbeta_score"]] <- fb
-
-
+  h[["roc"]] <- roc_obj
   return(h)
 }
 

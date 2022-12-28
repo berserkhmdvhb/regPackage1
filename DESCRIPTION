@@ -18,7 +18,8 @@ Imports:
     hash,
     caret,
     glmnet,
-    car
+    car,
+    pROC
 Suggests: 
     knitr,
     rmarkdown,

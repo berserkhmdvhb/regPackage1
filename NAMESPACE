@@ -2,7 +2,8 @@
 
 export(categoricals_hmd)
 export(categoricals_print_hmd)
-export(glmnet_cv_hmd)
+export(glmnet_cv_fit_hmd)
+export(glmnet_cv_predict_hmd)
 export(impute_median_hmd)
 export(normalizer_hmd)
 export(preprocess_hmd)

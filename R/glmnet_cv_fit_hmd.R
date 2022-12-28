@@ -1,6 +1,5 @@
 #' CV GLMNET model
 #' @param data An arbitrary dataframe
-#' @param features_names Name of features. If not specified, takes all columns
 #' except the target
 #' @param target The target variable aimed for prediction
 #' @param family specify family of distribution.
@@ -12,46 +11,23 @@
 #' dataframe by specifying feature names (response variables),
 #' target variable, family of distribution, and the dataset (in my case, Medical Cost Personal Datasets)
 
-glmnet_cv_hmd <- function(data=regPackage1::car_insurance_data,
-                          features_names=names({{data}})[names({{data}}) != {{target}}],
+glmnet_cv_fit_hmd <- function(data=regPackage1::insurance_train,
                           target="outcome",
                           family="binomial"){
   # ensure dataframe is not empty
-  features_names_main <- {{features_names}}
+  features_names <- names({{data}})[names({{data}}) != {{target}}]
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
   }
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
   # extract feature names either from input or dataframe
-  if (!(typeof(features_names) %in% c("list","character")))
-  {
-    warning("Please input cat_cols as either character type,
-            e.g. c(col1,col2,...) or list type list(col1,col2,...)")
-    features_names_main <- names(df)[names(df) != {{target}}]
-  }
-  else{
-    if (length(features_names) == 0)
-    {
-      warning("List is empty. All columns except target will be selected")
-      features_names_main <- names(df)[names(df) != {{target}}]
-    }
-    else
-    {
-      if (!(all(features_names_main %in% names(df))))
-      {
-        warning("A feature from your input list cat_cols is not among
-                dataframe columns. All columns will be selected")
-        features_names_main <- names(df)[names(df) != {{target}}]
-      }
-    }
-  }
 
-  features <- data.matrix(df[features_names_main])
+  features <- data.matrix(df[features_names])
   target_col <- as.numeric(unlist(df[{{target}}]))
   fit <- glmnet::cv.glmnet(features,
                            target_col,
                            family={{family}}
-  )
+                           )
   return(fit)
 }

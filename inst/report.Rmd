@@ -26,6 +26,7 @@ library(ggplot2)
 library(imbalance)
 library(readr)
 library(caret) #for dummyVar function
+library(Metrics)
 ```
 # Introduction
 This report is dedicated to project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
@@ -343,9 +344,9 @@ actual <- insurance_test$outcome
 ```{r}
 fit <- glmnet_fit_hmd(insurance_train, target="outcome", family="binomial")
 h <- glmnet_predict_hmd(fit, 
-                           data = insurance_test, 
-                           target = "outcome", 
-                           type = "link")
+                        data = insurance_test,  
+                        target = "outcome", 
+                        type = "link")
 coef = h$coef
 pred <- h$predictions
 

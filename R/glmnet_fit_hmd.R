@@ -15,14 +15,15 @@ glmnet_fit_hmd <- function(data=regPackage1::insurance_train,
                               target="outcome",
                               family="binomial"){
   # ensure dataframe is not empty
-  features_names <- names({{data}})[names({{data}}) != {{target}}]
+
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
   }
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
+  features_names <- names(df)[names(df) != {{target}}]
+  #features <- df[, colnames(df)[colnames(df) != {{target}}]]
   # extract feature names either from input or dataframe
-  target_col <- as.numeric(unlist(df[{{target}}]))
   glm_format <- stats::as.formula(paste({{target}}, "~",
                                         paste(features_names, collapse = "+"),
                                         sep = ""

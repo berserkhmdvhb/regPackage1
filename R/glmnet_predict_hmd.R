@@ -18,8 +18,8 @@
 
 glmnet_predict_hmd <- function(fit,
                                data = regPackage1::insurance_test,
-                               target = "outcome",
-                               type="link"
+                               target ="outcome",
+                               type="response"
                           ){
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
@@ -30,14 +30,14 @@ glmnet_predict_hmd <- function(fit,
   df <- data.frame({{data}})
   # extract feature names either from input or dataframe
 
-  df_test <- df[, colnames(df)[colnames(df) != {{target}}]]
+  features <- df[, colnames(df)[colnames(df) != {{target}}]]
   coef <- coef({{fit}})
   if ({{type}} == "link")
   {
-    predict <- stats::predict({{fit}}, df_test, type="link")
+    predict <- stats::predict({{fit}}, features, type="link")
   }
   else{
-    predict <- stats::predict({{fit}}, df_test)
+    predict <- stats::predict({{fit}}, features)
   }
   h <- hash::hash()
   h[["coef"]] <- coef

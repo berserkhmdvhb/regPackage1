@@ -21,7 +21,7 @@ glmnet_cv_predict_hmd <- function(fit,
                                   data = regPackage1::insurance_test,
                                   target = "outcome",
                                   lchoice="min",
-                                  type="link"
+                                  type="response"
                           ){
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")

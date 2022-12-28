@@ -27,5 +27,6 @@ Suggests:
     imbalance,
     tidymodels,
     ggplot2,
-    readr
+    readr,
+    Metrics
 VignetteBuilder: knitr

@@ -1,7 +1,7 @@
 #' Predict data with results from CV GLMNET model
 #' @param fit fit object from a cv.glmnet model
 #' @param data An arbitrary dataframe
-#' @param lchoice how to choose lambda model. Choices are "min", "1se".
+#' @param target An arbitrary dataframe
 #' @param type Type of prediction required. Type "link" gives the linear predictors
 #' for "binomial" or "multinomial" models; for "gaussian" models it gives the fitted values.
 #' Type "response" gi
@@ -17,10 +17,9 @@
 #' Cost Personal Datasets)
 
 glmnet_predict_hmd <- function(fit,
-                                  data = regPackage1::insurance_test,
-                                  target = "outcome",
-                                  lchoice="min",
-                                  type="link"
+                               data = regPackage1::insurance_test,
+                               target = "outcome",
+                               type="link"
                           ){
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
@@ -31,15 +30,14 @@ glmnet_predict_hmd <- function(fit,
   df <- data.frame({{data}})
   # extract feature names either from input or dataframe
 
-  features <- data.matrix(df[features_names])
-  target_col <- as.numeric(unlist(df[{{target}}]))
+  df_test <- df[, colnames(df)[colnames(df) != {{target}}]]
   coef <- coef({{fit}})
   if ({{type}} == "link")
   {
-    predict <- stats::predict({{fit}}, features, type="link")
+    predict <- stats::predict({{fit}}, df_test, type="link")
   }
   else{
-    predict <- stats::predict({{fit}}, features)
+    predict <- stats::predict({{fit}}, df_test)
   }
   h <- hash::hash()
   h[["coef"]] <- coef

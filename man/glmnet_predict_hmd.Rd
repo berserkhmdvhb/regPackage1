@@ -8,7 +8,6 @@ glmnet_predict_hmd(
   fit,
   data = regPackage1::insurance_test,
   target = "outcome",
-  lchoice = "min",
   type = "link"
 )
 }
@@ -18,8 +17,6 @@ glmnet_predict_hmd(
 \item{data}{An arbitrary dataframe}
 
 \item{target}{Target column in the data}
-
-\item{lchoice}{how to choose lambda model. Choices are "min", "1se".}
 
 \item{type}{Type of prediction required. Type "link" gives the linear predictors
 for "binomial" or "multinomial" models; for "gaussian" models it gives the fitted values.

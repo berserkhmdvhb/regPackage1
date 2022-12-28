@@ -1,6 +1,7 @@
 #' Predict data with results from CV GLMNET model
 #' @param fit fit object from a cv.glmnet model
 #' @param data An arbitrary dataframe
+#' @param target Target column in the data
 #' @param lchoice how to choose lambda model. Choices are "min", "1se".
 #' @param type Type of prediction required. Type "link" gives the linear predictors
 #' for "binomial" or "multinomial" models; for "gaussian" models it gives the fitted values.

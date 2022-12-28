@@ -342,10 +342,9 @@ actual <- insurance_test$outcome
 
 ```{r}
 fit <- glmnet_fit_hmd(insurance_train, target="outcome", family="binomial")
-h <- glmnet_cv_predict_hmd(fit, 
+h <- glmnet_predict_hmd(fit, 
                            data = insurance_test, 
                            target = "outcome", 
-                           lchoice = "min", 
                            type = "link")
 coef = h$coef
 pred <- h$predictions

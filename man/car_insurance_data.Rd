@@ -19,7 +19,7 @@ A data frame with 10000 rows and 19 columns:
   \item{VEHICLE_OWNERSHIP}{Whether the beneficiary owns the vehicle or not.}
   \item{VEHICLE_YEAR}{The year vehicle was built, categorized as: before 2015, after 2015.}
   \item{MARRIED}{Whether the beneficiary is married or not.}
-  \item{CHILDREN}{Whether the beneficiary has children or not}
+  \item{CHILDREN}{Whether the beneficiary has children or not.}
   \item{POSTAL_CODE}{Postal code of the beneficiary.}
   \item{VEHICLE_TYPE}{The type of the vehicle of the beneficiary, categorized as: sedan, sports car.}
   \item{ANNUAL_MILEAGE}{Annual mileage of the vehicle of the beneficiary.}

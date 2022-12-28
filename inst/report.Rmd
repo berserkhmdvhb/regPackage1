@@ -300,6 +300,7 @@ insurance_test <- within(insurance_test, rm("id"))
 
 I added a `preprocess_hmd` function in package that is a wrapper around all the steps and functions from the [preprocessing section](#preprocess)
 section. Therefore, simply by writing the following syntax, the final `insurance_train` and `insurance_tetst` datasets can be obtained from the original `car_insurance_data`:
+
 ```{r}
 #h <- preprocess_hmd(car_insurance_data)
 #insurance_train <- h$insurance_train

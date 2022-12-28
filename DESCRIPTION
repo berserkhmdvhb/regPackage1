@@ -16,7 +16,8 @@ Imports:
     janitor,
     stats,
     hash,
-    caret
+    caret,
+    glmnet
 Suggests: 
     knitr,
     rmarkdown,

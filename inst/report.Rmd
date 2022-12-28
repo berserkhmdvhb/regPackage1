@@ -348,7 +348,7 @@ h <- glmnet_predict_hmd(fit,
                         target = "outcome", 
                         type = "link")
 coef = h$coef
-pred <- h$predictions
+pred_glm <- h$predictions
 
 ```
 
@@ -356,7 +356,14 @@ pred <- h$predictions
 coef
 ```
 
+```{r}
+head(pred_glm)
+```
 
+Extract AIC and BIC from the fit of glm
+```{r}
+fit$aic
+```
 
 
 **cross validated GLMNET**
@@ -369,50 +376,94 @@ h <- glmnet_cv_predict_hmd(fit,
                            target = "outcome", 
                            lchoice = "min", 
                            type = "link")
-coef_cv = h$coef
-pred_cv <- h$predictions
+coef = h$coef
+pred_glm_cv <- h$predictions
 ```
 
+```{r}
+coef
+```
+
+```{r}
+head(pred_glm_cv)
+```
+
+Extract AIC and BIC from the fit of glm
+```{r}
+fit$aic
+```
 ### Evaluate
 
 
 **GLMNET**
 
+
+Confusion Matrix
+
+
 ```{r}
-RMSE_ARMA <- rmse(pred, actual)
-RMSE_ARMA
+cf_glmnet <- caret::confusionMatrix(data = as.factor(pred_glm), reference = as.factor(actual))
+cf_glmnet
 ```
 
 
 ```{r}
-MAE_ARMA <- mae(pred, actual)
-MAE_ARMA
+acc_glmnet <- Metrics::accuracy(pred_glm, actual)
+acc_glmnet
 ```
 
 
 ```{r}
-rsq <- function (x, y) cor(x, y) ^ 2
-RSQ_ARMA <- rsq(pred, actual)
-RSQ_ARMA
+prec_glmnet <- Metrics::precision(pred_glm, actual)
+prec_glmnet
 ```
+
+
+```{r}
+rec_glmnet <- Metrics::recall(pred_glm, actual)
+rec_glmnet
+```
+
+```{r}
+f1_glmnet <- Metrics::f1(pred_glm, actual)
+f1_glmnet
+```
+
+
 
 **GLMNET CV**
 
+
+Confusion Matrix
+
+
 ```{r}
-RMSE_ARMA <- rmse(pred_cv, actual)
-RMSE_ARMA
+cf_glmnet_cv <- caret::confusionMatrix(data = as.factor(pred_glm_cv), reference = as.factor(actual))
+cf_glmnet_cv
 ```
 
 
 ```{r}
-MAE_ARMA <- mae(pred_cv, actual)
-MAE_ARMA
+acc_glmnet_cv <- Metrics::accuracy(pred_glm_cv, actual)
+acc_glmnet_cv
 ```
 
 
 ```{r}
-rsq <- function (x, y) cor(x, y) ^ 2
-RSQ_ARMA <- rsq(pred_cv, actual)
-RSQ_ARMA
+prec_glmnet_cv <- Metrics::precision(pred_glm_cv, actual)
+prec_glmnet_cv
 ```
+
+
+```{r}
+rec_glmnet_cv <- Metrics::recall(pred_glm_cv, actual)
+rec_glmnet_cv
+```
+
+```{r}
+f1_glmnet_cv <- Metrics::f1(pred_glm_cv, actual)
+f1_glmnet_cv
+```
+
+
 

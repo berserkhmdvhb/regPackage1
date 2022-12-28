@@ -8,7 +8,7 @@ glmnet_predict_hmd(
   fit,
   data = regPackage1::insurance_test,
   target = "outcome",
-  type = "link"
+  type = "response"
 )
 }
 \arguments{

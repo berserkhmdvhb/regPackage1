@@ -32,13 +32,14 @@ glmnet_predict_hmd <- function(fit,
 
   features <- df[, colnames(df)[colnames(df) != {{target}}]]
   coef <- coef({{fit}})
-  if ({{type}} == "link")
+  if ({{type}} == "response")
   {
-    predict <- stats::predict({{fit}}, features, type="link")
+    predict_reg <- stats::predict({{fit}}, features, type="response")
   }
   else{
-    predict <- stats::predict({{fit}}, features)
+    predict_reg <- stats::predict({{fit}}, features)
   }
+  predict <- ifelse(predict_reg >0.5, 1, 0)
   h <- hash::hash()
   h[["coef"]] <- coef
   h[["predictions"]] <- predict

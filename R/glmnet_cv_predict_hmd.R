@@ -37,13 +37,14 @@ glmnet_cv_predict_hmd <- function(fit,
 
   lambda <- paste("lambda.",{{lchoice}},sep = "")
   coef <- coef({{fit}}, s=lambda)
-  if ({{type}} == "link")
+  if ({{type}} == "response")
   {
-    predict <- stats::predict({{fit}}, features, s=lambda, type="link")
+    predict_reg <- stats::predict({{fit}}, features, s=lambda, type="response")
   }
   else{
-    predict <- stats::predict({{fit}}, features, s=lambda)
+    predict_reg <- stats::predict({{fit}}, features, s=lambda)
   }
+  predict <- ifelse(predict_reg >0.5, 1, 0)
   h <- hash::hash()
   h[["coef"]] <- coef
   h[["predictions"]] <- predict

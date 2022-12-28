@@ -75,7 +75,7 @@ summary(car_insurance_data)
 
 
 
-# Preprocess
+# Preprocess {#preprocess}
 Before feeding data to the model, various preprocessing stages are performed in the following subsections:
 
 ## Clean Column Names
@@ -270,8 +270,8 @@ Do the same for test data
 #insurance_test <- test
 path = "/home/hamed/Documents/R/regPackage1/inst/"
 file_name = "insurance_test.csv"
-readr::write_csv(insurance_test, 
-                 file = paste(path,file_name,sep=""))
+#readr::write_csv(insurance_test, 
+#                 file = paste(path,file_name,sep=""))
                    
 insurance_test <- readr::read_csv(paste(path,file_name,sep=""))
 ```
@@ -295,6 +295,20 @@ we need to also remove the id of the beneficiaries as it will bias the learning 
 insurance_train <- within(insurance_train, rm("id"))
 insurance_test <- within(insurance_test, rm("id"))
 ```
+
+
+
+I added a `preprocess_hmd` function in package that is a wrapper around all the steps and functions from the [preprocessing section](#preprocess)
+section. Therefore, simply by writing the following syntax, the final `insurance_train` and `insurance_tetst` datasets can be obtained from the original `car_insurance_data`:
+```{r}
+#h <- preprocess_hmd(car_insurance_data)
+#insurance_train <- h$insurance_train
+#insurance_test <- h$insurance_test
+```
+
+
+
+
 
 
 Data Visualisation

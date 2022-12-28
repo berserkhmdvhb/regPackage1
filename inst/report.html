@@ -808,35 +808,47 @@ pre code {
 </div>
 <div id="normalize" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Normalize</h2>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df_dict_norm <span class="ot">&lt;-</span> <span class="fu">normalizer_hmd</span>(train,test)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                             </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> df_dict_norm<span class="sc">$</span>train_norm</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> df_dict_norm<span class="sc">$</span>test_norm</span></code></pre></div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;train data has&quot;</span>, <span class="fu">nrow</span>(train), <span class="st">&quot;rows and&quot;</span>, <span class="fu">ncol</span>(train), <span class="st">&quot;columns&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (col <span class="cf">in</span> <span class="fu">names</span>(train)){</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (col <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;annual_mileage&quot;</span>, <span class="st">&quot;postal_code&quot;</span>, <span class="st">&quot;credit_score&quot;</span>))</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  train[[col]] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(train[[col]])</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  test[[col]] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(test[[col]])</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_dict_norm <span class="ot">&lt;-</span> <span class="fu">normalizer_hmd</span>(train,test)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> df_dict_norm<span class="sc">$</span>train_norm</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> df_dict_norm<span class="sc">$</span>test_norm</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>train<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">as.double</span>(train<span class="sc">$</span>id)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>test<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="fu">as.double</span>(test<span class="sc">$</span>id)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;train data has&quot;</span>, <span class="fu">nrow</span>(train), <span class="st">&quot;rows and&quot;</span>, <span class="fu">ncol</span>(train), <span class="st">&quot;columns&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;train data has 8000 rows and 34 columns&quot;</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;test data has&quot;</span>, <span class="fu">nrow</span>(test), <span class="st">&quot;rows and&quot;</span>, <span class="fu">ncol</span>(test), <span class="st">&quot;columns&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;test data has&quot;</span>, <span class="fu">nrow</span>(test), <span class="st">&quot;rows and&quot;</span>, <span class="fu">ncol</span>(test), <span class="st">&quot;columns&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;test data has 2000 rows and 34 columns&quot;</code></pre>
 </div>
 <div id="oversampling" class="section level2" number="3.7">
 <h2><span class="header-section-number">3.7</span> Oversampling</h2>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#X &lt;- df_enc[, colnames(df_enc)[colnames(df_enc) != #&#39;outcome&#39;]]</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#y &lt;- df_enc[[&#39;outcome&#39;]]</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>train_racog <span class="ot">&lt;-</span> <span class="fu">racog</span>(train, <span class="at">numInstances =</span> <span class="dv">3734</span>, <span class="at">burnin =</span> <span class="dv">100</span>, <span class="at">lag =</span> <span class="dv">20</span>, <span class="at">classAttr =</span> <span class="st">&quot;outcome&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning in chow.liu.backend(x = x, nodes = nodes, estimator = estimator, : fixed
-## correlation coefficient lesser than -1, probably due to floating point errors.</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df_smote &lt;- smotefamily::BLSMOTE(X, y)$syn_data</span></span></code></pre></div>
-<p>#```{r}</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#X &lt;- df_enc[, colnames(df_enc)[colnames(df_enc) != #&#39;outcome&#39;]]</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">#y &lt;- df_enc[[&#39;outcome&#39;]]</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co">#train_racog &lt;- racog(train, </span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                     numInstances = 3000, </span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co">#                     burnin = 100, </span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co">#                     lag = 20, </span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co">#                     classAttr = &quot;outcome&quot;)</span></span></code></pre></div>
 <p>Merge new sampled data with original train dataset</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>insurance_train <span class="ot">&lt;-</span> <span class="fu">rbind</span>(train , train_racog)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_train &lt;- rbind(train , train_racog)</span></span></code></pre></div>
 <p>Save the processed dataframe to memory:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">=</span> <span class="st">&quot;/home/hamed/Documents/R/regPackage1/inst/&quot;</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="ot">=</span> <span class="st">&quot;insurance_train.csv&quot;</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(insurance_train, </span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">file =</span> <span class="fu">paste</span>(path,file_name,<span class="at">sep=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">=</span> <span class="st">&quot;/home/hamed/Documents/R/regPackage1/inst/&quot;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="ot">=</span> <span class="st">&quot;insurance_train.csv&quot;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co">#readr::write_csv(insurance_train, </span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">#                 file = #paste(path,file_name,sep=&quot;&quot;))</span></span></code></pre></div>
 <p>Load back the processed data</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>insurance_train <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">paste</span>(path,file_name,<span class="at">sep=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
-<pre><code>## Rows: 11734 Columns: 34
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>insurance_train <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">paste</span>(path,file_name,<span class="at">sep=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<pre><code>## Rows: 11000 Columns: 34
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (34): id, age.16.25, age.26.39, age.40.64, age.65., gender.female, gende...
@@ -844,13 +856,22 @@ pre code {
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Do the same for test data</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>insurance_test <span class="ot">&lt;-</span> test</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>path <span class="ot">=</span> <span class="st">&quot;/home/hamed/Documents/R/regPackage1/inst/&quot;</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>file_name <span class="ot">=</span> <span class="st">&quot;insurance_test.csv&quot;</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(insurance_test, </span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">file =</span> <span class="fu">paste</span>(path,file_name,<span class="at">sep=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_test &lt;- test</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>path <span class="ot">=</span> <span class="st">&quot;/home/hamed/Documents/R/regPackage1/inst/&quot;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>file_name <span class="ot">=</span> <span class="st">&quot;insurance_test.csv&quot;</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#readr::write_csv(insurance_test, </span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co">#                 file = paste(path,file_name,sep=&quot;&quot;))</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>                   </span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>insurance_test <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">paste</span>(path,file_name,<span class="at">sep=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<pre><code>## Rows: 2000 Columns: 34
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (34): id, age.16.25, age.26.39, age.40.64, age.65., gender.female, gende...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(insurance_train)</span></code></pre></div>
-<pre><code>## Rows: 11,734
+<pre><code>## Rows: 11,000
 ## Columns: 34
 ## $ id                        &lt;dbl&gt; 96421, 594430, 243937, 314395, 856856, 65827…
 ## $ age.16.25                 &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1,…
@@ -926,10 +947,17 @@ pre code {
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(insurance_train<span class="sc">$</span>outcome)</span></code></pre></div>
 <pre><code>## 
 ##    0    1 
-## 5484 6250</code></pre>
+## 5484 5516</code></pre>
 <p>we need to also remove the id of the beneficiaries as it will bias the learning towards this and may cause data leakage for test datasets with the same id</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>insurance_train <span class="ot">&lt;-</span> <span class="fu">within</span>(insurance_train, <span class="fu">rm</span>(id))</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>insurance_test <span class="ot">&lt;-</span> <span class="fu">within</span>(insurance_test, <span class="fu">rm</span>(id))</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>insurance_train <span class="ot">&lt;-</span> <span class="fu">within</span>(insurance_train, <span class="fu">rm</span>(<span class="st">&quot;id&quot;</span>))</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>insurance_test <span class="ot">&lt;-</span> <span class="fu">within</span>(insurance_test, <span class="fu">rm</span>(<span class="st">&quot;id&quot;</span>))</span></code></pre></div>
+<p>I added a <code>preprocess_hmd</code> function in package that is a wrapper around all the steps and functions from the <a href="#preprocess">preprocessing section</a> section. Therefore, simply by writing the following syntax, the final <code>insurance_train</code> and <code>insurance_tetst</code> datasets can be obtained from the original <code>car_insurance_data</code>:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#h &lt;- preprocess_hmd(car_insurance_data)</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_train &lt;- h$insurance_train</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_test &lt;- h$insurance_test</span></span></code></pre></div>
+<p>Data Visualisation</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#insurance_train |&gt; ggplot(aes(x = credit_score, y = #speeding_violations)) +</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_point(color = outcome)</span></span></code></pre></div>
 </div>
 </div>
 

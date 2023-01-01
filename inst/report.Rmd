@@ -50,7 +50,7 @@ Note that all functions of the package are suffixed with `hmd`.
 
 
  
-# Load Dataset
+# **Load Dataset**
 To provide a test case on a dataset with discrete target variable, I used the the [car insurance data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
 
 The dataset is embedded in the package, therefore by simply running the following commands one can load and display the dataset.
@@ -77,7 +77,7 @@ summary(car_insurance_data)
 
 
 
-# Preprocess {#preprocess}
+# **Preprocess {#preprocess}**
 Before feeding data to the model, various preprocessing stages are performed in the following subsections:
 
 ## Clean Column Names
@@ -330,9 +330,9 @@ Data Visualisation
 #  geom_point(color = outcome)
 ```
 
-# Classification Models
+# **Classification Models**
 
-## Generalized Linear Models
+## **Generalized Linear Models**
 
 ```{r}
 actual <- insurance_test$outcome
@@ -568,7 +568,7 @@ pROC::roc(actual ~ pred_proba_glm_cv_1se, plot = TRUE, print.auc = TRUE)
 ```
 
 
-## Random Forest
+## **Random Forest**
 
 ```{r}
 #train[["outcome"]] <- lapply(train[["outcome"]], factor)
@@ -581,16 +581,67 @@ y_test <- as.factor(test[["outcome"]])
 ```
 
 ```{r}
-
-rf <- randomForest(x = X_train, y = y_train, proximity=TRUE)
+rf <- randomForest(x = X_train, 
+                   y = y_train, 
+                   ntree = 300,
+                   mtry = 10,
+                   proximity = TRUE, 
+                   importance = TRUE)
 ```
 
 
+```{r}
+print(rf)
+```
 
 ```{r}
 predict_rf <- predict(rf, X_test)
 ```
 
+
+```{r}
+plot(rf)
+```
+          
+     
+```{r}
+# Number of nodes for the trees
+hist(treesize(rf),                        # give us the number of trees in term of number of nodes
+     main = "Number of Nodes for the Trees",
+     col = "grey")
+```     
+          
+### Variable Importance        
+
+```{r}
+varImpPlot(rf,
+           sort = T,
+           n.var = 10,
+           main = "Top 10 Variable Importance") 
+```
+
+           
+### Hyperparameter Tuning
+
+
+```{r}
+
+t <- tuneRF(X_train, 
+            y_train, # esclude the response variable 
+            stepFactor = 0.5, 
+            plot = TRUE, 
+            ntreeTry = 300, 
+            trace = TRUE, 
+            improve = 0.01)
+
+```
+
+
+```{r}
+print(t)
+```
+
+### Evaluate
 
 
 ```{r}

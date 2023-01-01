@@ -19,7 +19,7 @@ Imports:
     caret,
     glmnet,
     car,
-    pROC
+    Metrics
 Suggests: 
     knitr,
     rmarkdown,
@@ -30,5 +30,5 @@ Suggests:
     tidymodels,
     ggplot2,
     readr,
-    Metrics
+    pROC
 VignetteBuilder: knitr

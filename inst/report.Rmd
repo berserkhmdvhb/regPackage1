@@ -29,7 +29,7 @@ library(caret) #for dummyVar function
 library(Metrics)
 library(randomForest)
 ```
-# Introduction
+# **Introduction**
 This report is dedicated to project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
 You can install this package by first installing the [devtools](https://www.r-project.org/nosvn/pandoc/devtools.html) package and then using the following syntax:
 
@@ -77,7 +77,7 @@ summary(car_insurance_data)
 
 
 
-# **Preprocess {#preprocess}**
+# **Preprocess** {#preprocess}
 Before feeding data to the model, various preprocessing stages are performed in the following subsections:
 
 ## Clean Column Names

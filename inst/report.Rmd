@@ -618,11 +618,12 @@ print(eval$fbeta_score)
 ```
 
 ```{r}
-predict_rf_proba <- predict(rf, X_test, type="prob")
+pred_proba_rf <- predict(rf, X_test, type="prob")
+pred_proba_rf_list <- pred_proba_rf |> as.list() |> tail(2000) |> unlist()
 ```
 
 ```{r}
-#pROC::roc(actual ~ predict_rf_proba, plot = TRUE, print.auc = TRUE)
+pROC::roc(actual ~ pred_proba_rf_list, plot = TRUE, print.auc = TRUE)
 ```
 
 

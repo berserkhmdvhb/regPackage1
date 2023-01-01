@@ -27,6 +27,7 @@ library(imbalance)
 library(readr)
 library(caret) #for dummyVar function
 library(Metrics)
+library(randomForest)
 ```
 # Introduction
 This report is dedicated to project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
@@ -223,8 +224,6 @@ print(paste("test data has", nrow(test), "rows and", ncol(test), "columns"))
 
 
 ```{r}
-#X <- df_enc[, colnames(df_enc)[colnames(df_enc) != #'outcome']]
-#y <- df_enc[['outcome']]
 
 #train_racog <- racog(train, 
 #                     numInstances = 3000, 
@@ -376,7 +375,7 @@ fit$aic
 avplot of results
 
 ```{r warning=FALSE}
-glmnet_plot_hmd(fit)
+#glmnet_plot_hmd(fit)
 ```
 
 **cross validated GLMNET**
@@ -473,7 +472,7 @@ glmnet_cv_aic_hmd(fit, lchoice = "1se")
 
 
 
-### Evaluate
+### Evaluate    
 
 
 **GLMNET**
@@ -567,3 +566,63 @@ print(eval$fbeta_score)
 ```{r}
 pROC::roc(actual ~ pred_proba_glm_cv_1se, plot = TRUE, print.auc = TRUE)
 ```
+
+
+## Random Forest
+
+```{r}
+#train[["outcome"]] <- lapply(train[["outcome"]], factor)
+#train$outcome <- as.factor(train$outcome)
+X_train <- train[, colnames(train)[colnames(train) != "outcome"]]
+X_test <- test[, colnames(test)[colnames(test) != "outcome"]]
+y_train <- as.factor(train[["outcome"]])
+y_test <- as.factor(test[["outcome"]])
+#
+```
+
+```{r}
+
+rf <- randomForest(x = X_train, y = y_train, proximity=TRUE)
+```
+
+
+
+```{r}
+predict_rf <- predict(rf, X_test)
+```
+
+
+
+```{r}
+predict_rf_num <- predict_rf |> as.double()
+predict_rf_num <- ifelse(predict_rf_num > 1, 1, 0) 
+eval <- eval_hmd(actual, predict_rf_num)
+```
+
+```{r}
+print("confusion matrix: ")
+print(eval$confusion_matrix)
+```
+
+```{r}
+print("accuracy: ")
+print(eval$accuracy)
+print("precision: ")
+print(eval$precision)
+print("recall: ")
+print(eval$recall)
+print("f1_score")
+print(eval$f1_score)
+print("fbeta_score")
+print(eval$fbeta_score)
+```
+
+```{r}
+predict_rf_proba <- predict(rf, X_test, type="prob")
+```
+
+```{r}
+#pROC::roc(actual ~ predict_rf_proba, plot = TRUE, print.auc = TRUE)
+```
+
+

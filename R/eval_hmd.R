@@ -27,4 +27,3 @@ eval_hmd <- function(actual,
   h[["fbeta_score"]] <- fb
   return(h)
 }
-

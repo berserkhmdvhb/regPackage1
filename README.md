@@ -34,3 +34,5 @@ There are two reports available for this package.
  - Unit Tests for some of the functions
  - Use [`targets`](https://cran.r-project.org/web/packages/targets/index.html) package to create a pipeline for plotting predictions.
  - Use [`shiny`]() to provide an interactive plot of predctions.
+
+The third and fourth tasks of the framework is remained to be done.

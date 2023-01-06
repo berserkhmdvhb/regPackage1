@@ -32,7 +32,7 @@ There are two reports available for this package.
 2. The pipeline's instructions and detailed report of the libraries used for various stages of this package. Here is the general framework for this report:
  - Writing the functions used for different stages of the pipeline (i.e., preprocessing, prediction, evaluation, plotting)
  - Unit Tests for some of the functions
- - Use [`targets`](https://cran.r-project.org/web/packages/targets/index.html) package to create a pipeline for plotting predictions.
+ - Use [`targets`](https://cran.r-project.org/web/packages/targets/index.html) package to create a pipeline for plotting predictions (or their evaluation).
  - Use [`shiny`]() to provide an interactive plot of predctions.
 
 The third and fourth tasks of the framework is remained to be done.

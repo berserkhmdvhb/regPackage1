@@ -1546,6 +1546,76 @@ pre code {
 ## 
 ## Data: pred_proba_rf_list in 1383 controls (actual 0) &lt; 617 cases (actual 1).
 ## Area under the curve: 0.9017</code></pre>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="#cb214-1" aria-hidden="true" tabindex="-1"></a>insurance_test[,<span class="dv">0</span><span class="sc">:</span><span class="dv">4</span>] <span class="sc">|&gt;</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">col=</span><span class="fu">starts_with</span>(<span class="st">&quot;age&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;age&quot;</span>,  <span class="at">names_prefix=</span><span class="st">&quot;age.&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>value)</span></code></pre></div>
+<pre><code>## # A tibble: 8,000 × 1
+##    age  
+##    &lt;chr&gt;
+##  1 16.25
+##  2 26.39
+##  3 40.64
+##  4 65.  
+##  5 16.25
+##  6 26.39
+##  7 40.64
+##  8 65.  
+##  9 16.25
+## 10 26.39
+## # … with 7,990 more rows</code></pre>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="#cb216-1" aria-hidden="true" tabindex="-1"></a>col_list <span class="ot">&lt;-</span> <span class="fu">names</span>(insurance_test)</span>
+<span id="cb216-2"><a href="#cb216-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb216-3"><a href="#cb216-3" aria-hidden="true" tabindex="-1"></a>cols_list_enc <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.&quot;</span>, col_list, <span class="at">value =</span> <span class="cn">TRUE</span>, <span class="at">perl =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb216-4"><a href="#cb216-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb216-5"><a href="#cb216-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb216-6"><a href="#cb216-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb216-7"><a href="#cb216-7" aria-hidden="true" tabindex="-1"></a>pattern <span class="ot">&lt;-</span> <span class="st">&quot;([a-zA-Z0-9_-]*)(.)&quot;</span></span>
+<span id="cb216-8"><a href="#cb216-8" aria-hidden="true" tabindex="-1"></a>common_names <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb216-9"><a href="#cb216-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (col <span class="cf">in</span> cols_list_enc)</span>
+<span id="cb216-10"><a href="#cb216-10" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb216-11"><a href="#cb216-11" aria-hidden="true" tabindex="-1"></a>  common_names <span class="ot">&lt;-</span> <span class="fu">append</span>(common_names, <span class="fu">str_match</span>(col, pattern)[<span class="dv">2</span>])</span>
+<span id="cb216-12"><a href="#cb216-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb216-13"><a href="#cb216-13" aria-hidden="true" tabindex="-1"></a>common_names <span class="ot">&lt;-</span> common_names <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span>
+<span id="cb216-14"><a href="#cb216-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb216-15"><a href="#cb216-15" aria-hidden="true" tabindex="-1"></a>insurance_test_revert <span class="ot">&lt;-</span> </span>
+<span id="cb216-16"><a href="#cb216-16" aria-hidden="true" tabindex="-1"></a>insurance_test[, <span class="sc">!</span>(<span class="fu">colnames</span>(insurance_test) <span class="sc">%in%</span> cols_list_enc)]</span>
+<span id="cb216-17"><a href="#cb216-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb216-18"><a href="#cb216-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (name <span class="cf">in</span> common_names){</span>
+<span id="cb216-19"><a href="#cb216-19" aria-hidden="true" tabindex="-1"></a>  cols_revert <span class="ot">&lt;-</span> <span class="fu">lapply</span>(cols_list_enc, </span>
+<span id="cb216-20"><a href="#cb216-20" aria-hidden="true" tabindex="-1"></a>                      <span class="cf">function</span>(x) x[<span class="fu">grepl</span>(name, x)])</span>
+<span id="cb216-21"><a href="#cb216-21" aria-hidden="true" tabindex="-1"></a>  cols_revert <span class="ot">&lt;-</span> cols_revert[<span class="fu">lengths</span>(cols_revert)<span class="sc">!=</span><span class="dv">0</span>] </span>
+<span id="cb216-22"><a href="#cb216-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">#cols_revert &lt;- lapply(cols_list_enc, </span></span>
+<span id="cb216-23"><a href="#cb216-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                    function(x) str_match(x,&quot;([\\.])(.*)&quot;)[3])</span></span>
+<span id="cb216-24"><a href="#cb216-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb216-25"><a href="#cb216-25" aria-hidden="true" tabindex="-1"></a>  cols_revert <span class="ot">&lt;-</span> cols_revert <span class="sc">|&gt;</span> <span class="fu">unlist</span>()</span>
+<span id="cb216-26"><a href="#cb216-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb216-27"><a href="#cb216-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb216-28"><a href="#cb216-28" aria-hidden="true" tabindex="-1"></a>  w <span class="ot">&lt;-</span> <span class="fu">which</span>(insurance_test[cols_revert]<span class="sc">==</span><span class="dv">1</span>, <span class="at">arr.ind =</span> T) </span>
+<span id="cb216-29"><a href="#cb216-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb216-30"><a href="#cb216-30" aria-hidden="true" tabindex="-1"></a>  insurance_test_revert_name <span class="ot">&lt;-</span> <span class="fu">names</span>(insurance_test[cols_revert])[w[<span class="fu">order</span>(w[,<span class="dv">1</span>]),<span class="dv">2</span>]]</span>
+<span id="cb216-31"><a href="#cb216-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb216-32"><a href="#cb216-32" aria-hidden="true" tabindex="-1"></a>  insurance_test_revert[name] <span class="ot">&lt;-</span> insurance_test_revert_name</span>
+<span id="cb216-33"><a href="#cb216-33" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb216-34"><a href="#cb216-34" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="#cb217-1" aria-hidden="true" tabindex="-1"></a>insurance_test_revert <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">glimpse</span>()</span></code></pre></div>
+<pre><code>## Rows: 2,000
+## Columns: 18
+## $ credit_score        &lt;dbl&gt; 0.6234644, 0.6248241, 0.7454570, 0.6432089, 0.7817…
+## $ vehicle_ownership   &lt;dbl&gt; 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1,…
+## $ married             &lt;dbl&gt; 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1,…
+## $ children            &lt;dbl&gt; 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1,…
+## $ postal_code         &lt;dbl&gt; 0.0000000, 0.0000000, 0.2751793, 0.0000000, 0.0000…
+## $ annual_mileage      &lt;dbl&gt; 0.55, 0.40, 0.50, 0.30, 0.50, 0.50, 0.50, 0.80, 0.…
+## $ speeding_violations &lt;dbl&gt; 0.13636364, 0.27272727, 0.18181818, 0.18181818, 0.…
+## $ duis                &lt;dbl&gt; 0.0000000, 0.3333333, 0.0000000, 0.1666667, 0.0000…
+## $ past_accidents      &lt;dbl&gt; 0.20000000, 0.46666667, 0.00000000, 0.13333333, 0.…
+## $ outcome             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1,…
+## $ age                 &lt;chr&gt; &quot;age.40.64&quot;, &quot;age.65.&quot;, &quot;age.65.&quot;, &quot;age.40.64&quot;, &quot;a…
+## $ gender              &lt;chr&gt; &quot;gender.female&quot;, &quot;gender.male&quot;, &quot;gender.female&quot;, &quot;…
+## $ race                &lt;chr&gt; &quot;race.majority&quot;, &quot;race.majority&quot;, &quot;race.majority&quot;,…
+## $ driving_experience  &lt;chr&gt; &quot;driving_experience.20.29y&quot;, &quot;driving_experience.3…
+## $ education           &lt;chr&gt; &quot;education.high.school&quot;, &quot;education.high.school&quot;, …
+## $ income              &lt;chr&gt; &quot;income.upper.class&quot;, &quot;income.upper.class&quot;, &quot;incom…
+## $ vehicle_year        &lt;chr&gt; &quot;vehicle_year.after.2015&quot;, &quot;vehicle_year.after.201…
+## $ vehicle_type        &lt;chr&gt; &quot;vehicle_type.sedan&quot;, &quot;vehicle_type.sedan&quot;, &quot;vehic…</code></pre>
 </div>
 </div>
 </div>

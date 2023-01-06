@@ -685,6 +685,7 @@ insurance_test[,0:4] |> tidyr::pivot_longer(col=starts_with("age"), names_to = "
 
 
 ```{r}
+
 col_list <- names(insurance_test)
 
 cols_list_enc <- grep("\\.", col_list, value = TRUE, perl = TRUE)
@@ -705,18 +706,23 @@ insurance_test[, !(colnames(insurance_test) %in% cols_list_enc)]
 for (name in common_names){
   cols_revert <- lapply(cols_list_enc, 
                       function(x) x[grepl(name, x)])
-  cols_revert <- cols_revert[lengths(cols_revert)!=0] |> unlist()
+  cols_revert <- cols_revert[lengths(cols_revert)!=0] 
+  #cols_revert <- lapply(cols_list_enc, 
+  #                    function(x) str_match(x,"([\\.])(.*)")[3])
+  
+  cols_revert <- cols_revert |> unlist()
+  
   
   w <- which(insurance_test[cols_revert]==1, arr.ind = T) 
 
-  insurance_test_revert_name <- toupper(names(insurance_test[cols_revert])[w[order(w[,1]),2]])
-  insurance_test$name <- insurance_test_revert_name
+  insurance_test_revert_name <- names(insurance_test[cols_revert])[w[order(w[,1]),2]]
+  
+  insurance_test_revert[name] <- insurance_test_revert_name
     
 }
 
 ```
 
 ```{r}
-
-
+insurance_test_revert |> dplyr::glimpse()
 ```

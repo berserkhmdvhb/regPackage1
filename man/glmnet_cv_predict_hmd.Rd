@@ -33,9 +33,8 @@ Predict data with results from CV GLMNET model
 }
 \details{
 This functions allows the user to perform cross-validated eslastic net (which
-is a generalized
-linear model) on a given
-dataframe by specifying feature names (response variables),
-target variable, family of distribution, and the dataset (in my case, Medical
-Cost Personal Datasets)
+is a generalized linear model) on a given
+dataframe by inputting a fit function from cv.glment,
+target variable, family of distribution, and the dataset (in my case, Car
+Inurnace Dataset)
 }

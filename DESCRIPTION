@@ -32,3 +32,4 @@ Suggests:
     readr,
     pROC
 VignetteBuilder: knitr
+Config/testthat/edition: 3

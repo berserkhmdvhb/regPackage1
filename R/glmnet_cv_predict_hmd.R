@@ -11,11 +11,10 @@
 #' @return Returns fit object of glmnet function
 #' @details
 #' This functions allows the user to perform cross-validated eslastic net (which
-#' is a generalized
-#' linear model) on a given
-#' dataframe by specifying feature names (response variables),
-#' target variable, family of distribution, and the dataset (in my case, Medical
-#' Cost Personal Datasets)
+#' is a generalized linear model) on a given
+#' dataframe by inputting a fit function from cv.glment,
+#' target variable, family of distribution, and the dataset (in my case, Car
+#' Inurnace Dataset)
 
 glmnet_cv_predict_hmd <- function(fit,
                                   data = regPackage1::insurance_test,
@@ -44,7 +43,7 @@ glmnet_cv_predict_hmd <- function(fit,
   else{
     predict_proba <- stats::predict({{fit}}, features, s=lambda)
   }
-  predict <- ifelse(predict_proba >0.5, 1, 0)
+  predict <- ifelse(predict_proba > 0.5, 1, 0)
   h <- hash::hash()
   h[["coef"]] <- coef
   h[["predict_proba"]] <- predict_proba

@@ -20,7 +20,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(regPackage1)
 library(dplyr)
 library(janitor)
-library(tidymodels)
 library(visdat)
 library(ggplot2)
 library(imbalance)
@@ -28,6 +27,7 @@ library(readr)
 library(caret) #for dummyVar function
 library(Metrics)
 library(randomForest)
+library(tidyverse)
 ```
 # **Introduction**
 This report is dedicated to project of a workshop of master of data science at University of Luxembourg, I built the [`regPackage1`](https://github.com/berserkhmdvhb/regPackage1). 
@@ -678,3 +678,45 @@ pROC::roc(actual ~ pred_proba_rf_list, plot = TRUE, print.auc = TRUE)
 ```
 
 
+```{r}
+insurance_test[,0:4] |> tidyr::pivot_longer(col=starts_with("age"), names_to = "age",  names_prefix="age.") |> select(-value)
+```
+
+
+
+```{r}
+col_list <- names(insurance_test)
+
+cols_list_enc <- grep("\\.", col_list, value = TRUE, perl = TRUE)
+
+
+
+pattern <- "([a-zA-Z0-9_-]*)(.)"
+common_names <- list()
+for (col in cols_list_enc)
+{
+  common_names <- append(common_names, str_match(col, pattern)[2])
+}
+common_names <- common_names |> unique()
+
+insurance_test_revert <- 
+insurance_test[, !(colnames(insurance_test) %in% cols_list_enc)]
+
+for (name in common_names){
+  cols_revert <- lapply(cols_list_enc, 
+                      function(x) x[grepl(name, x)])
+  cols_revert <- cols_revert[lengths(cols_revert)!=0] |> unlist()
+  
+  w <- which(insurance_test[cols_revert]==1, arr.ind = T) 
+
+  insurance_test_revert_name <- toupper(names(insurance_test[cols_revert])[w[order(w[,1]),2]])
+  insurance_test$name <- insurance_test_revert_name
+    
+}
+
+```
+
+```{r}
+
+
+```

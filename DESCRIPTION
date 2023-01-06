@@ -19,7 +19,8 @@ Imports:
     caret,
     glmnet,
     car,
-    Metrics
+    Metrics,
+    tidyverse
 Suggests: 
     knitr,
     rmarkdown,

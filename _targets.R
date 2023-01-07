@@ -47,8 +47,12 @@ list(
                     target = "outcome",
                     type = "response")
   ),
+  tar_target(
+    pred_proba,
+    get_pred_proba(predict_obj)
+  ),
   tar_target(plot,
-             plot_roc_curve(actual ~ predict_obj$predict_proba)
+             plot_roc_curve(actual, pred_proba)
   )
 )
 

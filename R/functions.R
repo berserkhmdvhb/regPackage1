@@ -14,6 +14,15 @@ get_data_actual <- function(){
   regPackage1::insurance_test$outcome
 }
 
+get_data_actual <- function(){
+  regPackage1::insurance_test$outcome
+}
+
+get_pred_proba <- function(h)
+{
+  h$predict_proba
+}
+
 plot_roc_curve <- function(actual, pred_proba){
-  pROC::roc(actual, pred_proba, plot=TRUE, print.auc = TRUE)
+  pROC::roc(actual ~ pred_proba, plot=TRUE)
 }

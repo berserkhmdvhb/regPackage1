@@ -5,11 +5,14 @@ get_data_actual|function|208b7683f1b004a9|||||||||||||||
 get_data_raw|function|e69b4139cae8183d|||||||||||||||
 get_data_test|function|e04b3632fb308fd6|||||||||||||||
 get_data_train|function|280f0d866f42aa7d|||||||||||||||
+get_pred_proba|function|fae210aabfadcc6f|||||||||||||||
 glm_fit|stem|65ecf442818612db|5d1c17d3ba7b76da|6b804ac6b310b0c7|993381842||t19364.9122621798s|62f9c6dd44b897dc|7540517|rds|local|vector|||1.358||
 glmnet_fit_hmd|function|b222ea52bcbd0aac|||||||||||||||
 glmnet_predict_hmd|function|9a1a79f4977beec5|||||||||||||||
 insurance_test|stem|01e1108b3cd25051|8331ceff6c6929bf|9a97b477e35a0b8e|390558078||t19364.8977006561s|f0d6aa6096dd0250|37128|rds|local|vector|||0.004||
 insurance_train|stem|45116dbbd322219e|ebf543a2b11cc366|94764fbb0ff5dd15|488345169||t19364.8945432532s|f5ff0a1163c4f854|178711|rds|local|vector|||0.013||
-plot|stem|f57ba3ee51ad9b38|9d20c938d3170e95|c02c9d6bdfac7e78|1931196220||t19364.9126716294s|87fcb6291b9915a0|259036|rds|local|vector|||0.171||
-plot_roc_curve|function|87b841e70e751429|||||||||||||||
+plot|stem|1c64d3b7371ea527|be06b51bfdf4f4a2|b882dd1541cede71|1931196220||t19364.9211048863s|f606b8bb9131d5bc|259041|rds|local|vector|||0.093||
+plot_roc_curve|function|0ed938de281f1d9d|||||||||||||||
+pred_proba|stem|b2146308f0472332|af486f5b28f39ca0|4d574c0304efa1a7|-1386411430||t19364.9205624256s|9b2ab5d7df2020d2|20205|rds|local|vector|||0.002||
 predict_obj|stem|dc0fcda4e4c2ba6b|9fd6489cac155553|28a0044df86b7a0a|475142196||t19364.9126689442s|e674b297e7a57af7|40901|rds|local|vector|||0.043|prediction from a rankdeficient fit may be misleading|
+predict_proba|stem|b2146308f0472332|af486f5b28f39ca0|4d574c0304efa1a7|-930183876||t19364.9180367448s|9b2ab5d7df2020d2|20205|rds|local|vector|||0.001||

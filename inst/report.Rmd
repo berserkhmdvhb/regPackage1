@@ -573,10 +573,10 @@ pROC::roc(actual ~ pred_proba_glm_cv_1se, plot = TRUE, print.auc = TRUE)
 ```{r}
 #train[["outcome"]] <- lapply(train[["outcome"]], factor)
 #train$outcome <- as.factor(train$outcome)
-X_train <- train[, colnames(train)[colnames(train) != "outcome"]]
-X_test <- test[, colnames(test)[colnames(test) != "outcome"]]
-y_train <- as.factor(train[["outcome"]])
-y_test <- as.factor(test[["outcome"]])
+X_train <- insurance_train[, colnames(insurance_train)[colnames(insurance_train) != "outcome"]]
+X_test <- insurance_test[, colnames(insurance_test)[colnames(insurance_test) != "outcome"]]
+y_train <- as.factor(insurance_train[["outcome"]])
+y_test <- as.factor(insurance_test[["outcome"]])
 #
 ```
 
@@ -670,7 +670,7 @@ print(eval$fbeta_score)
 
 ```{r}
 pred_proba_rf <- predict(rf, X_test, type="prob")
-pred_proba_rf_list <- pred_proba_rf |> as.list() |> tail(2000) |> unlist()
+pred_proba_rf_list <- pred_proba_rf |> as.list() |> tail(nrow(insurance_test)) |> unlist()
 ```
 
 ```{r}

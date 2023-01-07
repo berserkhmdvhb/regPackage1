@@ -20,7 +20,7 @@ Imports:
     glmnet,
     car,
     Metrics,
-    tidyverse
+    pROC
 Suggests: 
     knitr,
     rmarkdown,
@@ -28,9 +28,8 @@ Suggests:
     tibble,
     visdat,
     imbalance,
-    tidymodels,
+    tidyverse,
     ggplot2,
-    readr,
-    pROC
+    readr
 VignetteBuilder: knitr
 Config/testthat/edition: 3

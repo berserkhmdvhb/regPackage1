@@ -20,7 +20,8 @@ Imports:
     glmnet,
     car,
     Metrics,
-    pROC
+    pROC,
+    randomForest
 Suggests: 
     knitr,
     rmarkdown,

@@ -32,9 +32,6 @@ Returns fit object of glmnet function
 Predict data with results from CV GLMNET model
 }
 \details{
-This functions allows the user to perform cross-validated eslastic net (which
-is a generalized linear model) on a given
-dataframe by inputting a fit function from cv.glment,
-target variable, family of distribution, and the dataset (in my case, Car
-Inurnace Dataset)
+This functions allows the user to predict a given dataset using fit object
+obtained from the cv.glmnet function
 }

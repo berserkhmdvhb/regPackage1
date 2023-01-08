@@ -7,21 +7,23 @@ ui <- function(request){
     sidebarLayout(
 
       sidebarPanel(
-        selectizeInput("model_selected", "Select Model:",
+        selectInput("model_selected", "Select Model:",
                        choices=c("Logistic Regression", "Random Forest"),
-                       multiple = TRUE,
-                       options = list(
-                         plugins = list("remove_button"),
-                         create = TRUE,
-                         persist = FALSE # keep created choices in dropdown
-                       )
+                       multiple = FALSE
+
+        ),
+        hr(),
+        selectInput("evaluation_selected", "Select type of plot:",
+                    choices = c("ROC Curve", "Confusion Matrix"),
+                    selected = "ROC Curve",
+                    multiple = FALSE
         ),
         hr(),
         helpText("Car Iinsurance data from the package")
       ),
 
       mainPanel(
-        plotOutput("roc_curve")
+        plotOutput("evaluation_plots")
       )
     )
   )

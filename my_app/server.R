@@ -1,7 +1,7 @@
 server <- function(session, input, output) {
 
   roc_obj <- reactive(
-    actual <- insurance_test$outcome
+    acinsurance_test$outcome
     if (input$model_selected == "Logistic Regression"){
       model_glm <- glmnet_fit_hmd(insurance_train,
                                   target = "outcome",
@@ -15,7 +15,7 @@ server <- function(session, input, output) {
                                   print.auc=FALSE)
       roc_obj_glmnet
     }
-    else if (input$model_selected == "Random Forest"){
+    else (input$model_selected == "Random Forest"){
       model_random_forest <- rf_fit_hmd(insurance_train,
                                         ntree = 300,
                                         mtry = 10,

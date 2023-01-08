@@ -504,9 +504,16 @@ print(eval$fbeta_score)
 pROC::roc(actual ~ pred_proba_glm, plot = TRUE, print.auc = TRUE)
 ```
 
+Plot Confusion Matrix
+
+```{r}
+eval$confusion_matrix_plot
+```
+
 **GLMNET CV**
 
 **min**
+
 Confusion Matrix
 
 
@@ -537,6 +544,12 @@ print(eval$fbeta_score)
 pROC::roc(actual ~ pred_proba_glm_cv_min, plot = TRUE, print.auc = TRUE)
 ```
 
+
+Plot Confusion Matrix
+
+```{r}
+eval$confusion_matrix_plot	
+```
 
 **1se**
 
@@ -672,9 +685,18 @@ pROC::roc(actual ~ pred_proba_rf, plot = TRUE, print.auc = TRUE)
 ```
 
 
+
+
+Plot Confusion Matrix
+
 ```{r}
-insurance_test[,0:4] |> tidyr::pivot_longer(col=starts_with("age"), names_to = "age",  names_prefix="age.") |> select(-value)
+eval$confusion_matrix_plot
 ```
+
+
+
+
+# Extra Material: Decoding One-Hot-Encoding
 
 
 
@@ -714,8 +736,12 @@ for (name in common_names){
   insurance_test_revert[name] <- insurance_test_revert_name
     
 }
-
 ```
+
+```{r}
+insurance_test[,0:4] |> tidyr::pivot_longer(col=starts_with("age"), names_to = "age",  names_prefix="age.") |> select(-value)
+```
+
 
 ```{r}
 insurance_test_revert |> dplyr::glimpse()

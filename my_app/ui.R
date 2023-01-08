@@ -10,7 +10,6 @@ ui <- function(request){
         selectizeInput("model_selected", "Select Model:",
                        choices=c("Logistic Regression", "Random Forest"),
                        multiple = TRUE,
-                       selected = c("Logistic Regression"),
                        options = list(
                          plugins = list("remove_button"),
                          create = TRUE,

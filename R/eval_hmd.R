@@ -12,14 +12,30 @@ eval_hmd <- function(actual,
                     predicted){
   y_actual <- {{actual}}
   y_predicted <- {{predicted}}
-  cm <- caret::confusionMatrix(data = as.factor(y_predicted), reference = as.factor(y_actual))
+  cm <- caret::confusionMatrix(data = as.factor(y_predicted),
+                               reference = as.factor(y_actual),
+                               dnn = c("Prediction", "Reference"))
   acc <- Metrics::accuracy(y_predicted, y_actual)
   prec <- Metrics::precision(y_predicted, y_actual)
   rec <- Metrics::recall(y_predicted, y_actual)
   f1 <- Metrics::f1(y_predicted, y_actual)
   fb <- Metrics::fbeta_score(y_predicted, y_actual)
+
+
+  plt <- as.data.frame(cm$table)
+  plt$Prediction <- factor(plt$Prediction, levels=rev(levels(plt$Prediction)))
+
+  cm_plot <- ggplot2::ggplot(plt, ggplot2::aes(plt$Prediction, plt$Reference, fill=plt$Freq)) +
+    ggplot2::geom_tile() + ggplot2::geom_text(ggplot2::aes(label=plt$Freq)) +
+    ggplot2::scale_fill_gradient(low="white", high="#009194") +
+    ggplot2::labs(x = "Reference", y = "Prediction") +
+    ggplot2::scale_x_discrete(labels=c("Class_1","Class_2")) +
+    ggplot2::scale_y_discrete(labels=c("Class_2","Class_1"))
+
+
   h <- hash::hash()
   h[["confusion_matrix"]] <- cm
+  h[["confusion_matrix_plot"]] <- cm_plot
   h[["accuracy"]] <- acc
   h[["precision"]] <- prec
   h[["recall"]] <- rec

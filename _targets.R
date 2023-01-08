@@ -6,11 +6,11 @@ library(glmnet)
 library(car)
 library(Metrics)
 library(targets)
-library(regPackage1)
 library(dplyr)
 library(ggplot2)
 library(pROC)
 library(randomForest)
+library(regPackage1)
 
 
 

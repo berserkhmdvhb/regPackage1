@@ -5,6 +5,7 @@ server <- function(session, input, output) {
   evaluation_selected_reac <- reactive(input$evaluation_selected)
 
 
+
   observe({
     if (model_selected_reac() == "Logistic Regression"){
 

@@ -1,4 +1,5 @@
 library(shiny)
+library(shinycssloaders)
 ui <- function(request){
   fluidPage(
 
@@ -15,7 +16,7 @@ ui <- function(request){
         hr(),
         selectInput("evaluation_selected", "Select type of plot:",
                     choices = c("ROC Curve", "Confusion Matrix"),
-                    selected = "ROC Curve",
+                    #selected = "ROC Curve",
                     multiple = FALSE
         ),
         hr(),
@@ -23,7 +24,7 @@ ui <- function(request){
       ),
 
       mainPanel(
-        plotOutput("evaluation_plots")
+        plotOutput("evaluation_plots") |> withSpinner()
       )
     )
   )

@@ -1,7 +1,3 @@
-get_data_raw <- function(){
-  regPackage1::car_insurance_data
-}
-
 get_data_train <- function(){
   regPackage1::insurance_train
 }

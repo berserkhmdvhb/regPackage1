@@ -23,6 +23,12 @@ get_pred_proba <- function(h)
   h$predict_proba
 }
 
-plot_roc_curve <- function(actual, pred_proba){
-  pROC::roc(actual ~ pred_proba, plot=TRUE)
+
+roc_obj_cal <- function(actual, pred_proba){
+  pROC::roc(actual ~ pred_proba, print.auc=FALSE)
+}
+
+
+plot_roc_curve <- function(roc_obj){
+  pROC::ggroc(roc_obj)
 }

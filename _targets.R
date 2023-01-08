@@ -51,8 +51,10 @@ list(
     pred_proba,
     get_pred_proba(predict_obj)
   ),
+  tar_target(roc_obj,
+             roc_obj_cal(actual, pred_proba)
+  ),
   tar_target(plot,
-             plot_roc_curve(actual, pred_proba)
+             plot_roc_curve(roc_obj)
   )
 )
-

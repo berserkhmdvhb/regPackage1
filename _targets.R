@@ -10,13 +10,15 @@ library(regPackage1)
 library(dplyr)
 library(ggplot2)
 library(pROC)
+library(randomForest)
 
 
 
 source("./R/functions.R")
 source("./R/glmnet_fit_hmd.R")
 source("./R/glmnet_predict_hmd.R")
-
+source("./R/rf_fit_hmd.R")
+source("./R/rf_predict_hmd.R")
 list(
   tar_target(
     car_insurance_data,
@@ -35,14 +37,14 @@ list(
     get_data_actual()
   ),
   tar_target(
-    glm_fit,
+    model_glm,
     glmnet_fit_hmd(insurance_train,
                    target = "outcome",
                    family = "binomial")
   ),
   tar_target(
     predict_obj,
-    glmnet_predict_hmd(glm_fit,
+    glmnet_predict_hmd(model_glm,
                     data = insurance_test,
                     target = "outcome",
                     type = "response")
@@ -56,5 +58,8 @@ list(
   ),
   tar_target(plot,
              plot_roc_curve(roc_obj)
-  )
+  ),
+  tar_target(model_random_forest,
+             rf_fit_hmd()
+  ),
 )

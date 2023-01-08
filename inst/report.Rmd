@@ -571,22 +571,19 @@ pROC::roc(actual ~ pred_proba_glm_cv_1se, plot = TRUE, print.auc = TRUE)
 ## **Random Forest**
 
 ```{r}
-#train[["outcome"]] <- lapply(train[["outcome"]], factor)
-#train$outcome <- as.factor(train$outcome)
-X_train <- insurance_train[, colnames(insurance_train)[colnames(insurance_train) != "outcome"]]
-X_test <- insurance_test[, colnames(insurance_test)[colnames(insurance_test) != "outcome"]]
-y_train <- as.factor(insurance_train[["outcome"]])
-y_test <- as.factor(insurance_test[["outcome"]])
-#
+actual <- regPackage1::insurance_test$outcome
+X_train <- regPackage1::insurance_train[, colnames(regPackage1::insurance_train)[colnames(regPackage1::insurance_train) != "outcome"]]
+X_test <- regPackage1::insurance_test[, colnames(regPackage1::insurance_test)[colnames(regPackage1::insurance_test) != "outcome"]]
+y_train <- as.factor(regPackage1::insurance_train[["outcome"]])
+y_test <- as.factor(regPackage1::insurance_test[["outcome"]])
 ```
 
 ```{r}
-rf <- randomForest(x = X_train, 
-                   y = y_train, 
-                   ntree = 300,
-                   mtry = 10,
-                   proximity = TRUE, 
-                   importance = TRUE)
+rf <- rf_fit_hmd(insurance_train, 
+                 ntree = 300,
+                 mtry = 10,
+                 proximity = TRUE, 
+                 importance = TRUE)
 ```
 
 
@@ -595,7 +592,7 @@ print(rf)
 ```
 
 ```{r}
-predict_rf <- predict(rf, X_test)
+predict_rf <- rf_predict_hmd(data=insurance_test, fit=rf)
 ```
 
 
@@ -603,7 +600,7 @@ predict_rf <- predict(rf, X_test)
 plot(rf)
 ```
           
-     
+       
 ```{r}
 # Number of nodes for the trees
 hist(treesize(rf),                        # give us the number of trees in term of number of nodes
@@ -627,7 +624,7 @@ varImpPlot(rf,
 ```{r}
 
 t <- tuneRF(X_train, 
-            y_train, # esclude the response variable 
+            y_train, 
             stepFactor = 0.5, 
             plot = TRUE, 
             ntreeTry = 300, 
@@ -645,9 +642,7 @@ print(t)
 
 
 ```{r}
-predict_rf_num <- predict_rf |> as.double()
-predict_rf_num <- ifelse(predict_rf_num > 1, 1, 0) 
-eval <- eval_hmd(actual, predict_rf_num)
+eval <- eval_hmd(actual, predict_rf$predictions_num)
 ```
 
 ```{r}
@@ -669,12 +664,11 @@ print(eval$fbeta_score)
 ```
 
 ```{r}
-pred_proba_rf <- predict(rf, X_test, type="prob")
-pred_proba_rf_list <- pred_proba_rf |> as.list() |> tail(nrow(insurance_test)) |> unlist()
+pred_proba_rf <- predict_rf$predict_proba
 ```
 
 ```{r}
-pROC::roc(actual ~ pred_proba_rf_list, plot = TRUE, print.auc = TRUE)
+pROC::roc(actual ~ pred_proba_rf, plot = TRUE, print.auc = TRUE)
 ```
 
 

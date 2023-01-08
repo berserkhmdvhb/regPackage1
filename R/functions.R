@@ -32,3 +32,4 @@ roc_obj_cal <- function(actual, pred_proba){
 plot_roc_curve <- function(roc_obj){
   pROC::ggroc(roc_obj)
 }
+

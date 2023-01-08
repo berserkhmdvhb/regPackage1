@@ -26,8 +26,10 @@ renv::restore()
 There are two reports available for this package.
 
  1. Rmarkdown report for the insurance claims' prediction using functions from the package
-[Link of Rmardkown file: ](https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/report.Rmd)
-[Link of HTML rendering of the Rmarkdown file: ](https://htmlpreview.github.io/?https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/report.html)
+
+[Link of Rmardkown file](https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/report.Rmd)
+
+[Link of HTML rendering of the Rmarkdown file](https://htmlpreview.github.io/?https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/report.html)
 
 2. The pipeline's instructions and detailed report of the libraries used for various stages of this package. Here is the general framework for this report:
  - Writing the functions used for different stages of the pipeline (i.e., preprocessing, prediction, evaluation, plotting)

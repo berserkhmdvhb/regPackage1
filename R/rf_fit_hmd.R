@@ -14,7 +14,7 @@
 #' This functions allows the user to fit a random forest on a given dataframe
 #' and to choose the hyperparameters for it.
 
-rf_fit <- function(data=regPackage1::insurance_train,
+rf_fit_hmd <- function(data=regPackage1::insurance_train,
                            target="outcome",
                            family="binomial",
                            ntree=300,

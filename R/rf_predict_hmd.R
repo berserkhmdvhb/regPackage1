@@ -3,7 +3,7 @@
 #' @param data An arbitrary dataframe
 #' @param target Target column in the data
 #' @export
-#' @return A hash containing predictions, and prediction probabilities
+#' @return A hash containing predictions (both factorized and numerical), and prediction probabilities
 #' @details
 #' This functions allows the user to predict a given dataset using fit object
 #' obtained from the randomForest function
@@ -24,9 +24,11 @@ rf_predict_hmd <- function(fit,
   predict_rf <- stats::predict({{fit}}, X_test)
   pred_proba_rf <- stats::predict({{fit}}, X_test, type="prob")
   pred_proba_rf_list <- pred_proba_rf |> as.list() |> utils::tail(nrow(df)) |> unlist()
-
+  predict_rf_num <- predict_rf |> as.double()
+  predict_rf_num <- ifelse(predict_rf_num > 1, 1, 0)
   h <- hash::hash()
   h[["predict_proba"]] <- pred_proba_rf_list
   h[["predictions"]] <- predict_rf
+  h[["predictions_num"]] <- predict_rf_num
   return(h)
 }

@@ -56,6 +56,7 @@ Explanations:
 First look at tree structure
 outcomes.
 
+```bash
 ├── inst
 │   ├── figures
 │   │   └── tar_visnetwork.png
@@ -73,19 +74,21 @@ outcomes.
     ├── testthat
     │   └── test-eval_hmd.R
     └── testthat.R
+```
 
 47 directories, 88 files
 
 
 ## `shiny` App
 
-
+```bash
 ├── my_app
 │   ├── global.R
 │   ├── server.R
 │   └── ui.R
 ├── R
 │   ├── functions.R
+```
 
 # Documentation and Report
 

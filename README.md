@@ -72,7 +72,7 @@ targets::tar_read(plot_rf)
 
 ### Tree Structure
 
-```r
+```bash
 ├── R
 │   ├── functions.R
 ├── run.R
@@ -143,7 +143,7 @@ Although the shiny App could be based on `targets`, since the whole point of thi
 
 As mentioned, the `functions.R` play role in both `shiny` and `targets`.
 
-```r
+```bash
 ├── my_app
 │   ├── global.R
 │   ├── server.R
@@ -167,7 +167,7 @@ TO DO
 
 ### Tree Structure
 
-```r
+```bash
 └── tests
     ├── testthat
     │   └── test-eval_hmd.R

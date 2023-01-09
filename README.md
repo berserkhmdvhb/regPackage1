@@ -6,21 +6,52 @@ Author: Hamed Vaheb
 This R package is dedicated to the workshop of master of data science at university of Luxembourg.
 In this package, functions are defined for various stages of a pipeline for prediction of the [Car Insurance Data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data). The stages includepreprocessing, prediction, evaluation, and plotting.
 
-# Install 
+# Install {#install}
 
-To install this package in an R edtior (e.g., Rstudio), install [`devtools`](https://www.r-project.org/nosvn/pandoc/devtools.html) run the following commands:
+To install this package in an R edtior (e.g., Rstudio), install [`devtools`](https://www.r-project.org/nosvn/pandoc/devtools.html) library and then install my package. Please follow the following commands:
 
 ```
+install.packages("devtools")
 library(devtools)
 install_github("berserkhmdvhb/regPackage1")
 ```
 
 # Usage
-To use this package, first install the [`renv`](https://rstudio.github.io/renv/articles/renv.html) the required packages from [`renv.lock`](https://github.com/berserkhmdvhb/regPackage1/blob/main/renv.lock) file using the following command in Rstudio console:
+
+## `renv` Pacakges
+Install the [`renv`](https://rstudio.github.io/renv/articles/renv.html) library, load its and then use the [`renv.lock`](https://github.com/berserkhmdvhb/regPackage1/blob/main/renv.lock) file to install the requied packages. Please follow the following commands in a R editor console:
 
 ```
+install.packages("renv")
+library(renv)
 renv::restore()
 ```
+## Documentation
+Now one can load my library and then use its function and documentations.
+
+---
+## Unit Tests
+TO DO
+---
+
+## `targets` Pipeline
+
+Aft
+After installing Instal the `targets` library, load it, 
+
+
+and then use `tar_make()` to create the pipeline.
+
+```
+install.packages("targets")
+library(targets)
+tar_make()
+```
+
+
+## `shiny` Ap;
+
+
 
 # Report
 There are two reports available for this package.

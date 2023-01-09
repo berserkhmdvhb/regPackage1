@@ -3,7 +3,10 @@ Type: Package
 Title: Insurance Data Forecast
 Version: 0.1.0
 Authors@R: person("Hamed", "Vaheb", email = "hamed.vaheb@gmail.com", role = c("aut", "cre"))
-Description: This package is for analyzing and forecasting car insurance data.
+Description: This package is for analyzing and predicting [car insurance data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
+The dataset is included in the package. The aim was to perform classification on the `outcome` column of the dataset.
+Details about the package is provded in [README file](https://github.com/berserkhmdvhb/regPackage1/blob/main/README.md) of the package.
+Details about the machine learning project is provided in the [report of the package](https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/report.html) 
 License: GPL (>=3)
 Encoding: UTF-8
 LazyData: true

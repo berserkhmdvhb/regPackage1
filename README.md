@@ -3,8 +3,12 @@ Author: Hamed Vaheb
 
 # Introduction
 
-This R package is dedicated to the workshop of master of data science at university of Luxembourg.
-In this package, functions are defined for various stages of a pipeline for prediction of the [Car Insurance Data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data). The stages includepreprocessing, prediction, evaluation, and plotting.
+This R package is dedicated to a project for the workshop of master of data science at university of Luxembourg.
+In this package, functions are defined for various stages of classification of the outcomes of the [Car Insurance Data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
+The raw dataset along with the processed train and test datasets (prpared to be fed in models) are incorporated in the package.
+A report is provided in the package that elaborated on all the stages from loading the data, preprocessing steps, applying logistic regression and random forest, and then evaluating and plotting the results.
+Details of the package's documentation, and the link to report of the classification project is elaborated on [Documentation-and-Report](# Documentation-and-Report).
+Moreover, a pipeline including main stages of the classification (refer to [`targets` Pipeline](#targets-Pipeline)), and a shiny interactive app (refer to [`shiny` App](#shiny-App)) visualizing evaluation plots are included in the package.
 
 # Install
 
@@ -52,7 +56,7 @@ tar_make()
 ## `shiny` App
 
 
-# Documentation
+# Documentation and Report
 
 
 There are two reports available for this package.

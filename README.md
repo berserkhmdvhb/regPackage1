@@ -99,7 +99,7 @@ The steps of the pipeline are elaborated on in the following:
     7. Plot the roc curve by feeding `roc_obj_glmnet` to the `plot_roc_curve` function, store the plot in `plot_glm`
 - Random Forest Part
     1. Fit the `insurance_train` into the `rf_fit_hmd` function (from the package) so as to apply the random forest model on data ,and thn store the fitted object in `model_rf`
-    2. Predict the `insurance_test` using the fitted object `model_rf` from step iii, by feeding both `insurance_test` and `model_rf` to the `rf_predict_hmd`, and store the prediction results in `predictions_rf`.
+    2. Predict the `insurance_test` using the fitted object `model_random_forest` from step iii, by feeding both `insurance_test` and `model_rf` to the `rf_predict_hmd`, and store the prediction results in `predictions_rf`.
     3. Extract prediction probabilities (required for ROC curve) from `predictions_rf` and store them in `pred_proba_rf`
     4. Compute ROC metrics be feeding `actual` data (from step ii) and prediction probabilities `pred_proba_rf` to the `roc_obj_cal` function, store the result in `roc_obj_rf`
     5. Plot the roc curve by feeding `roc_obj_rf` to the `plot_roc_curve` function, store the plot in `plot_rf`

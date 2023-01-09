@@ -16,6 +16,8 @@ library(devtools)
 install_github("berserkhmdvhb/regPackage1")
 ```
 
+# `test`
+
 # Usage
 
 ## `renv` 
@@ -36,7 +38,7 @@ TO DO
 
 ## `targets` Pipeline
 
-After installing the package (in [Install](#Install)), and installing the packages (in [`renv`](##`renv`)
+After installing the package (in [Install](#Install)), and installing the packages (in [`renv`](#`test`)
 After installing Instal the `targets` library, load it, 
 
 

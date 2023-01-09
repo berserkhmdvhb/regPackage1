@@ -18,7 +18,7 @@ Moreover, a pipeline including main stages of the classification (refer to [`tar
 To install this package in an R edtior (e.g., Rstudio), install [`devtools`](https://www.r-project.org/nosvn/pandoc/devtools.html) library and then install my package. Please follow the following commands:
 
 ```
-install.packages("devtools")
+install.packages("devtools", dependencies = TRUE)
 library(devtools)
 install_github("berserkhmdvhb/regPackage1")
 ```
@@ -34,7 +34,7 @@ Please run the commands of this section in a console of an R editor (e.g., Rstud
 Install the [`renv`](https://rstudio.github.io/renv/articles/renv.html) library, load its and then use the [`renv.lock`](https://github.com/berserkhmdvhb/regPackage1/blob/main/renv.lock) file to install the requied packages. Please follow the following commands in the console:
 
 ```
-install.packages("renv")
+install.packages("renv", dependencies = TRUE)
 library(renv)
 renv::restore()
 ```
@@ -50,7 +50,7 @@ After installing the `regPackage1` package (refer to [Install](#Install)), and i
 ```
 git clone git@github.com:berserkhmdvhb/regPackage1.git
 library(regPackage1)
-install.packages("targets")
+install.packages("targets", dependencies = TRUE)
 library(targets)
 tar_make()
 ```

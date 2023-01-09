@@ -49,7 +49,7 @@ TO DO
 
 ## `targets` Pipeline
 
-After installing the `#0969DA regPackage1` package (refer to [Install](#Install)), and installing the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), clone my package's repository, install and load the `targets` library, and the run `tar_make()` to run the pipeline.
+After installing the [`regPackage1`](#0969DA) package (refer to [Install](#Install)), and installing the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), clone my package's repository, install and load the `targets` library, and the run `tar_make()` to run the pipeline.
 
 ```
 install.packages("targets")

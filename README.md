@@ -7,7 +7,7 @@ This R package is dedicated to a project for the workshop of master of data scie
 In this package, functions are defined for various stages of classification of the outcomes of the [Car Insurance Data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
 The raw dataset along with the processed train and test datasets (prpared to be fed in models) are incorporated in the package.
 A report is provided in the package that elaborated on all the stages from loading the data, preprocessing steps, applying logistic regression and random forest, and then evaluating and plotting the results.
-Details of the package's documentation, and the link to report of the classification project is elaborated on [Documentation-and-Report](#Documentation-and-Report).
+The package's documentation, including documentation of functions and datasets, as well as unit tests for the functions are elaborated on [Documentation](#Documentation), and the link to report of the classification project is provided on [Report](#Report).
 Moreover, a pipeline including main stages of the classification (refer to [`targets` Pipeline](#targets-Pipeline)), and a shiny interactive app (refer to [`shiny` App](#shiny-App)) visualizing evaluation plots are included in the package.
 
 **Note**: All functions from this pakcage are suffixed with `hmd` so as not to confuse with other built-in packages.
@@ -40,16 +40,7 @@ renv::restore()
 
 To view the documentation my package, how to use its functions, and to read the report for a machine learning project that I did using this package, refer to [Documentation](#Documentation).
 
-## Unit Tests
-TO DO
 
-### Tree Structure
-```bash
-└── tests
-    ├── testthat
-    │   └── test-eval_hmd.R
-    └── testthat.R
-```
 
 ## `targets` Pipeline
 
@@ -143,13 +134,16 @@ As mentioned, the `functions.R` play role in both `shiny` and `targets`.
 
 
 
-# Documentation and Report
+# Documentation
 
 The documentation of the package can be accessed with the following commands.
 
 ```
 help(packag = regPackage1)
 ```
+## Unit Tests
+
+# Report
 
 The Rmarkdown report for the insurance claims' classification of the outcomes can be accessed in the following links:
 

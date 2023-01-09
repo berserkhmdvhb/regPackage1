@@ -90,6 +90,7 @@ The following figure should be displayed:
 ![`tar_visnetwork`](https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/figures/tar_visnetwork.png)
 
 
+### Pipeline Steps
 Evidenced by the visualization, the two datasets used in the pipeline are `insurance_train` and `insurance_test`.
 They are datasets processed from the raw `car_insurance_data`, and all the three mentioned datasets are incorporated in the package.
 The steps of the pipeline are elaborated on in the following:

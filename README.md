@@ -63,9 +63,6 @@ First look at tree structure
 outcomes.
 
 ```bash
-├── inst
-│   ├── figures
-│   │   └── tar_visnetwork.png
 ├── R
 │   ├── functions.R
 ├── run.R

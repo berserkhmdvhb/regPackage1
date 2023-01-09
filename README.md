@@ -51,9 +51,41 @@ library(targets)
 tar_make()
 ```
 
+Explanations:
+
+First look at tree structure
+outcomes.
+
+├── inst
+│   ├── figures
+│   │   └── tar_visnetwork.png
+├── my_app
+│   ├── global.R
+│   ├── server.R
+│   └── ui.R
+├── R
+│   ├── functions.R
+
+├── run.R
+├── run.sh
+├── _targets.R
+└── tests
+    ├── testthat
+    │   └── test-eval_hmd.R
+    └── testthat.R
+
+47 directories, 88 files
+
 
 ## `shiny` App
 
+
+├── my_app
+│   ├── global.R
+│   ├── server.R
+│   └── ui.R
+├── R
+│   ├── functions.R
 
 # Documentation and Report
 

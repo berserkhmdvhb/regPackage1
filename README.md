@@ -40,6 +40,7 @@ To view the documentation my package, how to use its functions, and to read the 
 ## Unit Tests
 TO DO
 
+### Tree Structure
 ```bash
 └── tests
     ├── testthat
@@ -53,9 +54,16 @@ After installing the `regPackage1` package (refer to [Install](#Install)), and i
 
 ```
 git clone git@github.com:berserkhmdvhb/regPackage1.git
+library(regPackage1)
 install.packages("targets")
 library(targets)
 tar_make()
+```
+After the pipeline is successfully run, there should be now two plots called `plot_glm` and `plot_rf` (as can bee seen in the figure in [Visualize](#Visualize)). Both of the plots display ROC curve, while the former attributes to the logistic regression (implemented by the glmnet), and the latter attributes to random forest classifier. The two plots are very similar, as the models had very similar performance. Two view the two plots, run the following in the console:
+
+```
+tar_read(plot_glm)
+tar_read(plot_rf)
 ```
 
 ### Tree Structure

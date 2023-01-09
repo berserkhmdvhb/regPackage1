@@ -95,8 +95,13 @@ Evidenced by the visualization, the two datasets used in the pipeline are `insur
 They are datasets processed from the raw `car_insurance_data`, and all the three mentioned datasets are incorporated in the package.
 The steps of the pipeline are elaborated on in the following:
 
-1. Access the insurance_train with
-
+- Logistic Regression Part
+    1. Access the `insurance_train` with `get_data_train()`, and insurance_test with `get_data_test()`.
+    2. Store the `outcome` column (labels) from `insurance_test` for later evaluation in step 5.
+    3. Fit
+- Random Forest Part
+    1. sss
+    2. sss
 ## `shiny` App
 
 Although the shiny App could be based on `targets`, since the whole point of this package is not deploying a shiny app, and instead doing a classification project, I separated the `shiny` app and `targerts` pipeline, while they have interesction on the `functions.R`. This can be seen from their tree structure

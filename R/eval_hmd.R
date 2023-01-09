@@ -1,5 +1,5 @@
 #' Evaluation Metrics Computed
-#' @param actual The actual data (usually obtained from test data)
+#' @param actual The actual data (usually obtained from the test data)
 #' @param predicted Predictions from an arbitrary model
 #' except the target
 #' @export

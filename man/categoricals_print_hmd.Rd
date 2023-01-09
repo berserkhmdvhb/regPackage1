@@ -2,7 +2,7 @@
 % Please edit documentation in R/categoricals_print_hmd.R
 \name{categoricals_print_hmd}
 \alias{categoricals_print_hmd}
-\title{Print nature of categorical columns in a given dataframe}
+\title{Print nature of categorical columns}
 \usage{
 categoricals_print_hmd(data = regPackage1::car_insurance_data)
 }
@@ -10,11 +10,11 @@ categoricals_print_hmd(data = regPackage1::car_insurance_data)
 \item{data}{An arbitrary dataframe}
 }
 \description{
-Print nature of categorical columns in a given dataframe
+Print nature of categorical columns
 }
 \details{
 This functions first detects which columns are categorical and then prints whether
-the column contains numbers or characters. To detect categorical columns, the function selects a column
-as categorical if either its class is "character", or if number of unique values
-the column has is less than 5.
+the detected columns contain numbers or characters. To detect categorical columns,
+the function recognizes a column as categorical if either its class is "character",
+or the number of unique values in that column has is less than 5.
 }

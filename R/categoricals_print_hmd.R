@@ -1,11 +1,11 @@
-#' Print nature of categorical columns in a given dataframe
+#' Print nature of categorical columns
 #' @param data An arbitrary dataframe
 #' @export
 #' @details
 #' This functions first detects which columns are categorical and then prints whether
-#' the column contains numbers or characters. To detect categorical columns, the function selects a column
-#' as categorical if either its class is "character", or if number of unique values
-#' the column has is less than 5.
+#' the detected columns contain numbers or characters. To detect categorical columns,
+#' the function recognizes a column as categorical if either its class is "character",
+#' or the number of unique values in that column has is less than 5.
 
 
 

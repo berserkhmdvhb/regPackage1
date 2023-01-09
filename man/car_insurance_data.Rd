@@ -36,6 +36,8 @@ A data frame with 10000 rows and 19 columns:
 data(car_insurance_data)
 }
 \description{
-This dataset includes annual car insurance data shared by a company. Most of the data is real and part of it is artificially generated.
+This dataset includes annual car insurance data shared by a company. Most of
+the data is real and part of it is artificially generated. The target column is
+`outcome`. This binary column shows if the insurance request was rejected or accepted.
 }
 \keyword{datasets}

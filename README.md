@@ -126,6 +126,7 @@ shiny::runApp('my_app')
 
 Although the shiny App could be based on `targets`, since the whole point of this package is not deploying a shiny app, and instead doing a classification project, I separated the `shiny` app and `targerts` pipeline, while they have interesction on the `functions.R`. This can be seen from their tree structure
 
+
 ### Tree Structure
 
 As mentioned, the `functions.R` play role in both `shiny` and `targets`.
@@ -139,7 +140,10 @@ As mentioned, the `functions.R` play role in both `shiny` and `targets`.
 │   ├── functions.R
 ```
 
+
 ### Visualize
+
+![Shiny App](https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/figures/shiny.png)
 
 # Documentation and Report
 

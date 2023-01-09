@@ -56,13 +56,8 @@ install.packages("targets")
 library(targets)
 tar_make()
 ```
-### Visualize
-![`tar_visnetwork`](https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/figures/tar_visnetwork.png)
 
-Explanations:
-
-First look at tree structure
-outcomes.
+### Tree Structure
 
 ```bash
 ├── R
@@ -76,10 +71,21 @@ outcomes.
     └── testthat.R
 ```
 
+### Visualize
+![`tar_visnetwork`](https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/figures/tar_visnetwork.png)
+
+Explanations:
+
+First look at tree structure
+outcomes.
+
+
 47 directories, 88 files
 
 
 ## `shiny` App
+
+### Tree Structure
 
 ```bash
 ├── my_app
@@ -89,6 +95,8 @@ outcomes.
 ├── R
 │   ├── functions.R
 ```
+
+### Visualize
 
 # Documentation and Report
 

@@ -20,7 +20,7 @@ install_github("berserkhmdvhb/regPackage1")
 
 # Usage
 
-## `renv` 
+## `renv` packages
 Install the [`renv`](https://rstudio.github.io/renv/articles/renv.html) library, load its and then use the [`renv.lock`](https://github.com/berserkhmdvhb/regPackage1/blob/main/renv.lock) file to install the requied packages. Please follow the following commands in a R editor console:
 
 ```
@@ -38,7 +38,7 @@ TO DO
 
 ## `targets` Pipeline
 
-After installing the package (in [Install](#Install)), and installing the packages (in [`renv`](#renv)
+After installing the package (in [Install](#Install)), and installing the packages (in [`renv`](#renvpackages)
 After installing Instal the `targets` library, load it, 
 
 

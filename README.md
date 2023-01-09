@@ -140,7 +140,7 @@ As mentioned, the `functions.R` play role in both `shiny` and `targets`.
 The documentation of the package can be accessed with the following commands.
 
 ```
-help(packag = regPackage1)
+help(package = regPackage1)
 ```
 ## Unit Tests
 TO DO

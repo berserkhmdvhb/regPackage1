@@ -38,7 +38,7 @@ TO DO
 
 ## `targets` Pipeline
 
-After installing the package (in [Install](#Install)), and installing the packages (in [`renv`](#renv packages)
+After installing the package (in [Install](#Install)), and installing the packages (in [`renv`](#renv)
 After installing Instal the `targets` library, load it, 
 
 
@@ -51,8 +51,7 @@ tar_make()
 ```
 
 
-## `shiny` Ap;
-
+## `shiny` App
 
 
 # Report

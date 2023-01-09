@@ -111,7 +111,18 @@ The steps of the pipeline are elaborated on in the following:
     3. Extract prediction probabilities (required for ROC curve) from `predictions_rf` and store them in `pred_proba_rf`
     4. Compute ROC metrics be feeding `actual` data (from step ii) and prediction probabilities `pred_proba_rf` to the `roc_obj_cal` function, store the result in `roc_obj_rf`
     5. Plot the roc curve by feeding `roc_obj_rf` to the `plot_roc_curve` function, store the plot in `plot_rf`
+    
+    
 ## `shiny` App
+After installing the `regPackage1` package (refer to [Install](#Install)), and installing the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), use  clone my package's repository, install and load the `targets` library, and the run `shiny::runApp("my_app")` to view the application.
+
+```
+git clone git@github.com:berserkhmdvhb/regPackage1.git
+library(regPackage1)
+install.packages("shiny")
+library(shiny)
+shiny::runApp('my_app')
+```
 
 Although the shiny App could be based on `targets`, since the whole point of this package is not deploying a shiny app, and instead doing a classification project, I separated the `shiny` app and `targerts` pipeline, while they have interesction on the `functions.R`. This can be seen from their tree structure
 

@@ -45,10 +45,17 @@ To view the documentation my package, how to use its functions, and to read the 
 
 ## `targets` Pipeline
 
-After installing the `regPackage1` package (refer to [Install](#Install)), and installing the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), use  clone my package's repository, install and load the `targets` library, and the run `tar_make()` to run the pipeline.
+First clone the package's repository, using the following command in a command line:
 
 ```
 git clone git@github.com:berserkhmdvhb/regPackage1.git
+```
+
+Then navigate to to the cloned folder and open `regPackage1.Rproj` in an R editor to create a project. Make sure to use `renv` so as to retrieve the pacakges required for the `regPackage1` .
+
+Now Install the `regPackage1` package (refer to [Install](#Install)), and installing the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), install and load the `targets` library, and the run `tar_make()` to run the pipeline.
+
+```
 library(regPackage1)
 install.packages("targets", dependencies = TRUE)
 library(targets)

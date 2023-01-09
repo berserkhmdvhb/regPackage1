@@ -24,8 +24,10 @@ install_github("berserkhmdvhb/regPackage1")
 
 # Usage
 
+Please run the commands of this section in a console of an R editor (e.g., Rstudio)
+
 ## `renv` packages
-Install the [`renv`](https://rstudio.github.io/renv/articles/renv.html) library, load its and then use the [`renv.lock`](https://github.com/berserkhmdvhb/regPackage1/blob/main/renv.lock) file to install the requied packages. Please follow the following commands in a R editor console:
+Install the [`renv`](https://rstudio.github.io/renv/articles/renv.html) library, load its and then use the [`renv.lock`](https://github.com/berserkhmdvhb/regPackage1/blob/main/renv.lock) file to install the requied packages. Please follow the following commands in the console:
 
 ```
 install.packages("renv")
@@ -43,9 +45,6 @@ TO DO
 
 After installing my package (refer to [Install](#Install)), and installing the required packages  from the `renv.lock` file (refer to [`renv`](#renv-packages), clone my package's repository, install and load the `targets` library, and the run `tar_make()` to run the pipeline.
 
-
-and then use `tar_make()` to create the pipeline.
-
 ```
 install.packages("targets")
 library(targets)
@@ -58,19 +57,15 @@ tar_make()
 
 # Documentation and Report
 
+The documentation of the package can be accessed with the following commands.
 
-There are two reports available for this package.
+```
+help(packag = regPackage1)
+```
 
- 1. Rmarkdown report for the insurance claims' prediction using functions from the package
+The Rmarkdown report for the insurance claims' classification of the outcomes can be accessed in the following links:
 
 [Link of Rmardkown file](https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/report.Rmd)
 
 [Link of HTML rendering of the Rmarkdown file](https://htmlpreview.github.io/?https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/report.html)
 
-2. The pipeline's instructions and detailed report of the libraries used for various stages of this package. Here is the general framework for this report:
- - Writing the functions used for different stages of the pipeline (i.e., preprocessing, prediction, evaluation, plotting)
- - Unit Tests for some of the functions
- - Use [`targets`](https://cran.r-project.org/web/packages/targets/index.html) package to create a pipeline for plotting predictions (or their evaluation).
- - Use [`shiny`](https://shiny.rstudio.com/) to provide an interactive plot of predctions.
-
-The third and fourth tasks of the framework is remained to be done.

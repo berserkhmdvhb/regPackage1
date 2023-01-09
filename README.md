@@ -3,10 +3,10 @@ Author: Hamed Vaheb
 
 # Introduction
 
-This R package is dedicated to a project for the workshop of master of data science at university of Luxembourg.
-In this package, functions are defined for various stages of classification of the outcomes of the [Car Insurance Data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
-The raw dataset along with the processed train and test datasets (prpared to be fed in models) are incorporated in the package.
-A report is provided in the package that elaborated on all the stages from loading the data, preprocessing steps, applying logistic regression and random forest, and then evaluating and plotting the results.
+The `regPackage1` package is dedicated to a project for the workshop of master of data science at university of Luxembourg.
+In this package, functions are defined for various stages of classification of the `outcome` column of the [Car Insurance Data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
+The raw dataset along with the processed train and test datasets, obtained by using the `regPackage1` functions (prepared to be fed in models) are incorporated in the package.
+A report is provided in the package that elaborates on all the stages from loading the data, preprocessing steps, applying logistic regression and random forest, and then evaluating and plotting the results.
 The package's documentation, including documentation of functions and datasets, as well as unit tests for the functions are elaborated on [Documentation](#Documentation), and the link to report of the classification project is provided on [Report](#Report).
 Moreover, a pipeline including main stages of the classification (refer to [`targets` Pipeline](#targets-Pipeline)), and a shiny interactive app (refer to [`shiny` App](#shiny-App)) visualizing evaluation plots are included in the package.
 

@@ -2,7 +2,7 @@
 Author: Hamed Vaheb
 
 # Introduction
-
+`#ffffff`
 This R package is dedicated to a project for the workshop of master of data science at university of Luxembourg.
 In this package, functions are defined for various stages of classification of the outcomes of the [Car Insurance Data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
 The raw dataset along with the processed train and test datasets (prpared to be fed in models) are incorporated in the package.

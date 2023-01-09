@@ -61,6 +61,7 @@ install.packages("targets", dependencies = TRUE)
 library(targets)
 tar_make()
 ```
+
 After the pipeline is successfully run, there should be now two plots called `plot_glm` and `plot_rf` (as can bee seen in the figure in [Visualize](#Visualize)). Both of the plots display ROC curve, while the former attributes to the logistic regression (implemented by the glmnet), and the latter attributes to random forest classifier. The two plots are very similar, as the models had very similar performance. Two view the two plots, run the following in the console:
 
 ```
@@ -114,10 +115,20 @@ The steps of the pipeline are elaborated on in the following:
     
     
 ## `shiny` App
-After installing the `regPackage1` package (refer to [Install](#Install)), and installing the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), use  clone my package's repository, install and load the `targets` library, and the run `shiny::runApp("my_app")` to view the application.
+
+
+First clone the package's repository, using the following command in a command line:
 
 ```
 git clone git@github.com:berserkhmdvhb/regPackage1.git
+```
+
+Then navigate to to the cloned folder and open `regPackage1.Rproj` in an R editor to create a project. Make sure to use `renv` so as to retrieve the pacakges required for the `regPackage1` .
+
+Now Install the `regPackage1` package (refer to [Install](#Install)), and installing the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), install and load the `shiny` library, and the run `shiny::runApp("my_app")` to view the application.
+
+
+```
 library(regPackage1)
 install.packages("shiny")
 library(shiny)

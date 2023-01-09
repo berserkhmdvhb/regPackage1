@@ -2,7 +2,7 @@
 Author: Hamed Vaheb
 
 # Introduction
-`#ffffff`
+
 This R package is dedicated to a project for the workshop of master of data science at university of Luxembourg.
 In this package, functions are defined for various stages of classification of the outcomes of the [Car Insurance Data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
 The raw dataset along with the processed train and test datasets (prpared to be fed in models) are incorporated in the package.
@@ -49,13 +49,15 @@ TO DO
 
 ## `targets` Pipeline
 
-After installing the `regPackage1` `#0969DA` package (refer to [Install](#Install)), and installing the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), clone my package's repository, install and load the `targets` library, and the run `tar_make()` to run the pipeline.
+After installing the `regPackage1` package (refer to [Install](#Install)), and installing the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), clone my package's repository, install and load the `targets` library, and the run `tar_make()` to run the pipeline.
 
 ```
 install.packages("targets")
 library(targets)
 tar_make()
 ```
+### Visualize
+![`tar_visnetwork`](https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/figures/tar_visnetwork.png)
 
 Explanations:
 

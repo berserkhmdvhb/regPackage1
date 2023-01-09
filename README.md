@@ -28,13 +28,12 @@ install.packages("renv")
 library(renv)
 renv::restore()
 ```
-## Documentation
-Now one can load my library and then use its function and documentations.
 
----
+To view the documentation my package, how to use its functions, and to read the report for a machine learning project that I did using this package, refer to [Documentation](#Documentation).
+
 ## Unit Tests
 TO DO
----
+
 
 ## `targets` Pipeline
 
@@ -53,7 +52,9 @@ tar_make()
 ## `shiny` App
 
 
-# Report
+# Documentation
+
+
 There are two reports available for this package.
 
  1. Rmarkdown report for the insurance claims' prediction using functions from the package

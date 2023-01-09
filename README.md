@@ -143,7 +143,7 @@ As mentioned, the `functions.R` play role in both `shiny` and `targets`.
 
 ### Visualize
 
-![Shiny App](https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/figures/shiny.png)
+![Shiny App](https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/figures/shiny.png |  width=20)
 
 # Documentation and Report
 

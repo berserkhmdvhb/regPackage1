@@ -27,6 +27,7 @@ install_github("berserkhmdvhb/regPackage1")
 Please run the commands of this section in a console of an R editor (e.g., Rstudio)
 
 ## `renv` packages
+
 Install the [`renv`](https://rstudio.github.io/renv/articles/renv.html) library, load its and then use the [`renv.lock`](https://github.com/berserkhmdvhb/regPackage1/blob/main/renv.lock) file to install the requied packages. Please follow the following commands in the console:
 
 ```
@@ -66,6 +67,7 @@ tar_read(plot_glm)
 tar_read(plot_rf)
 ```
 
+
 ### Tree Structure
 
 ```bash
@@ -76,21 +78,31 @@ tar_read(plot_rf)
 ├── _targets.R
 ```
 
-### Visualize
+### Visualize 
+
+To visalize the components of the pipeline, run the following:
+
+```
+tar_visnetwork()
+```
+
+The following figure should be displayed:
 ![`tar_visnetwork`](https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/figures/tar_visnetwork.png)
 
-Explanations:
 
-First look at tree structure
-outcomes.
+Evidenced by the visualization, the two datasets used in the pipeline are `insurance_train` and `insurance_test`.
+They are datasets processed from the raw `car_insurance_data`, and all the three mentioned datasets are incorporated in the package.
+The steps of the pipeline are elaborated on in the following:
 
-
-47 directories, 88 files
-
+1. Access the insurance_train with
 
 ## `shiny` App
 
+Although the shiny App could be based on `targets`, since the whole point of this package is not deploying a shiny app, and instead doing a classification project, I separated the `shiny` app and `targerts` pipeline, while they have interesction on the `functions.R`. This can be seen from their tree structure
+
 ### Tree Structure
+
+As mentioned, the `functions.R` play role in both `shiny` and `targets`.
 
 ```bash
 ├── my_app

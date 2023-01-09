@@ -142,6 +142,15 @@ The documentation of the package can be accessed with the following commands.
 help(packag = regPackage1)
 ```
 ## Unit Tests
+TO DO
+
+### Tree Structure
+```bash
+└── tests
+    ├── testthat
+    │   └── test-eval_hmd.R
+    └── testthat.R
+```
 
 # Report
 

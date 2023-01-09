@@ -40,6 +40,12 @@ To view the documentation my package, how to use its functions, and to read the 
 ## Unit Tests
 TO DO
 
+```bash
+└── tests
+    ├── testthat
+    │   └── test-eval_hmd.R
+    └── testthat.R
+```
 
 ## `targets` Pipeline
 
@@ -60,13 +66,8 @@ outcomes.
 ├── inst
 │   ├── figures
 │   │   └── tar_visnetwork.png
-├── my_app
-│   ├── global.R
-│   ├── server.R
-│   └── ui.R
 ├── R
 │   ├── functions.R
-
 ├── run.R
 ├── run.sh
 ├── _targets.R

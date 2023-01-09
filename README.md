@@ -99,10 +99,12 @@ The steps of the pipeline are elaborated on in the following:
 
 - Logistic Regression Part
     1. Access the `insurance_train` with `get_data_train()`, and insurance_test with `get_data_test()`.
-    2. Store the `outcome` column (labels) from `insurance_test` for later evaluation in step v.
+    2. Store the `outcome` column (labels) from `insurance_test` for later evaluation in step vi.
     3. Fit the `insurance_train` into the `glmnet_fit_hmd` function (from the package) and, store the fitted objectin `model_glm`
-    4. Predict the `insurance_test` using the fitted object `model_glm` from step iii, by feeding both `insurance_test` and `model_glm` to the `glmnet_predict_hmd`
-    5. 
+    4. Predict the `insurance_test` using the fitted object `model_glm` from step iii, by feeding both `insurance_test` and `model_glm` to the `glmnet_predict_hmd`, and store the prediction results in `predictions_glm`.
+    5. Extract prediction probabilities (required for ROC curve) from `predictions_glm` and store them in `pred_proba_glmnet`
+    6. Compute ROC metrics using `evaluation` (from step ii), and prediction probabilities `pred_proba_glmnet`.
+    7. 
 - Random Forest Part
     1. sss
     2. sss

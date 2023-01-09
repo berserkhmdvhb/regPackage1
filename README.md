@@ -17,7 +17,7 @@ Moreover, a pipeline including main stages of the classification (refer to [`tar
 
 To install this package in an R edtior (e.g., Rstudio), install [`devtools`](https://www.r-project.org/nosvn/pandoc/devtools.html) library and then install my package. Please follow the following commands:
 
-```
+```r
 install.packages("devtools", dependencies = TRUE)
 library(devtools)
 install_github("berserkhmdvhb/regPackage1")
@@ -33,7 +33,7 @@ Please run the commands of this section in a console of an R editor (e.g., Rstud
 
 Install the [`renv`](https://rstudio.github.io/renv/articles/renv.html) library, load its and then use the [`renv.lock`](https://github.com/berserkhmdvhb/regPackage1/blob/main/renv.lock) file to install the requied packages. Please follow the following commands in the console:
 
-```
+```r
 install.packages("renv", dependencies = TRUE)
 library(renv)
 renv::restore()
@@ -55,7 +55,7 @@ Then navigate to to the cloned folder and open `regPackage1.Rproj` in an R edito
 
 Now Install the `regPackage1` package (refer to [Install](#Install)), and installing the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), install and load the `targets` library, and the run `tar_make()` to run the pipeline.
 
-```
+```r
 library(regPackage1)
 install.packages("targets", dependencies = TRUE)
 library(targets)
@@ -64,7 +64,7 @@ tar_make()
 
 After the pipeline is successfully run, there should be now two plots called `plot_glm` and `plot_rf` (as can bee seen in the figure in [Visualize](#Visualize)). Both of the plots display ROC curve, while the former attributes to the logistic regression (implemented by the glmnet), and the latter attributes to random forest classifier. The two plots are very similar, as the models had very similar performance. Two view the two plots, run the following in the console:
 
-```
+```r
 tar_read(plot_glm)
 tar_read(plot_rf)
 ```
@@ -128,7 +128,7 @@ Then, navigate to to the cloned folder and open `regPackage1.Rproj` in an R edit
 
 Install the `regPackage1` package (refer to [Install](#Install)), install the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), install and load the `shiny` library, and the run `shiny::runApp("my_app")` to view the application.
 
-```
+```r
 library(regPackage1)
 install.packages("shiny")
 library(shiny)
@@ -158,13 +158,15 @@ As mentioned, the `functions.R` play role in both `shiny` and `targets`.
 
 The documentation of the package can be accessed with the following commands.
 
-```
+```r
+
 help(package = regPackage1)
 ```
 ## Unit Tests
 TO DO
 
 ### Tree Structure
+
 ```bash
 └── tests
     ├── testthat

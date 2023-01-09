@@ -49,9 +49,10 @@ TO DO
 
 ## `targets` Pipeline
 
-After installing the `regPackage1` package (refer to [Install](#Install)), and installing the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), clone my package's repository, install and load the `targets` library, and the run `tar_make()` to run the pipeline.
+After installing the `regPackage1` package (refer to [Install](#Install)), and installing the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), use  clone my package's repository, install and load the `targets` library, and the run `tar_make()` to run the pipeline.
 
 ```
+git clone git@github.com:berserkhmdvhb/regPackage1.git
 install.packages("targets")
 library(targets)
 tar_make()

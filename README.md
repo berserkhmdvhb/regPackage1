@@ -94,6 +94,7 @@ The following figure should be displayed:
 
 
 ### Pipeline Steps
+
 Evidenced by the visualization, the two datasets used in the pipeline are `insurance_train` and `insurance_test`.
 They are datasets processed from the raw `car_insurance_data`, and all the three mentioned datasets are incorporated in the package.
 The steps of the pipeline are elaborated on in the following:
@@ -117,16 +118,15 @@ The steps of the pipeline are elaborated on in the following:
 ## `shiny` App
 
 
-First clone the package's repository, using the following command in a command line:
+First, clone the package's repository, using the following command in a command line:
 
 ```
 git clone git@github.com:berserkhmdvhb/regPackage1.git
 ```
 
-Then navigate to to the cloned folder and open `regPackage1.Rproj` in an R editor to create a project. Make sure to use `renv` so as to retrieve the pacakges required for the `regPackage1` .
+Then, navigate to to the cloned folder and open `regPackage1.Rproj` in an R editor to create a project. Make sure to use `renv` so as to retrieve the pacakges required for the `regPackage1`.
 
-Now Install the `regPackage1` package (refer to [Install](#Install)), and installing the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), install and load the `shiny` library, and the run `shiny::runApp("my_app")` to view the application.
-
+Install the `regPackage1` package (refer to [Install](#Install)), install the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), install and load the `shiny` library, and the run `shiny::runApp("my_app")` to view the application.
 
 ```
 library(regPackage1)

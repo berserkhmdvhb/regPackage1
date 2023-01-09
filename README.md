@@ -10,6 +10,8 @@ A report is provided in the package that elaborated on all the stages from loadi
 Details of the package's documentation, and the link to report of the classification project is elaborated on [Documentation-and-Report](#Documentation-and-Report).
 Moreover, a pipeline including main stages of the classification (refer to [`targets` Pipeline](#targets-Pipeline)), and a shiny interactive app (refer to [`shiny` App](#shiny-App)) visualizing evaluation plots are included in the package.
 
+**Note**: All functions from this pakcage are suffixed with `hmd` so as not to confuse with other built-in packages.
+
 # Install
 
 To install this package in an R edtior (e.g., Rstudio), install [`devtools`](https://www.r-project.org/nosvn/pandoc/devtools.html) library and then install my package. Please follow the following commands:
@@ -97,8 +99,10 @@ The steps of the pipeline are elaborated on in the following:
 
 - Logistic Regression Part
     1. Access the `insurance_train` with `get_data_train()`, and insurance_test with `get_data_test()`.
-    2. Store the `outcome` column (labels) from `insurance_test` for later evaluation in step 5.
-    3. Fit
+    2. Store the `outcome` column (labels) from `insurance_test` for later evaluation in step v.
+    3. Fit the `insurance_train` into the `glmnet_fit_hmd` function (from the package) and, store the fitted objectin `model_glm`
+    4. Predict the `insurance_test` using the fitted object `model_glm` from step iii, by feeding both `insurance_test` and `model_glm` to the `glmnet_predict_hmd`
+    5. 
 - Random Forest Part
     1. sss
     2. sss

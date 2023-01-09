@@ -81,6 +81,7 @@ tar_visnetwork()
 ```
 
 The following figure should be displayed:
+
 ![`tar_visnetwork`](https://github.com/berserkhmdvhb/regPackage1/blob/main/inst/figures/tar_visnetwork.png)
 
 

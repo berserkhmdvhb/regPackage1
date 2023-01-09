@@ -38,8 +38,7 @@ TO DO
 
 ## `targets` Pipeline
 
-After installing the package (in [Install](#Install)), and installing the packages (in [`renv`](#renv)
-After installing Instal the `targets` library, load it, 
+After installing my package (refer to [Install](#Install)), and installing the required packages  from the `renv.lock` file (refer to [`renv`](#renv-packages), clone my package's repository, install and load the `targets` library, and the run `tar_make()` to run the pipeline.
 
 
 and then use `tar_make()` to create the pipeline.

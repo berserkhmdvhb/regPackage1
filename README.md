@@ -99,15 +99,18 @@ The steps of the pipeline are elaborated on in the following:
 
 - Logistic Regression Part
     1. Access the `insurance_train` with `get_data_train()`, and insurance_test with `get_data_test()`.
-    2. Store the `outcome` column (labels) from `insurance_test` for later evaluation in step vi.
-    3. Fit the `insurance_train` into the `glmnet_fit_hmd` function (from the package) and, store the fitted objectin `model_glm`
+    2. Store the `outcome` column (labels) from `insurance_test` for later evaluation in steps vi and xi.
+    3. Fit the `insurance_train` into the `glmnet_fit_hmd` function (from the package) so as to apply the logistic regression model on data ,and thn store the fitted object in `model_glm`
     4. Predict the `insurance_test` using the fitted object `model_glm` from step iii, by feeding both `insurance_test` and `model_glm` to the `glmnet_predict_hmd`, and store the prediction results in `predictions_glm`.
     5. Extract prediction probabilities (required for ROC curve) from `predictions_glm` and store them in `pred_proba_glmnet`
-    6. Compute ROC metrics using `evaluation` (from step ii), and prediction probabilities `pred_proba_glmnet`.
-    7. 
+    6. Compute ROC metrics be feeding `actual` data (from step ii) and prediction probabilities `pred_proba_glmnet` to the `roc_obj_cal` function, store the result in `roc_obj_glmnet`
+    7. Plot the roc curve by feeding `roc_obj_glmnet` to the `plot_roc_curve` function, store the plot in `plot_glm`
 - Random Forest Part
-    1. sss
-    2. sss
+    8. Fit the `insurance_train` into the `rf_fit_hmd` function (from the package) so as to apply the random forest model on data ,and thn store the fitted object in `model_rf`
+    9. Predict the `insurance_test` using the fitted object `model_rf` from step iii, by feeding both `insurance_test` and `model_rf` to the `rf_predict_hmd`, and store the prediction results in `predictions_rf`.
+    10. Extract prediction probabilities (required for ROC curve) from `predictions_rf` and store them in `pred_proba_rf`
+    11. Compute ROC metrics be feeding `actual` data (from step ii) and prediction probabilities `pred_proba_rf` to the `roc_obj_cal` function, store the result in `roc_obj_rf`
+    12. Plot the roc curve by feeding `roc_obj_rf` to the `plot_roc_curve` function, store the plot in `plot_rf`
 ## `shiny` App
 
 Although the shiny App could be based on `targets`, since the whole point of this package is not deploying a shiny app, and instead doing a classification project, I separated the `shiny` app and `targerts` pipeline, while they have interesction on the `functions.R`. This can be seen from their tree structure

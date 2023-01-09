@@ -6,7 +6,7 @@ Author: Hamed Vaheb
 This R package is dedicated to the workshop of master of data science at university of Luxembourg.
 In this package, functions are defined for various stages of a pipeline for prediction of the [Car Insurance Data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data). The stages includepreprocessing, prediction, evaluation, and plotting.
 
-# Install {#install}
+# Install
 
 To install this package in an R edtior (e.g., Rstudio), install [`devtools`](https://www.r-project.org/nosvn/pandoc/devtools.html) library and then install my package. Please follow the following commands:
 
@@ -36,7 +36,7 @@ TO DO
 
 ## `targets` Pipeline
 
-Aft
+After installing the package (in [here](# Install)
 After installing Instal the `targets` library, load it, 
 
 

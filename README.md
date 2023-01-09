@@ -59,14 +59,14 @@ Now Install the `regPackage1` package (refer to [Install](#Install)), and instal
 library(regPackage1)
 install.packages("targets", dependencies = TRUE)
 library(targets)
-tar_make()
+targets::tar_make()
 ```
 
 After the pipeline is successfully run, there should be now two plots called `plot_glm` and `plot_rf` (as can bee seen in the figure in [Visualize](#Visualize)). Both of the plots display ROC curve, while the former attributes to the logistic regression (implemented by the glmnet), and the latter attributes to random forest classifier. The two plots are very similar, as the models had very similar performance. Two view the two plots, run the following in the console:
 
 ```r
-tar_read(plot_glm)
-tar_read(plot_rf)
+targets::tar_read(plot_glm)
+targets::tar_read(plot_rf)
 ```
 
 
@@ -85,7 +85,7 @@ tar_read(plot_rf)
 To visalize the components of the pipeline, run the following:
 
 ```
-tar_visnetwork()
+targets::tar_visnetwork()
 ```
 
 The following figure should be displayed:

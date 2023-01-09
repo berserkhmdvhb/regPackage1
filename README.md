@@ -74,10 +74,6 @@ tar_read(plot_rf)
 ├── run.R
 ├── run.sh
 ├── _targets.R
-└── tests
-    ├── testthat
-    │   └── test-eval_hmd.R
-    └── testthat.R
 ```
 
 ### Visualize

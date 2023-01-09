@@ -36,7 +36,7 @@ TO DO
 
 ## `targets` Pipeline
 
-After installing the package (in [here](#Install)
+After installing the package (in [Install](#Install)), and installing the packages (in [`renv` Pacakges](##`renv` Pacakges)
 After installing Instal the `targets` library, load it, 
 
 

@@ -1,5 +1,5 @@
 library(shiny)
-library(shinycssloaders)
+library(shinycustomloader)
 
 ui <- function(request){
   fluidPage(
@@ -25,7 +25,8 @@ ui <- function(request){
       ),
 
       mainPanel(
-        plotOutput("evaluation_plots") |> withSpinner()
+        shinycustomloader::withLoader(plotOutput("evaluation_plots"), type="html", loader="loader5")
+        #plotOutput("evaluation_plots") |> shinycustomloader::withLoader(plotOutput("distPlot"), type="image", loader="loader1")
       )
     )
   )

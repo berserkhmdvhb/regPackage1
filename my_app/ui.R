@@ -4,7 +4,6 @@ library(shinycustomloader)
 ui <- function(request){
   fluidPage(
 
-    titlePanel("Model Evaluation for the Car Insurance Data"),
 
     sidebarLayout(
 
@@ -21,10 +20,13 @@ ui <- function(request){
                     multiple = FALSE
         ),
         hr(),
-        helpText("Car Iinsurance data from the package")
+        actionButton(inputId = "run_plot",
+                     label = "Click here to plot the selected evaluation"),
+        helpText("Classification is perforemd on the outcome column")
       ),
 
       mainPanel(
+        titlePanel("Model Evaluation for the Car Insurance Data"),
         shinycustomloader::withLoader(plotOutput("evaluation_plots"), type="html", loader="loader5")
         #plotOutput("evaluation_plots") |> shinycustomloader::withLoader(plotOutput("distPlot"), type="image", loader="loader1")
       )

@@ -1,11 +1,4 @@
 server <- function(session, input, output) {
-
-
-  model_selected_reac <- reactive(input$model_selected)
-  evaluation_selected_reac <- reactive(input$evaluation_selected)
-
-
-
   preds <- reactive({
     if (input$model_selected == "Logistic Regression"){
       actual <- insurance_test$outcome
@@ -27,7 +20,8 @@ server <- function(session, input, output) {
       rf_predict_hmd(data=insurance_test,
                      fit=model_random_forest)
     }
-  })
+  }) |> bindCache(input$model_selected) |> bindEvent(input$run_plot)
+
 
   plot_eval <- reactive({
     actual <- insurance_test$outcome
@@ -43,7 +37,12 @@ server <- function(session, input, output) {
       eval_glm$confusion_matrix_plot
     }
 
-  })
+  })  |> bindCache(input$evaluation_selected) |> bindEvent(input$run_plot)
+  #|>
+   # bindCache(input$model_selected,
+   #           input$evaluation_selected) |>
+   # bindEvent(input$run_plot)
+
 
 
   output$evaluation_plots <- renderPlot({

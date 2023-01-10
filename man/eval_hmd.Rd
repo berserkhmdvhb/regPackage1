@@ -21,7 +21,6 @@ Evaluation Metrics Computed
 \details{
 This functions computes various evaluation metrics of classification for a given
 actual data and a prediction data. The function returns a hash containing the
-following items:
-- `confusion_matrix`
-- `confusion_matrix_plot`
+following items: accuracy, precision, recall, F-score, F-beta score, confusion
+matrix, and plot confusion matrix
 }

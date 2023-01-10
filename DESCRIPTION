@@ -21,7 +21,9 @@ Imports:
     car,
     Metrics,
     pROC,
-    randomForest
+    randomForest,
+    shiny,
+    shinycustomloader
 Suggests: 
     knitr,
     rmarkdown,

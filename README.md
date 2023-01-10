@@ -52,7 +52,7 @@ git clone git@github.com:berserkhmdvhb/regPackage1.git
 ```
 
 Then navigate to to the cloned folder and open `regPackage1.Rproj` in an R editor to create a project.
-Firstly, install the packages required `regPackage1` package from the `renv.lock` file (refer to [`renv`](#renv-packages)), then install the `regPackage1` package itself (refer to [Install](#Install)),, install and load the `targets` library, and the run `tar_make()` to run the pipeline.
+Firstly, install the packages required for the `regPackage1` package from the `renv.lock` file (refer to [`renv`](#renv-packages)), then install the `regPackage1` package itself (refer to [Install](#Install)), install and load the `targets` library, and the run `tar_make()` to run the pipeline.
 
 **Note** : Make sure to install the package after restoring the `renv`, as restoring will only include the packages required for the `regPackage1`, but no the package itself.
 

@@ -16,7 +16,6 @@ ui <- function(request){
         hr(),
         selectInput("evaluation_selected", "Select type of plot:",
                     choices = c("ROC Curve", "Confusion Matrix"),
-                    #selected = "ROC Curve",
                     multiple = FALSE
         ),
         hr(),
@@ -28,7 +27,6 @@ ui <- function(request){
       mainPanel(
         titlePanel("Model Evaluation for the Car Insurance Data"),
         shinycustomloader::withLoader(plotOutput("evaluation_plots"), type="html", loader="loader5")
-        #plotOutput("evaluation_plots") |> shinycustomloader::withLoader(plotOutput("distPlot"), type="image", loader="loader1")
       )
     )
   )

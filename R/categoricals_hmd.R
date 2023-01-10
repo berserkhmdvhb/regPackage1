@@ -12,7 +12,7 @@
 
 
 categoricals_hmd <- function(data=regPackage1::car_insurance_data){
-  # ensure dataframe is not empy
+  # ensure dataframe is not empty
   if(nrow({{data}}) == 0) {
     warning("The inputted data frame is empty.")
   }

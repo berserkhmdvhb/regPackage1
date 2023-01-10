@@ -127,8 +127,7 @@ regPackage1::shiny_run_hmd()
 ```
 
 
-Although the shiny App could be based on `targets`, since the whole point of this package is not deploying a shiny app, and instead doing a classification project, I separated the `shiny` app and `targerts` pipeline, while they have interesction on the `functions.R`. This can be seen from their tree structure
-
+Although the shiny App could be based on `targets`, since I wanted the shiny app to work just by installing the package (and without the need to clone anything), I separated the `shiny` app and `targerts` pipeline.
 
 ### Tree Structure
 

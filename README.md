@@ -119,16 +119,7 @@ The steps of the pipeline are elaborated on in the following:
     
 ## `shiny` App
 
-
-First, clone the package's repository, using the following command in a command line:
-
-```
-git clone git@github.com:berserkhmdvhb/regPackage1.git
-```
-
-Then, navigate to to the cloned folder and open `regPackage1.Rproj` in an R editor to create a project. Make sure to use `renv` so as to retrieve the pacakges required for the `regPackage1`.
-
-Install the `regPackage1` package (refer to [Install](#Install)), install the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), install and load the `shiny` library, and the run `shiny::runApp("my_app")` to view the application.
+Unlike the `targets` pipeline, the `shiny` is part of the packages' functions. To view the app, install the `regPackage1` package (refer to [Install](#Install)), install the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), and then run the  function from the package
 
 ```r
 library(regPackage1)
@@ -143,15 +134,15 @@ Although the shiny App could be based on `targets`, since the whole point of thi
 
 ### Tree Structure
 
-As mentioned, the `functions.R` play role in both `shiny` and `targets`.
-
 ```bash
-├── my_app
-│   ├── global.R
-│   ├── server.R
-│   └── ui.R
+├── inst
+│   ├── my_app
+│   │   ├── app-cache
+│   │   ├── global.R
+│   │   ├── server.R
+│   │   └── ui.R
 ├── R
-│   ├── functions.R
+│   ├── shiny_run_hmd.R
 ```
 
 

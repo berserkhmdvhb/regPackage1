@@ -1,4 +1,4 @@
-#' Random Forest Fitting
+#' Random Forest Model Fitting
 #' @param data An arbitrary dataframe
 #' @param target The target variable aimed for prediction
 #' @param family specify family of distribution.

@@ -12,8 +12,7 @@
 #' options, i.e., type of model, and type of evaluation plot. For the type of model,
 #' the provided options are "Random Forest", and "Logistic Regression". For the type
 #' of the evaluation, the provided options are "ROC Curve" and "Confusion Matrix".
-#'
-#'
+
 shiny_run_hmd <- function() {
   appDir <- system.file("my_app", package = "regPackage1")
   if (appDir == "") {

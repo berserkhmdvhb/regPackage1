@@ -1,12 +1,13 @@
 #' Predict data with results from random forest model
-#' @param fit fit object from a randomfForest model
+#' @param fit fit object from a randomf forest model either from the randomForest
+#' package), or from the "glmnet_cv_fit_hmd" function
 #' @param data An arbitrary dataframe
 #' @param target Target column in the data
 #' @export
 #' @return A hash containing predictions (both factorized and numerical), and prediction probabilities
 #' @details
-#' This functions allows the user to predict a given dataset using fit object
-#' obtained from the randomForest function
+#' This functions allows the user to predict a given dataset using fit object from a randomf forest model either from the randomForest
+#' package), or from the "glmnet_cv_fit_hmd" function.
 
 rf_predict_hmd <- function(fit,
                            data = regPackage1::insurance_test,

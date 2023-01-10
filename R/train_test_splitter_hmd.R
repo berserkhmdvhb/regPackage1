@@ -1,8 +1,8 @@
-#' Splitting and Normalizind Data
+#' Splitting a Dataframe to Training and Test Datasets
 #' @param data An arbitrary dataframe
-#' @param proportion Proportion of train to test. Default is 0.7, which results
+#' @param proportion Proportion of train to test. Default is 0.7
 #' @export
-#' @return Returns a dictionary containing train and test data
+#' @return Returns a hash containing train and test data
 #' @details
 #' This functions allows the user to split data into train and test
 

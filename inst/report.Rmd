@@ -345,7 +345,7 @@ fit <- glmnet_fit_hmd(insurance_train, target="outcome", family="binomial")
 h <- glmnet_predict_hmd(fit, 
                         data = insurance_test,  
                         target = "outcome", 
-                        type = "response")
+                        type = "binomial")
 coef = h$coef
 pred_glm <- h$predictions
 pred_proba_glm <- h$predict_proba
@@ -388,7 +388,7 @@ h <- glmnet_cv_predict_hmd(fit,
                            data = insurance_test, 
                            target = "outcome", 
                            lchoice = "min", 
-                           type = "response")
+                           type = "binomial")
 coef = h$coef
 pred_glm_cv_min <- h$predictions
 pred_proba_glm_cv_min <- h$predict_proba
@@ -431,7 +431,7 @@ h <- glmnet_cv_predict_hmd(fit,
                            data = insurance_test, 
                            target = "outcome", 
                            lchoice = "1se", 
-                           type = "response")
+                           type = "binomial")
 coef = h$coef
 pred_glm_cv_1se <- h$predictions
 pred_proba_glm_cv_1se <- h$predict_proba

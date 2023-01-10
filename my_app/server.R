@@ -38,11 +38,6 @@ server <- function(session, input, output) {
     }
 
   })  |> bindCache(input$evaluation_selected) |> bindEvent(input$run_plot)
-  #|>
-   # bindCache(input$model_selected,
-   #           input$evaluation_selected) |>
-   # bindEvent(input$run_plot)
-
 
 
   output$evaluation_plots <- renderPlot({

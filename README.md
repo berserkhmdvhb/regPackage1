@@ -123,9 +123,7 @@ Unlike the `targets` pipeline, the `shiny` is part of the packages' functions. T
 
 ```r
 library(regPackage1)
-install.packages("shiny")
-library(shiny)
-shiny::runApp('my_app')
+regPackage1::shiny_run_hmd()
 ```
 
 
@@ -152,9 +150,9 @@ Although the shiny App could be based on `targets`, since the whole point of thi
 The documentation of the package can be accessed with the following commands.
 
 ```r
-
 help(package = regPackage1)
 ```
+
 ## Unit Tests
 TO DO
 

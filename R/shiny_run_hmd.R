@@ -15,7 +15,7 @@
 #'
 #'
 shiny_run_hmd <- function() {
-  appDir <- system.file("my_app", package = "regPackage1")
+  appDir <- system.file("./my_app/", package = "regPackage1")
   if (appDir == "") {
     stop("Could not find example directory. Try re-installing `regPackage1`.", call. = FALSE)
   }

@@ -1,23 +1,23 @@
 server <- function(session, input, output) {
   preds <- reactive({
     if (input$model_selected == "Logistic Regression"){
-      actual <- insurance_test$outcome
-      model_glm <- glmnet_fit_hmd(insurance_train,
+      actual <- regPackage1::insurance_test$outcome
+      model_glm <- regPackage1::glmnet_fit_hmd(regPackage1::insurance_train,
                                   target = "outcome",
                                   family = "binomial")
-      glmnet_predict_hmd(model_glm,
-                         data = insurance_test,
+      regPackage1::glmnet_predict_hmd(model_glm,
+                         data = regPackage1::insurance_test,
                          target = "outcome",
-                         type = "response")
+                         type = "binomial")
     }
     else if (input$model_selected == "Random Forest"){
-      model_random_forest <- rf_fit_hmd(insurance_train,
+      model_random_forest <- regPackage1::rf_fit_hmd(regPackage1::insurance_train,
                                         ntree = 300,
                                         mtry = 10,
                                         proximity = TRUE,
                                         importance = FALSE)
 
-      rf_predict_hmd(data=insurance_test,
+      regPackage1::rf_predict_hmd(data=regPackage1::insurance_test,
                      fit=model_random_forest)
     }
   }) |> bindCache(input$model_selected) |> bindEvent(input$run_plot)
@@ -31,9 +31,8 @@ server <- function(session, input, output) {
       plot_roc_curve(roc_obj)
     }
     else if (input$evaluation_selected == "Confusion Matrix"){
-      eval_glm <- eval_hmd(insurance_test$outcome,
-                           preds()$predictions)
-      eval_glm
+      eval_glm <- regPackage1::eval_hmd(actual,
+                                        preds()$predictions)
       eval_glm$confusion_matrix_plot
     }
 

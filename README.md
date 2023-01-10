@@ -119,7 +119,7 @@ The steps of the pipeline are elaborated on in the following:
     
 ## `shiny` App
 
-Unlike the `targets` pipeline, the `shiny` is part of the packages' functions. To view the app, install the `regPackage1` package (refer to [Install](#Install)), install the required packages from the `renv.lock` file (refer to [`renv`](#renv-packages)), and then run the  function from the package
+Unlike the `targets` pipeline, the `shiny` is part of the packages' functions. To view the app, simply install the `regPackage1` package (refer to [Install](#Install)), and then run the function `shiny_run_hmd` from the package.
 
 ```r
 library(regPackage1)

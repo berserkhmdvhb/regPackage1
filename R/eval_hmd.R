@@ -40,7 +40,7 @@ eval_hmd <- function(actual,
     stop("Both actual and predicted should be binary. Ensure they contain only two classes.")
   }
 
-  if (!(identical(y_predicted |> unique(), actual |> unique()))){
+  if (!(setequal(y_predicted |> unique(), actual |> unique()))){
     stop("Both actual and predicted should have the same classes.")
   }
 

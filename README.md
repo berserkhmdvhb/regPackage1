@@ -1,7 +1,7 @@
 # regPackage1  <img src="inst/figures/logo.png" align="right" style="width: 25%;"/>
 Author: Hamed Vaheb
 
-Logo Source: [aiinsurance.io](https://aiinsurance.io/)
+Icon Source: [aiinsurance.io](https://aiinsurance.io/)
 
 # Introduction
 

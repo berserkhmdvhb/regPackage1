@@ -22,14 +22,30 @@ eval_hmd <- function(actual,
     y_predicted <- as.numeric(y_predicted)
   }
 
-  if (!(is.numeric(y_actual)) | !(is.numeric(y_predicted))){
-    stop("The predicted and actual inputs should both contain at most two classes.
-         Please ensure both of their class are either numeric of factor")
+  if (!(is.matrix(y_actual))){
+    if (!(is.numeric(y_actual))){
+      stop("actual input should contain numbers.
+         Please ensure actual's class is either numeric or factor")
+    }
+  }
+
+  if (!(is.matrix(y_predicted))){
+    if (!(is.numeric(y_predicted))){
+      stop("predict input should contain numbers.
+         Please ensure predict's class is either numeric or factor")
+    }
   }
 
   if (!(actual |> unique() |> length() == 2) | !(actual |> unique() |> length() == 2)){
     stop("Both actual and predicted should be binary. Ensure they contain only two classes.")
   }
+
+  if (!(identical(y_predicted |> unique(), actual |> unique()))){
+    stop("Both actual and predicted should have the same classes.")
+  }
+
+
+
   cm <- caret::confusionMatrix(data = as.factor(y_predicted),
                                reference = as.factor(y_actual),
                                dnn = c("Prediction", "Reference"))
@@ -43,8 +59,8 @@ eval_hmd <- function(actual,
   plt <- as.data.frame(cm$table)
   plt$Prediction <- factor(plt$Prediction, levels=rev(levels(plt$Prediction)))
 
-  cm_plot <- ggplot2::ggplot(plt, ggplot2::aes(Prediction, Reference, fill=Freq)) +
-    ggplot2::geom_tile() + ggplot2::geom_text(ggplot2::aes(label=Freq)) +
+  cm_plot <- ggplot2::ggplot(plt, ggplot2::aes(plt$Prediction, plt$Reference, fill=plt$Freq)) +
+    ggplot2::geom_tile() + ggplot2::geom_text(ggplot2::aes(label=plt$Freq)) +
     ggplot2::scale_fill_gradient(low="white", high="#009194") +
     ggplot2::labs(x = "Reference", y = "Prediction") +
     ggplot2::scale_x_discrete(labels=c("Class_1","Class_2")) +

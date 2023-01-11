@@ -1,7 +1,7 @@
 #' Random Forest Model Fitting
 #' @param data An arbitrary dataframe
 #' @param target The target variable aimed for prediction
-#' @param family specify family of distribution.
+#' @param family Specify family of distribution.
 #' @param ntree Number of trees to grow. This should not be set to too small a '
 #' umber, to ensure that every input row gets predicted at least a few times.
 #' @param mtry Number of variables randomly sampled as candidates at each split.

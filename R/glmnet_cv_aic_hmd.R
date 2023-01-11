@@ -1,17 +1,10 @@
 #' Predict data with results from GLMNET model
-#' @param fit fit object from a cv.glmnet model
-#' @param lchoice how to choose lambda model. Choices are "min", "1se".
-#' for "binomial" or "multinomial" models; for "gaussian" models it gives the fitted values.
-#' Type "response" gi
+#' @param fit Fit object from a cv.glmnet model
+#' @param lchoice How to choose lambda model. Choices are "min", "1se".
 #' @export
-#' @return Extract AIC and BIC from the fit of glm
+#' @return AIC and BIC from a glm fit object
 #' @details
-#' This functions allows the user to perform cross-validated eslastic net (which
-#' is a generalized
-#' linear model) on a given
-#' dataframe by specifying feature names (response variables),
-#' target variable, family of distribution, and the dataset (in my case, Medical
-#' Cost Personal Datasets)
+#' This function allows the user to extract AIC and BIC from a cv.glmnet fit object.
 
 glmnet_cv_aic_hmd <- function(fit,
                               lchoice="min"

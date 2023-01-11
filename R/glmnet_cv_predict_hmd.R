@@ -1,4 +1,4 @@
-#' Predict data with results from CV GLMNET model
+#' Predict data with results from CV.GLMNET model
 #' @param fit fit object from a cv.glmnet model
 #' @param data An arbitrary dataframe
 #' @param target Target column in the data
@@ -8,7 +8,7 @@
 #' Type "response" gi
 #' @param target Target column in the data
 #' @export
-#' @return Returns fit object of glmnet function
+#' @return Returns prediction of the cv.glmnet function
 #' @details
 #' This functions allows the user to predict a given dataset using fit object
 #' obtained from the cv.glmnet function

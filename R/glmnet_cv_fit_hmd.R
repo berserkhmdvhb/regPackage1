@@ -6,10 +6,9 @@
 #' @export
 #' @return Returns fit object of glmnet function
 #' @details
-#' This functions allows the user to perform cross-validated eslastic net (which is a generalized
-#' linear model) on a given
-#' dataframe by specifying feature names (response variables),
-#' target variable, family of distribution, and the dataset (in my case, Medical Cost Personal Datasets)
+#' This functions allows the user to perform cross-validated elastic-net
+#' regression on a given dataframe by specifying feature names (response variables),
+#' target variable, family of distribution, and the dataset.
 
 glmnet_cv_fit_hmd <- function(data=regPackage1::insurance_train,
                           target="outcome",

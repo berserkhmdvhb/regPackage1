@@ -6,8 +6,7 @@
 #' @export
 #' @return A hash containing predictions (both factorized and numerical), and prediction probabilities
 #' @details
-#' This functions allows the user to predict a given dataset using fit object from a randomf forest model either from the randomForest
-#' package), or from the "glmnet_cv_fit_hmd" function.
+#' This functions allows the user to predict a given dataset using a randomForest fit object
 
 rf_predict_hmd <- function(fit,
                            data = regPackage1::insurance_test,

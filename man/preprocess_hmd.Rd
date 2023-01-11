@@ -21,9 +21,9 @@ This function is a wrapper around all functions defined in the preprocessing
 stages, which are elaborated on in the report. In summary, the stages are
 summarized in the following:
 cleaning columns' names, treating categorical variables by converting them to
-factors, impute missing values with median of their corresponding columns,
-apply one-hot-encoding, split to train and test, convert back numeric columns
-to their proper types (integer or double), applying racog (Rapidly converging
-Gibbs algorithm) for oversampling the minority class so as to mitigate classes'
-imabalance, Remove id column to prevent data leakage,
+factors, imputing missing values with median of their corresponding columns,
+applyingone-hot-encoding, splitting to train and test, distincting integer and double
+column types, normalizing double type columns, applying racog (Rapidly converging Gibbs algorithm)
+for oversampling the minority class so as to mitigate classes' imbalance,
+removing id column so as to prevent data leakage. Finally store train and test data in a hash
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/eval_hmd.R
 \name{eval_hmd}
 \alias{eval_hmd}
-\title{Evaluation Metrics Computed}
+\title{Evaluation Metrics Computation for binary class}
 \usage{
 eval_hmd(actual, predicted)
 }
@@ -15,11 +15,12 @@ eval_hmd(actual, predicted)
 Returns a hash of all evaluation metrics
 }
 \description{
-Evaluation Metrics Computed
+Evaluation Metrics Computation for binary class
 }
 \details{
 This functions computes various evaluation metrics of classification for a given
-actual data and a prediction data. The function returns a hash containing the
+actual data and a prediction data, both of which should be binary class.
+The function returns a hash containing the
 following items: accuracy, precision, recall, F-score, F-beta score, confusion
 matrix, and plot confusion matrix
 }

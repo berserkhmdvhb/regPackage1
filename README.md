@@ -153,10 +153,10 @@ The documentation of the package can be accessed with the following commands.
 help(package = regPackage1)
 ```
 
-## Unit Tests
+## `testthat` Unit Tests
 
 
-have been done only for the [`eval_hmd`](https://github.com/berserkhmdvhb/regPackage1/blob/main/R/eval_hmd.R) function, which accepts `actual` and `predicted` objects, and then computes evaluation metrics suitable for a binary classified prediction. The function returns a hash containing various evaluation metrics, as well as a confusion matrix plot.
+Various tests have been done only for the [`eval_hmd`](https://github.com/berserkhmdvhb/regPackage1/blob/main/R/eval_hmd.R) function, which accepts `actual` and `predicted` objects, and then computes evaluation metrics suitable for a binary classified prediction. The function returns a hash containing various evaluation metrics, as well as a confusion matrix plot.
 Since the inputs `actual` and `predicted` should have certain conditions, the following type checkings and other tests were embedded inside the `eval_hmd` function:
 
 1. The actual input and predict input can be matrices, and if not, they should be of class either `numeric` or `factor`

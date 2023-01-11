@@ -156,13 +156,18 @@ help(package = regPackage1)
 ## Unit Tests
 
 
-have been done only for the [`eval_hmd`](https://github.com/berserkhmdvhb/regPackage1/blob/main/R/eval_hmd.R) function, which accepts `actual` and `predicted` objects, and then returns a hash containing various evaluation metrics, as well as a confusion matrix plot.
+have been done only for the [`eval_hmd`](https://github.com/berserkhmdvhb/regPackage1/blob/main/R/eval_hmd.R) function, which accepts `actual` and `predicted` objects, and then computes evaluation metrics suitable for a binary classified prediction. The function returns a hash containing various evaluation metrics, as well as a confusion matrix plot.
 Since the inputs `actual` and `predicted` should have certain conditions, the following type checkings and other tests were embedded inside the `eval_hmd` function:
+
 1. The actual input and predict input can be matrices, and if not, they should be of class either `numeric` or `factor`
 2. The actual input and predict input should be binary, therefore if any of them contain more than 2 values, error will raise.
 3. The actual input and predict input should have same classes, e.g., they both should contain classes 0 and 1.
 
-Moreover, unit tests have been added in the [`test-eval_hmd.R`](https://github.com/berserkhmdvhb/regPackage1/blob/main/tests/testthat/test-eval_hmd.R) file (file's location can be seen from the tree structure below).
+Moreover, the following unit tests have been added in the [`test-eval_hmd.R`](https://github.com/berserkhmdvhb/regPackage1/blob/main/tests/testthat/test-eval_hmd.R) file (visible also in tree structure below):
+
+1. `test_that("check value ranges",...` ensures all outputs' evaluation metrics, i.e., accuracy, precision, recall, fbeta_score, and f1_score have values in the range [0,1]
+2. `test_that("check output class",...` ensures the output of the functions is of class hash.
+
 
 
 ### Tree Structure

@@ -1,5 +1,7 @@
-# regPackage1
+# regPackage1  <img src="inst/figures/logo.png" align="right" style="width: 25%;"/>
 Author: Hamed Vaheb
+
+Logo Source: [aiinsurance.io](https://aiinsurance.io/)
 
 # Introduction
 
@@ -9,7 +11,6 @@ The raw dataset along with the processed train and test datasets, obtained by us
 A report is provided in the package that elaborates on all the stages from loading the data, preprocessing steps, applying logistic regression and random forest, and then evaluating and plotting the results.
 The package's documentation, including documentation of functions and datasets, as well as unit tests for the functions are elaborated on [Documentation](#Documentation), and the link to report of the classification project is provided on [Report](#Report).
 Moreover, a pipeline including main stages of the classification (refer to [`targets` Pipeline](#targets-Pipeline)), and a shiny interactive app (refer to [`shiny` App](#shiny-App)) visualizing evaluation plots are included in the package.
-
 
 **Note**: All functions from this pakcage are suffixed with `hmd` so as not to confuse with other built-in packages.
 
@@ -153,7 +154,7 @@ help(package = regPackage1)
 ```
 
 ## Unit Tests
-TO DO
+The following test have been done only for the `eval_hmd` function, which accepts `actual` and `predicted` vectors, and then
 
 ### Tree Structure
 

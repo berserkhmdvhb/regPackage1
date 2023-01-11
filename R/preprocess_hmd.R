@@ -1,4 +1,4 @@
-#' Wrapper of all preprocessing functions and tasks
+#' Wrapper of all preprocessing functions and tasks (explained in the report)
 #' @param data An arbitrary dataframe
 #' @export
 #' @return Returns cleaned dataframe ready to be fed into models

@@ -1,8 +1,7 @@
 #' Normalizing Train and Test Data
 #' @param train Training Data
 #' @param test Test Data
-#' minmax or std, which is determined by the parameter "normalize_method"
-#' @param normalize_method if set to "std", then standard scaler is used, and if
+#' @param normalize_method If set to "std", then standard scaler is used, and if
 #' set to "minmax", minmax is applied. Default is "minmax".
 #' @export
 #' @return Returns normalized dataframe

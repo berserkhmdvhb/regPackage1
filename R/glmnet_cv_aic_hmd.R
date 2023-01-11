@@ -4,7 +4,7 @@
 #' for "binomial" or "multinomial" models; for "gaussian" models it gives the fitted values.
 #' Type "response" gi
 #' @export
-#' @return Returns fit object of glmnet function
+#' @return Extract AIC and BIC from the fit of glm
 #' @details
 #' This functions allows the user to perform cross-validated eslastic net (which
 #' is a generalized

@@ -1,10 +1,11 @@
 #' Imputes missing values with median
 #' @param data An arbitrary dataframe
 #' @export
-#' @return Returns dataframe with its categorical columns factorised
+#' @return Returns dataframe with each missing value is replaced by the median of the
+#' column in which the missing value exists.
 #' @details
 #' This function receives a dataframe, finds columns containing NA values, and then
-#' replaces NA values of each founded column with median of that column.
+#' replaces NA values of each found column with median of that column.
 
 
 impute_median_hmd <- function(data=regPackage1::car_insurance_data){

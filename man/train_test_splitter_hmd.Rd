@@ -2,7 +2,7 @@
 % Please edit documentation in R/train_test_splitter_hmd.R
 \name{train_test_splitter_hmd}
 \alias{train_test_splitter_hmd}
-\title{Splitting and Normalizind Data}
+\title{Splitting a Dataframe to Training and Test Datasets}
 \usage{
 train_test_splitter_hmd(
   data = regPackage1::car_insurance_data,
@@ -12,13 +12,13 @@ train_test_splitter_hmd(
 \arguments{
 \item{data}{An arbitrary dataframe}
 
-\item{proportion}{Proportion of train to test. Default is 0.7, which results}
+\item{proportion}{Proportion of train to test. Default is 0.7}
 }
 \value{
-Returns a dictionary containing train and test data
+Returns a hash containing train and test data
 }
 \description{
-Splitting and Normalizind Data
+Splitting a Dataframe to Training and Test Datasets
 }
 \details{
 This functions allows the user to split data into train and test

@@ -9,8 +9,7 @@ eval_hmd(actual, predicted)
 \arguments{
 \item{actual}{The actual data (usually obtained from the test data)}
 
-\item{predicted}{Predictions from an arbitrary model
-except the target}
+\item{predicted}{Predictions from an arbitrary model}
 }
 \value{
 Returns a hash of all evaluation metrics

@@ -9,10 +9,9 @@ normalizer_hmd(train, test, normalize_method = "minmax")
 \arguments{
 \item{train}{Training Data}
 
-\item{test}{Test Data
-minmax or std, which is determined by the parameter "normalize_method"}
+\item{test}{Test Data}
 
-\item{normalize_method}{if set to "std", then standard scaler is used, and if
+\item{normalize_method}{If set to "std", then standard scaler is used, and if
 set to "minmax", minmax is applied. Default is "minmax".}
 }
 \value{

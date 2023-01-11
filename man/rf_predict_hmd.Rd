@@ -7,7 +7,8 @@
 rf_predict_hmd(fit, data = regPackage1::insurance_test, target = "outcome")
 }
 \arguments{
-\item{fit}{fit object from a randomfForest model}
+\item{fit}{fit object from a randomf forest model either from the randomForest
+package), or from the "glmnet_cv_fit_hmd" function}
 
 \item{data}{An arbitrary dataframe}
 
@@ -20,6 +21,5 @@ A hash containing predictions (both factorized and numerical), and prediction pr
 Predict data with results from random forest model
 }
 \details{
-This functions allows the user to predict a given dataset using fit object
-obtained from the randomForest function
+This functions allows the user to predict a given dataset using a randomForest fit object
 }

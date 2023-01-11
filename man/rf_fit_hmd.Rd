@@ -2,7 +2,7 @@
 % Please edit documentation in R/rf_fit_hmd.R
 \name{rf_fit_hmd}
 \alias{rf_fit_hmd}
-\title{Random Forest Fitting}
+\title{Random Forest Model Fitting}
 \usage{
 rf_fit_hmd(
   data = regPackage1::insurance_train,
@@ -19,7 +19,7 @@ rf_fit_hmd(
 
 \item{target}{The target variable aimed for prediction}
 
-\item{family}{specify family of distribution.}
+\item{family}{Specify family of distribution.}
 
 \item{ntree}{Number of trees to grow. This should not be set to too small a '
 umber, to ensure that every input row gets predicted at least a few times.}
@@ -35,7 +35,7 @@ Note that the default values are different for classification (sqrt(p) where p i
 Returns fit object of randomForest function
 }
 \description{
-Random Forest Fitting
+Random Forest Model Fitting
 }
 \details{
 This functions allows the user to fit a random forest on a given dataframe

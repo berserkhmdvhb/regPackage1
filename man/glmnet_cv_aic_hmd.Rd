@@ -7,23 +7,16 @@
 glmnet_cv_aic_hmd(fit, lchoice = "min")
 }
 \arguments{
-\item{fit}{fit object from a cv.glmnet model}
+\item{fit}{Fit object from a cv.glmnet model}
 
-\item{lchoice}{how to choose lambda model. Choices are "min", "1se".
-for "binomial" or "multinomial" models; for "gaussian" models it gives the fitted values.
-Type "response" gi}
+\item{lchoice}{How to choose lambda model. Choices are "min", "1se".}
 }
 \value{
-Returns fit object of glmnet function
+AIC and BIC from a glm fit object
 }
 \description{
 Predict data with results from GLMNET model
 }
 \details{
-This functions allows the user to perform cross-validated eslastic net (which
-is a generalized
-linear model) on a given
-dataframe by specifying feature names (response variables),
-target variable, family of distribution, and the dataset (in my case, Medical
-Cost Personal Datasets)
+This function allows the user to extract AIC and BIC from a cv.glmnet fit object.
 }

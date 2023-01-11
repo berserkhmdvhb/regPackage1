@@ -2,14 +2,14 @@
 % Please edit documentation in R/glmnet_cv_predict_hmd.R
 \name{glmnet_cv_predict_hmd}
 \alias{glmnet_cv_predict_hmd}
-\title{Predict data with results from CV GLMNET model}
+\title{Predict data with results from CV.GLMNET model}
 \usage{
 glmnet_cv_predict_hmd(
   fit,
   data = regPackage1::insurance_test,
   target = "outcome",
   lchoice = "min",
-  type = "response"
+  type = "binomial"
 )
 }
 \arguments{
@@ -26,10 +26,10 @@ for "binomial" or "multinomial" models; for "gaussian" models it gives the fitte
 Type "response" gi}
 }
 \value{
-Returns fit object of glmnet function
+Returns prediction of the cv.glmnet function
 }
 \description{
-Predict data with results from CV GLMNET model
+Predict data with results from CV.GLMNET model
 }
 \details{
 This functions allows the user to predict a given dataset using fit object

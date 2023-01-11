@@ -2,7 +2,7 @@
 % Please edit documentation in R/preprocess_hmd.R
 \name{preprocess_hmd}
 \alias{preprocess_hmd}
-\title{Wrapper of all preprocessing functions and tasks}
+\title{Wrapper of all preprocessing functions and tasks (explained in the report)}
 \usage{
 preprocess_hmd(data = regPackage1::car_insurance_data)
 }
@@ -10,14 +10,20 @@ preprocess_hmd(data = regPackage1::car_insurance_data)
 \item{data}{An arbitrary dataframe}
 }
 \value{
-Returns cleaned dataframe ready to be fed into models
+Returns processed dataframes inside a hash function containing both
+train and test datasets
 }
 \description{
-Wrapper of all preprocessing functions and tasks
+Wrapper of all preprocessing functions and tasks (explained in the report)
 }
 \details{
-This function is a wrapper around all functions defined in the preprocessing stage.
-It allows the user to use the raw original data and using this function receive a data
-ready to be fed into models. This function applies the following functions on the given dataframe:
-janitor::clean_names, regPackage1::categoricals_hmd, regPackage1::impute_median_hmd
+This function is a wrapper around all functions defined in the preprocessing
+stages, which are elaborated on in the report. In summary, the stages are
+summarized in the following:
+cleaning columns' names, treating categorical variables by converting them to
+factors, impute missing values with median of their corresponding columns,
+apply one-hot-encoding, split to train and test, convert back numeric columns
+to their proper types (integer or double), applying racog (Rapidly converging
+Gibbs algorithm) for oversampling the minority class so as to mitigate classes'
+imabalance, Remove id column to prevent data leakage,
 }

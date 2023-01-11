@@ -46,6 +46,7 @@ A data frame with 10000 rows and 19 columns:
 data(insurance_test)
 }
 \description{
-This dataset is the testing dataset obtained by processing the car insurance data
+This dataset is the testing dataset obtained by processing the car insurance data.
+The processing steps are described in the report as well as documentation of function preprocess_hmd.
 }
 \keyword{datasets}

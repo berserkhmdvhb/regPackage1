@@ -10,12 +10,13 @@ impute_median_hmd(data = regPackage1::car_insurance_data)
 \item{data}{An arbitrary dataframe}
 }
 \value{
-Returns dataframe with its categorical columns factorised
+Returns dataframe with each missing value is replaced by the median of the
+column in which the missing value exists.
 }
 \description{
 Imputes missing values with median
 }
 \details{
 This function receives a dataframe, finds columns containing NA values, and then
-replaces NA values of each founded column with median of that column.
+replaces NA values of each found column with median of that column.
 }

@@ -154,7 +154,7 @@ help(package = regPackage1)
 ```
 
 ## Unit Tests
-TO DO
+The following test have been done only for the `eval_hmd` function, which accepts `actual` and `predicted` vectors, and then
 
 ### Tree Structure
 
